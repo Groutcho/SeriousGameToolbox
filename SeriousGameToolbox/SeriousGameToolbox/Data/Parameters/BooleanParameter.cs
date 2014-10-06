@@ -7,22 +7,29 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public class BooleanParameter : Parameter
     {
-        public new bool Value { get; set; }
+        private bool value;
 
-        public BooleanParameter(string id, string caption, bool current)
+        public override object GetValue()
+        {
+            return (object)value;
+        }
+
+        public BooleanParameter(string id, string caption, bool value)
             : base(id, caption)
         {
-            this.Value = current;
+            this.value = value;
         }
 
         public static implicit operator bool(BooleanParameter b)
         {
-            return b.Value;
+            return b.value;
         }
 
         public override Parameter Clone()
         {
-            return new BooleanParameter(this.Id, this.Caption, this.Value);
+            return new BooleanParameter(this.Id, this.Caption, this.value);
         }
+
+
     }
 }

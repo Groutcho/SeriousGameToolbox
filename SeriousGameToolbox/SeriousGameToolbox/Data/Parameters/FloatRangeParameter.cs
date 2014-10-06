@@ -10,8 +10,8 @@ namespace SeriousGameToolbox.Data.Parameters
         public float Minimum { get; private set; }
         public float Maximum { get; private set; }
 
-        public FloatRangeParameter(string id, string caption, float min, float max, float current)
-            : base(id, caption, current)
+        public FloatRangeParameter(string id, string caption, float min, float max, float value)
+            : base(id, caption, value)
         {
             this.Minimum = min;
             this.Maximum = max;
@@ -19,12 +19,12 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public static implicit operator float(FloatRangeParameter p)
         {
-            return p.Value;
+            return p.value;
         }
 
         public override Parameter Clone()
         {
-            return new FloatRangeParameter(this.Id, this.Caption, this.Minimum, this.Maximum, this.current);
+            return new FloatRangeParameter(this.Id, this.Caption, this.Minimum, this.Maximum, this.value);
         }
     }
 }

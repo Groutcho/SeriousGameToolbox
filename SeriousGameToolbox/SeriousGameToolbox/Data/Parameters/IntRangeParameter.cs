@@ -10,43 +10,21 @@ namespace SeriousGameToolbox.Data.Parameters
         public int Minimum { get; private set; }
         public int Maximum { get; private set; }
 
-        private int current;
-        public override int Value
-        {
-            get { return current; }
-            set
-            {
-                if (value < Minimum)
-                {
-                    current = Minimum;
-                }
-                else if (value > Maximum)
-                {
-                    current = Maximum;
-                }
-                else
-                {
-                    current = value;
-                }
-            }
-        }
-
-        public IntRangeParameter(string id, string caption, int min, int max, int current)
-            : base(id, caption, current)
+        public IntRangeParameter(string id, string caption, int min, int max, int value)
+            : base(id, caption, value)
         {
             this.Minimum = min;
             this.Maximum = max;
-            this.Value = current;
         }
 
         public static implicit operator int(IntRangeParameter p)
         {
-            return p.Value;
+            return p.value;
         }
 
         public override Parameter Clone()
         {
-            return new IntRangeParameter(this.Id, this.Caption, this.Minimum, this.Maximum, this.current);
+            return new IntRangeParameter(this.Id, this.Caption, this.Minimum, this.Maximum, this.value);
         }
     }
 }

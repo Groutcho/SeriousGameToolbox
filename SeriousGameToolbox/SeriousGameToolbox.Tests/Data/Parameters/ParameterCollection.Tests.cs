@@ -8,6 +8,7 @@ using System.Text;
 namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
+    [Category("Parameters")]
     public class ParameterCollection_Tests
     {
         [TestCase]

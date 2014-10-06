@@ -19,12 +19,16 @@ namespace SeriousGameToolbox.Data.Parameters
                 throw new KeyNotFoundException("The key " + name + " cannot be found in the parameters.");
             }
 
-            if (!(dict[name].Value is T))
+            Parameter p = dict[name];
+
+            if (!(p.GetValue() is T))
             {
-                throw new InvalidCastException("The parameter " + name + " has no value of type " + typeof(T).GetType());
+                Type expected = typeof(T);
+
+                throw new InvalidCastException(string.Format("The parameter {0} has an invalid type. Expected {1}", name, expected));
             }
 
-            return (T)dict[name].Value;
+            return (T)p.GetValue();
         }
 
         public ParameterCollection(ParameterCollection original)

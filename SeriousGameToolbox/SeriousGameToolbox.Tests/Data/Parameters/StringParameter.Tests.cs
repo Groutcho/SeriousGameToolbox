@@ -8,6 +8,7 @@ using System.Text;
 namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
+    [Category("Parameters")]
     public class StringParameter_Tests
     {
         [TestCase]
@@ -30,7 +31,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             StringParameter p0 = new StringParameter("id", null,  "this is the value.");
             StringParameter p1 = p0.Clone() as StringParameter;
 
-            Assert.AreEqual(p0.Value, p1.Value);
+            Assert.AreEqual(p0.GetValue(), p1.GetValue());
         }
     }
 }

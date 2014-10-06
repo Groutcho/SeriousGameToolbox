@@ -7,22 +7,27 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public class IntegerParameter : Parameter
     {
-        public new virtual int Value { get; set; }
+        protected int value;
+
+        public override object GetValue()
+        {
+            return (object)value;
+        }
 
         public IntegerParameter(string id, string caption, int current)
             : base(id, caption)
         {
-            this.Value = current;
+            this.value = current;
         }
 
         public static implicit operator int(IntegerParameter p)
         {
-            return p.Value;
+            return p.value;
         }
 
         public override Parameter Clone()
         {
-            return new IntegerParameter(this.Id, this.Caption, this.Value);
+            return new IntegerParameter(this.Id, this.Caption, this.value);
         }
     }
 }

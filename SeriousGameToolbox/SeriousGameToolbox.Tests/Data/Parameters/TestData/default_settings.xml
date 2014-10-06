@@ -1,0 +1,22 @@
+<parameters>
+  <parameter type="integer" id="TEST_INT" caption="text_test_int">
+    <values>
+      <current>3</current>
+    </values>
+  </parameter>
+  
+	<parameter type="range_int" id="NUMBER_OF_DEFECTS" caption="text_number_of_situations">
+		<values>
+			<min>10</min>
+			<max>40</max>
+			<current>40</current>
+		</values>
+	</parameter>
+
+	<parameter type="boolean" id="TEST_BOOL" caption="text_test_bool">
+		<values>
+			<current>true</current>
+		</values>
+	</parameter>
+
+</parameters>

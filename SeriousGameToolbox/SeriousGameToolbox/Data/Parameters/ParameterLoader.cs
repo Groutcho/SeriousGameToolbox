@@ -59,7 +59,7 @@ namespace SeriousGameToolbox.Data.Parameters
                                     new XAttribute("caption", parameter.Caption),
                                     new XAttribute("type", "integer"),
                             new XElement("values",
-                                        new XElement("current", parameter.Value)));
+                                        new XElement("current", (int)parameter.GetValue())));
 
             return result;
         }
@@ -71,7 +71,7 @@ namespace SeriousGameToolbox.Data.Parameters
                         new XAttribute("caption", parameter.Caption),
                         new XAttribute("type", "range_float"),
                 new XElement("values",
-                            new XElement("current", parameter.Value),
+                            new XElement("current", (float)parameter.GetValue()),
                             new XElement("min", parameter.Minimum),
                             new XElement("max", parameter.Maximum)
                             ));
@@ -86,7 +86,7 @@ namespace SeriousGameToolbox.Data.Parameters
                         new XAttribute("caption", parameter.Caption),
                         new XAttribute("type", "range_int"),
                 new XElement("values",
-                            new XElement("current", parameter.Value),
+                            new XElement("current", (int)parameter.GetValue()),
                             new XElement("min", parameter.Minimum),
                             new XElement("max", parameter.Maximum)
                             ));
@@ -101,7 +101,7 @@ namespace SeriousGameToolbox.Data.Parameters
                         new XAttribute("caption", parameter.Caption),
                         new XAttribute("type", "boolean"),
                 new XElement("values",
-                            new XElement("current", parameter.Value)));
+                            new XElement("current",(bool) parameter.GetValue())));
 
             return result;
         }

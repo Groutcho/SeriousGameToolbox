@@ -8,6 +8,7 @@ using System.Text;
 namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
+    [Category("Parameters")]
     public class BooleanParameter_Tests
     {
         [TestCase]
@@ -23,7 +24,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             BooleanParameter p0 = new BooleanParameter("id", null, true);
             BooleanParameter p1 = p0.Clone() as BooleanParameter;
 
-            Assert.AreEqual(p0.Value, p1.Value);
+            Assert.AreEqual((bool)p0.GetValue(), (bool)p1.GetValue());
         }
     }
 }

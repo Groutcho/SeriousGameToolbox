@@ -7,17 +7,11 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public class StringParameter : Parameter
     {
-        protected string id;
-        protected string caption;
         protected string value;
 
-        public new virtual string Value
+        public override object GetValue()
         {
-            get { return value; }
-            set
-            {
-                this.value = value;
-            }
+            return (object)value;
         }
 
         public StringParameter(string id, string caption, string value)
@@ -28,14 +22,12 @@ namespace SeriousGameToolbox.Data.Parameters
                 throw new ArgumentNullException("value");
             }
 
-            this.id = id;
-            this.caption = caption;
             this.value = value;
         }
 
         public override Parameter Clone()
         {
-            return new StringParameter(this.id, this.caption, this.value);
+            return new StringParameter(this.Id, this.Caption, this.value);
         }
     }
 }

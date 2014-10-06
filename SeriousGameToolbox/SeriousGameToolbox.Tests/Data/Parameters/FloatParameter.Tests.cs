@@ -8,6 +8,7 @@ using System.Text;
 namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
+    [Category("Parameters")]
     public class FloatParameter_Tests
     {
         [TestCase]
@@ -23,7 +24,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             FloatParameter p0 = new FloatParameter("id", null, 784.4243f);
             FloatParameter p1 = p0.Clone() as FloatParameter;
 
-            Assert.AreEqual(p0.Value, p1.Value, 0.001f);
+            Assert.AreEqual((float)p0.GetValue(), (float)p1.GetValue(), 0.001f);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace SeriousGameToolbox.Data.Parameters
             this.Caption = caption;
         }
 
+        public abstract object GetValue();
         public abstract Parameter Clone();
-        public object Value;
     }
 }

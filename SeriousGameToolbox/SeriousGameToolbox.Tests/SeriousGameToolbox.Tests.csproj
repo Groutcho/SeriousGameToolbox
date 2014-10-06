@@ -55,7 +55,7 @@
     <Compile Include="Data\Parameters\FloatParameter.Tests.cs" />
     <Compile Include="Data\Parameters\IntegerParameter.Tests.cs" />
     <Compile Include="Data\Parameters\ParameterCollection.Tests.cs" />
-    <Compile Include="Data\Parameters\ParameterLoader.cs" />
+    <Compile Include="Data\Parameters\ParameterLoader.Tests.cs" />
     <Compile Include="Data\Parameters\StringParameter.Tests.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.Tests.cs" />
     <Compile Include="Pedagogy\Session\Score.Tests.cs" />
@@ -63,8 +63,21 @@
     <Compile Include="Pedagogy\Session\Session.Tests.cs" />
     <Compile Include="Pedagogy\Session\SessionJournal.Tests.cs" />
     <Compile Include="Pedagogy\Trainee.Tests.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\Parameters\TestData\default_settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

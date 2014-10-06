@@ -7,30 +7,22 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public class FloatParameter : Parameter
     {
-        protected string id;
-        protected string caption;
-        protected float current;
+        protected float value;
 
-        public new  virtual float Value
+        public override object GetValue()
         {
-            get { return current; }
-            set
-            {
-                current = value;
-            }
+            return (object)value;
         }
 
-        public FloatParameter(string id, string caption, float current)
+        public FloatParameter(string id, string caption, float value)
             : base(id, caption)
         {
-            this.id = id;
-            this.caption = caption;
-            this.current = current;
+            this.value = value;
         }
 
         public override Parameter Clone()
         {
-            return new FloatParameter(this.id, this.caption, this.current);
+            return new FloatParameter(this.Id, this.Caption, this.value);
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
+    [Category("Parameters")]
     public class IntegerParameter_Tests
     {
         [TestCase]
@@ -23,7 +24,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             IntegerParameter p0 = new IntegerParameter("id", null, 68);
             IntegerParameter p1 = p0.Clone() as IntegerParameter;
 
-            Assert.AreEqual(p0.Value, p1.Value);
+            Assert.AreEqual((int)p0.GetValue(), (int)p1.GetValue());
         }
     }
 }
