@@ -39,9 +39,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pedagogy\Session.cs" />
+    <Compile Include="Data\Logins\Login.cs" />
+    <Compile Include="Data\Logins\LoginContainer.cs" />
+    <Compile Include="Data\Parameters\BooleanParameter.cs" />
+    <Compile Include="Data\Parameters\ParameterLoader.cs" />
+    <Compile Include="Data\Parameters\StringParameter.cs" />
+    <Compile Include="Data\Parameters\FloatParameter.cs" />
+    <Compile Include="Data\Parameters\FloatRangeParameter.cs" />
+    <Compile Include="Data\Parameters\IntegerParameter.cs" />
+    <Compile Include="Data\Parameters\IntRangeParameter.cs" />
+    <Compile Include="Data\Parameters\Parameter.cs" />
+    <Compile Include="Data\Parameters\ParameterCollection.cs" />
+    <Compile Include="Pedagogy\Session\Success.cs" />
+    <Compile Include="Pedagogy\Session\Completion.cs" />
+    <Compile Include="Pedagogy\Session\Score.cs" />
+    <Compile Include="Pedagogy\Session\SessionEvent.cs" />
+    <Compile Include="Pedagogy\Session\Session.cs" />
+    <Compile Include="Pedagogy\Session\SessionJournal.cs" />
+    <Compile Include="Pedagogy\Trainee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
