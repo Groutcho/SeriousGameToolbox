@@ -58,10 +58,12 @@
     <Compile Include="Data\Parameters\ParameterLoader.Tests.cs" />
     <Compile Include="Data\Parameters\StringParameter.Tests.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.Tests.cs" />
-    <Compile Include="Pedagogy\Session\Score.Tests.cs" />
-    <Compile Include="Pedagogy\Session\SessionEvent.Tests.cs" />
-    <Compile Include="Pedagogy\Session\Session.Tests.cs" />
-    <Compile Include="Pedagogy\Session\SessionJournal.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\Score.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\SessionWithJournal.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\Journal\JournalEvent.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\Session.Tests.cs" />
+    <Compile Include="Pedagogy\Sessions\Journal\SessionJournal.Tests.cs" />
     <Compile Include="Pedagogy\Trainee.Tests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

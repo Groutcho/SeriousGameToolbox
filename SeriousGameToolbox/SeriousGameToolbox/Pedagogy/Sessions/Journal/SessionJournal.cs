@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SeriousGameToolbox.Pedagogy.Sessions
+namespace SeriousGameToolbox.Pedagogy.Sessions.Journal
 {
     public class SessionJournal
     {
-        private List<SessionEvent> entries;
-        public ICollection<SessionEvent> Entries { get { return entries; } }
+        private List<JournalEvent> entries;
+        public ICollection<JournalEvent> Entries { get { return entries; } }
 
         public SessionJournal()
         {
-            entries = new List<SessionEvent>(10);
+            entries = new List<JournalEvent>(10);
         }
 
-        public virtual void AddEntry(SessionEvent entry)
+        public virtual void AddEntry(JournalEvent entry)
         {
             if (entry == null)
             {

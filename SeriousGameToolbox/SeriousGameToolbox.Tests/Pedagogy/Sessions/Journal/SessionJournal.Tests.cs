@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Pedagogy.Sessions;
+using SeriousGameToolbox.Pedagogy.Sessions.Journal;
 using System;
 using System.Collections.Generic;
 using System.Linq;

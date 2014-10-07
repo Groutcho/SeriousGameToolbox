@@ -21,7 +21,6 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
         public Trainee Trainee { get { return trainee; } }
         public Completion Completion { get { return completion; } set { completion = value; } }
         public Success Success { get { return success; } set { success = value; } }
-        public SessionJournal Journal { get; set; }
 
         public virtual void Start()
         {

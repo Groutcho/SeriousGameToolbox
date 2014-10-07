@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.Pedagogy.Sessions
 {
-    public abstract class SessionEvent
+    public abstract class JournalEvent
     {
         protected Guid id;
         protected DateTime date;
@@ -13,10 +13,21 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
         public Guid Id { get { return id; } }
         public DateTime Date { get { return date; } }
 
-        public SessionEvent()
+        public JournalEvent()
         {
             id = Guid.NewGuid();
             date = DateTime.Now;
+        }
+
+        public JournalEvent(DateTime date)
+        {
+            if (date == null)
+            {
+                throw new ArgumentNullException("date");
+            }
+
+            this.date = date;
+            id = Guid.NewGuid();
         }
     }
 }
