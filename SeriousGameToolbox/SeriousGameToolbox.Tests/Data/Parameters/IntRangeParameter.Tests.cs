@@ -9,40 +9,36 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
     [Category("Parameters")]
-    public class StringParameter_Tests
+    public class IntRangeParameter_Tests
     {
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullId_ThrowsArgumentNullException()
         {
-            new StringParameter(null, "caption", "this is the value.");
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Constructor_NullValue_ThrowsArgumentNullException()
-        {
-            new StringParameter("id", "caption", null);
+            new IntRangeParameter(null, "caption", 1, 200, 22);
         }
 
         [Test]
         public void Clones_Have_Same_Value()
         {
-            StringParameter p0 = new StringParameter("id", null,  "this is the value.");
-            StringParameter p1 = p0.Clone() as StringParameter;
+            IntRangeParameter p0 = new IntRangeParameter("id", null, 68, 78, 72);
+            IntRangeParameter p1 = p0.Clone() as IntRangeParameter;
 
-            Assert.AreEqual(p0.GetValue(), p1.GetValue());
+            Assert.AreEqual((int)p0.GetValue(), (int)p1.GetValue());
+            Assert.AreEqual(p0.Maximum, p1.Maximum);
+            Assert.AreEqual(p0.Minimum, p1.Minimum);
         }
 
         [Test]
         public void ImplicitOperator_ReturnsValue()
         {
-            StringParameter p = new StringParameter("id", null, "Hello world!");
+            IntRangeParameter p = new IntRangeParameter("id", null, 68, 78, 72);
 
-            if (p == "Hello world!")
+            if (p > 5)
             {
                 Assert.Pass();
             }
+
 
             Assert.Fail();
         }

@@ -30,6 +30,21 @@ namespace SeriousGameToolbox.Data.Parameters
             return new BooleanParameter(this.Id, this.Caption, this.value);
         }
 
+        public override bool Equals(Parameter other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
 
+            if (!(other is BooleanParameter))
+            {
+                return false;
+            }
+
+            BooleanParameter otherAsBoolean = other as BooleanParameter;
+
+            return (other.Id == Id && value == otherAsBoolean.value && other.Caption == Caption);
+        }
     }
 }

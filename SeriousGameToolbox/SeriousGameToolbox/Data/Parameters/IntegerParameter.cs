@@ -29,5 +29,22 @@ namespace SeriousGameToolbox.Data.Parameters
         {
             return new IntegerParameter(this.Id, this.Caption, this.value);
         }
+
+        public override bool Equals(Parameter other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
+
+            if (!(other is IntegerParameter))
+            {
+                return false;
+            }
+
+            IntegerParameter otherAs = other as IntegerParameter;
+
+            return (other.Id == Id && value == otherAs.value && other.Caption == Caption);
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -7,13 +9,24 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public class ParameterLoader
     {
+        public class InvalidParameterTypeException : Exception
+        {
+            public InvalidParameterTypeException(string message) : base(message) { }
+        }
+
         private string filename;
+        protected IFormatProvider formatProvider = CultureInfo.InvariantCulture;
 
         public ParameterLoader(string filename)
         {
             if (filename == null)
             {
                 throw new ArgumentNullException("filename");
+            }
+
+            if (filename == string.Empty)
+            {
+                throw new ArgumentException("filename cannot be empty");
             }
 
             this.filename = filename;
@@ -32,24 +45,56 @@ namespace SeriousGameToolbox.Data.Parameters
 
         private XElement GetParameter(Parameter parameter)
         {
-            if (parameter is IntegerParameter)
+            if (parameter is IntRangeParameter)
+            {
+                return GetIntRangeParameter(parameter as IntRangeParameter);
+            }
+            else if (parameter is IntegerParameter)
             {
                 return GetIntegerParameter(parameter as IntegerParameter);
             }
             if (parameter is FloatRangeParameter)
             {
-                return GetRangeParameter(parameter as FloatRangeParameter);
+                return GetFloatRangeParameter(parameter as FloatRangeParameter);
             }
-            if (parameter is IntRangeParameter)
+            else if (parameter is FloatParameter)
             {
-                return GetRangeParameter(parameter as IntRangeParameter);
+                return GetFloatParameter(parameter as FloatParameter);
             }
             if (parameter is BooleanParameter)
             {
                 return GetBooleanParameter(parameter as BooleanParameter);
             }
+            if (parameter is StringParameter)
+            {
+                return GetStringParameter(parameter as StringParameter);
+            }
 
-            throw new Exception("Le type " + parameter.GetType() + " n'est pas pris en charge");
+            throw new InvalidParameterTypeException("Le type " + parameter.GetType() + " n'est pas pris en charge");
+        }
+
+        private XElement GetFloatParameter(FloatParameter parameter)
+        {
+            XElement result = new XElement("parameter",
+                                    new XAttribute("id", parameter.Id),
+                                    new XAttribute("caption", parameter.Caption),
+                                    new XAttribute("type", "float"),
+                            new XElement("values",
+                                        new XElement("current", (float)parameter.GetValue())));
+
+            return result;
+        }
+
+        private XElement GetStringParameter(StringParameter parameter)
+        {
+            XElement result = new XElement("parameter",
+                        new XAttribute("id", parameter.Id),
+                        new XAttribute("caption", parameter.Caption),
+                        new XAttribute("type", "string"),
+                new XElement("values",
+                            new XElement("current", parameter.GetValue())));
+
+            return result;
         }
 
         private XElement GetIntegerParameter(IntegerParameter parameter)
@@ -64,7 +109,7 @@ namespace SeriousGameToolbox.Data.Parameters
             return result;
         }
 
-        private XElement GetRangeParameter(FloatRangeParameter parameter)
+        private XElement GetFloatRangeParameter(FloatRangeParameter parameter)
         {
             XElement result = new XElement("parameter",
                         new XAttribute("id", parameter.Id),
@@ -79,7 +124,7 @@ namespace SeriousGameToolbox.Data.Parameters
             return result;
         }
 
-        private XElement GetRangeParameter(IntRangeParameter parameter)
+        private XElement GetIntRangeParameter(IntRangeParameter parameter)
         {
             XElement result = new XElement("parameter",
                         new XAttribute("id", parameter.Id),
@@ -101,7 +146,7 @@ namespace SeriousGameToolbox.Data.Parameters
                         new XAttribute("caption", parameter.Caption),
                         new XAttribute("type", "boolean"),
                 new XElement("values",
-                            new XElement("current",(bool) parameter.GetValue())));
+                            new XElement("current", (bool)parameter.GetValue())));
 
             return result;
         }
@@ -112,11 +157,6 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public ParameterCollection Load()
         {
-            if (string.IsNullOrEmpty(filename))
-            {
-                throw new ArgumentNullException("settingsPath");
-            }
-
             XDocument doc = XDocument.Load(filename);
 
             if (doc.Root.HasElements)
@@ -163,123 +203,91 @@ namespace SeriousGameToolbox.Data.Parameters
             switch (type)
             {
                 case "boolean": return LoadBooleanParameter(id, caption, item);
-                case "range_float": return LoadFloatRangeParameter(id, caption, item);
-                case "range_int": return LoadIntRangeParameter(id, caption, item);
                 case "integer": return LoadIntegerParameter(id, caption, item);
+                case "range_int": return LoadIntRangeParameter(id, caption, item);
+
+                case "float": return LoadFloatParameter(id, caption, item);
+                case "range_float": return LoadFloatRangeParameter(id, caption, item);
+
+                case "string": return LoadStringParameter(id, caption, item);
             }
 
             throw new Exception("Aucun paramètre n'a pu être extrait du noeud xml pour le type " + type);
         }
 
-        private Parameter LoadIntegerParameter(string id, string caption, XElement item)
+        private string GetStringValue(XElement item, string name)
         {
             if (item == null)
             {
                 throw new ArgumentNullException("item");
             }
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException("id");
+                throw new ArgumentNullException("name");
             }
 
-            string stringValue = item.Element("values").Element("current").Value;
+            return item.Element("values").Element(name).Value;
+        }
 
-            int value;
+        private string GetStringValue(XElement item)
+        {
+            return GetStringValue(item, "current");
+        }
 
-            if (!int.TryParse(stringValue, out value))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringValue + " n'est pas un entier");
-            }
+        private Parameter LoadStringParameter(string id, string caption, XElement item)
+        {
+            return new StringParameter(id, caption, GetStringValue(item));
+        }
 
+        private Parameter LoadFloatParameter(string id, string caption, XElement item)
+        {
+            string stringValue = GetStringValue(item);
+
+            float value = float.Parse(stringValue, formatProvider);
+            return new FloatParameter(id, caption, value);
+        }
+
+        private Parameter LoadIntegerParameter(string id, string caption, XElement item)
+        {
+            string stringValue = GetStringValue(item);
+
+            int value = int.Parse(stringValue, formatProvider);
             return new IntegerParameter(id, caption, value);
         }
 
         private Parameter LoadIntRangeParameter(string id, string caption, XElement item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException("id");
-            }
+            string stringValue = GetStringValue(item);
 
-            string stringValue = item.Element("values").Element("current").Value;
-            string stringMaxValue = item.Element("values").Element("max").Value;
-            string stringMinValue = item.Element("values").Element("min").Value;
+            string stringMaxValue = GetStringValue(item, "max");
+            string stringMinValue = GetStringValue(item, "min");
 
-            int value, minValue, maxValue;
-
-            if (!int.TryParse(stringValue, out value))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringValue + " n'est pas un entier");
-            }
-            if (!int.TryParse(stringMaxValue, out maxValue))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringMaxValue + " n'est pas un entier");
-            }
-            if (!int.TryParse(stringMinValue, out minValue))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringMinValue + " n'est pas un entier");
-            }
+            int value = int.Parse(stringValue, formatProvider);
+            int minValue = int.Parse(stringMinValue, formatProvider);
+            int maxValue = int.Parse(stringMaxValue, formatProvider);
 
             return new IntRangeParameter(id, caption, minValue, maxValue, value);
         }
 
         private Parameter LoadFloatRangeParameter(string id, string caption, XElement item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException("id");
-            }
+            string stringValue = GetStringValue(item);
 
-            string stringValue = item.Element("values").Element("current").Value;
-            string stringMaxValue = item.Element("values").Element("max").Value;
-            string stringMinValue = item.Element("values").Element("min").Value;
+            string stringMaxValue = GetStringValue(item, "max");
+            string stringMinValue = GetStringValue(item, "min");
 
-            float value, minValue, maxValue;
-
-            if (!float.TryParse(stringValue, out value))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringValue + " n'est pas un float");
-            }
-            if (!float.TryParse(stringMaxValue, out maxValue))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringMaxValue + " n'est pas un float");
-            }
-            if (!float.TryParse(stringMinValue, out minValue))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringMinValue + " n'est pas un float");
-            }
+            float value = float.Parse(stringValue, formatProvider);
+            float minValue = float.Parse(stringMinValue, formatProvider);
+            float maxValue = float.Parse(stringMaxValue, formatProvider);
 
             return new FloatRangeParameter(id, caption, minValue, maxValue, value);
         }
 
         private Parameter LoadBooleanParameter(string id, string caption, XElement item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException("id");
-            }
+            string stringValue = GetStringValue(item);
 
-            string stringValue = item.Element("values").Element("current").Value;
-
-            bool value;
-
-            if (!bool.TryParse(stringValue, out value))
-            {
-                throw new System.Xml.XmlException("la valeur " + stringValue + " n'est pas un bool");
-            }
-
+            bool value = bool.Parse(stringValue);
             return new BooleanParameter(id, caption, value);
         }
 

@@ -4,6 +4,12 @@
       <current>3</current>
     </values>
   </parameter>
+
+  <parameter type="float" id="float" caption="text_test_int">
+    <values>
+      <current>565.584</current>
+    </values>
+  </parameter>
   
 	<parameter type="range_int" id="NUMBER_OF_DEFECTS" caption="text_number_of_situations">
 		<values>
@@ -13,10 +19,24 @@
 		</values>
 	</parameter>
 
+  <parameter type="range_float" id="range_float" caption="text_number_of_situations">
+    <values>
+      <min>2.3</min>
+      <max>4.5</max>
+      <current>3.1</current>
+    </values>
+  </parameter>
+
 	<parameter type="boolean" id="TEST_BOOL" caption="text_test_bool">
 		<values>
 			<current>true</current>
 		</values>
 	</parameter>
+
+  <parameter type="string" id="string_param" caption="text_test_bool">
+    <values>
+      <current>Hello, world !</current>
+    </values>
+  </parameter>
 
 </parameters>

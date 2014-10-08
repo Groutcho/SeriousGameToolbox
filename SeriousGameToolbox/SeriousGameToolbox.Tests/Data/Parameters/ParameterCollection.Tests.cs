@@ -11,7 +11,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
     [Category("Parameters")]
     public class ParameterCollection_Tests
     {
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(InvalidCastException))]
         public void Get_InvalidTypeParameter_ThrowsInvalidCastException()
         {
@@ -22,7 +22,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             collection.Get<String>("id");
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(KeyNotFoundException))]
         public void Get_NotFoundParameter_ThrowsArgumentException()
         {
@@ -33,7 +33,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             collection.Get<bool>("none");
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void EnumerableConstructor_NullArgument_ThrowsArgumentException()
         {
@@ -41,7 +41,19 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             ParameterCollection collection = new ParameterCollection(c);
         }
 
-        [TestCase]
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void EnumerableConstructor_DuplicatedId_ThrowsArgumentException()
+        {
+            var list = new List<Parameter> (2);
+
+            list.Add(new IntegerParameter("DUPLICATE", "caption 1", 2));
+            list.Add(new IntegerParameter("DUPLICATE", "caption 2", 3));
+
+            ParameterCollection c = new ParameterCollection(list);
+        }
+
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void CollectionConstructor_NullArgument_ThrowsArgumentException()
         {

@@ -8,7 +8,7 @@ namespace SeriousGameToolbox.Pedagogy.Sessions.Journal
     public class SessionJournal
     {
         private List<JournalEvent> entries;
-        public ICollection<JournalEvent> Entries { get { return entries; } }
+        public IList<JournalEvent> Entries { get { return entries; } }
 
         public SessionJournal()
         {

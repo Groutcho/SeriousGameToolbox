@@ -18,28 +18,28 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
             public TestEvent(DateTime date) : base(date) { }
         }
 
-        [TestCase]
+        [Test]
         public void DefaultConstructor_Sets_Id()
         {
             JournalEvent eve = new TestEvent();
             Assert.AreNotEqual(Guid.Empty, eve.Id);
         }
 
-        [TestCase]
+        [Test]
         public void DefaultConstructor_Sets_Date()
         {
             JournalEvent eve = new TestEvent();
             Assert.AreEqual(DateTime.Today, eve.Date.Date);
         }
 
-        [TestCase]
+        [Test]
         public void DateConstructor_Sets_Id()
         {
             JournalEvent eve = new TestEvent(DateTime.Today);
             Assert.AreNotEqual(Guid.Empty, eve.Id);
         }
 
-        [TestCase]
+        [Test]
         public void DateConstructor_Sets_Date()
         {
             JournalEvent eve = new TestEvent(DateTime.Today);

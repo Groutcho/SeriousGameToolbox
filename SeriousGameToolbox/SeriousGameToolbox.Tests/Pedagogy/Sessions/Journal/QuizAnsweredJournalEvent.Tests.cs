@@ -10,26 +10,26 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions.Journal
     [TestFixture]
     public class QuizAnsweredJournalEvent_Tests
     {
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullQuestion_ThrowsArgumentNullException()
         {
             new QuizAnsweredJournalEvent(null, "test", "test");
         }
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullAnswer_ThrowsArgumentNullException()
         {
             new QuizAnsweredJournalEvent("test", null, "test");
         }
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullExpected_ThrowsArgumentNullException()
         {
             new QuizAnsweredJournalEvent("test", "test", null);
         }
 
-        [TestCase]
+        [Test]
         public void Constructor_Sets_Properties()
         {
             var quizEvent = new QuizAnsweredJournalEvent("question", "answer", "expected");

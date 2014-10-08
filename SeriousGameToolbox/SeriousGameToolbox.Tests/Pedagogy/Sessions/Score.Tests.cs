@@ -11,41 +11,41 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
     [Category("Session")]
     public class Score_Tests
     {
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Constructor_RawCannotBeLessThanMin()
         {
             new Score(0, 1, 2);
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Constructor_RawCannotBeGreaterThanMax()
         {
             new Score(3, 1, 2);
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Constructor_MinCannotBeGreaterThanMax()
         {
             new Score(1, 3, 1);
         }
-        [TestCase]
+        [Test]
         public void ToPercent_ReturnsValidValue()
         {
             Score score = new Score(1, 0, 10);
             Assert.AreEqual("10%", score.ToPercent());
         }
 
-        [TestCase]
+        [Test]
         public void ToPercentFloat_ReturnsValidValue()
         {
             Score score = new Score(1, 0, 9);
             Assert.AreEqual("11,11%", score.ToPercent(Score.ScorePercentageFormatting.Float));
         }
 
-        [TestCase]
+        [Test]
         public void ToPercentInteger_ReturnsValidValue()
         {
             Score score = new Score(1, 0, 9);

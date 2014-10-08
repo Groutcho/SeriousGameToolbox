@@ -1,0 +1,14 @@
+<parameters>
+  <parameter type="integer" id="TEST_INT" caption="text_test_int">
+    <values>
+      <current>3</current>
+    </values>
+  </parameter>
+
+  <parameter type="integer" id="TEST_INT" caption="text_test_int">
+    <values>
+      <current>2</current>
+    </values>
+  </parameter>
+
+</parameters>

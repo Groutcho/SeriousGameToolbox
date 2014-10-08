@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.Data.Parameters
 {
-    public class ParameterCollection
+    public class ParameterCollection : IEquatable<ParameterCollection>
     {
         private Dictionary<string, Parameter> dict;
 
@@ -50,6 +50,11 @@ namespace SeriousGameToolbox.Data.Parameters
                 throw new ArgumentNullException("original");
             }
 
+            if (DoesListContainsDuplicateValues(original))
+            {
+                throw new ArgumentException("Several parameters in the list have the same id. This is not permitted.");
+            }
+
             parameters = new List<Parameter>(original);
             dict = new Dictionary<string, Parameter>(parameters.Count);
 
@@ -57,6 +62,48 @@ namespace SeriousGameToolbox.Data.Parameters
             {
                 dict[item.Id] = item;
             }
+        }
+
+        private bool DoesListContainsDuplicateValues(IEnumerable<Parameter> original)
+        {
+            List<string> ids = new List<string>(original.Count());
+
+            foreach (var item in original)
+            {
+                if (ids.Contains(item.Id))
+                {
+                    return true;
+                }
+                else
+                {
+                    ids.Add(item.Id);
+                }
+            }
+
+            return false;
+        }
+
+        public bool Equals(ParameterCollection other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
+
+            if (other.Parameters.Count != parameters.Count)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < parameters.Count; i++)
+            {
+                if (!other.parameters[i].Equals(parameters[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

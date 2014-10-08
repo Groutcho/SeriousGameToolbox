@@ -20,9 +20,31 @@ namespace SeriousGameToolbox.Data.Parameters
             this.value = value;
         }
 
+        public static implicit operator float(FloatParameter p)
+        {
+            return p.value;
+        }
+
         public override Parameter Clone()
         {
             return new FloatParameter(this.Id, this.Caption, this.value);
+        }
+
+        public override bool Equals(Parameter other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
+
+            if (!(other is FloatParameter))
+            {
+                return false;
+            }
+
+            FloatParameter otherAs = other as FloatParameter;
+
+            return (other.Id == Id && value == otherAs.value && other.Caption == Caption);
         }
     }
 }

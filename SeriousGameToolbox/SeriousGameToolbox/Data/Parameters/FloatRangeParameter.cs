@@ -26,5 +26,22 @@ namespace SeriousGameToolbox.Data.Parameters
         {
             return new FloatRangeParameter(this.Id, this.Caption, this.Minimum, this.Maximum, this.value);
         }
+
+        public override bool Equals(Parameter other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
+
+            if (!(other is FloatRangeParameter))
+            {
+                return false;
+            }
+
+            FloatRangeParameter otherAs = other as FloatRangeParameter;
+
+            return (other.Id == Id && value == otherAs.value && other.Caption == Caption && otherAs.Maximum == Maximum && otherAs.Minimum == Minimum);
+        }
     }
 }

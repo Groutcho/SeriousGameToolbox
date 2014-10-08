@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Data\Logins\Login.cs" />
     <Compile Include="Data\Logins\LoginContainer.cs" />
+    <Compile Include="Data\Manifest.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.cs" />
     <Compile Include="Data\Parameters\ParameterLoader.cs" />
     <Compile Include="Data\Parameters\StringParameter.cs" />
@@ -50,6 +51,9 @@
     <Compile Include="Data\Parameters\IntRangeParameter.cs" />
     <Compile Include="Data\Parameters\Parameter.cs" />
     <Compile Include="Data\Parameters\ParameterCollection.cs" />
+    <Compile Include="IUpdatable.cs" />
+    <Compile Include="Pedagogy\Scenarios\FreeRoamingScenario.cs" />
+    <Compile Include="Pedagogy\Scenarios\IScenario.cs" />
     <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.cs" />
     <Compile Include="Pedagogy\Sessions\SessionWithJournal.cs" />
     <Compile Include="Pedagogy\Sessions\Success.cs" />

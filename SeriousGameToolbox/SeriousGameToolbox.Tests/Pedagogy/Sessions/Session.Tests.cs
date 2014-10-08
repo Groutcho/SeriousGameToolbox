@@ -10,7 +10,7 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
     [Category("Session")]
     public class Session_Tests
     {
-        [TestCase]
+        [Test]
         public void Start_Sets_Date()
         {
             Session session = new Session();
@@ -19,49 +19,49 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
             Assert.AreEqual(session.Date, DateTime.Today);
         }
 
-        [TestCase]
+        [Test]
         public void DefaultConstructor_AssignsDefaultTrainee()
         {
             Session session = new Session();
-            Assert.AreSame(Trainee.Default, session.Trainee);
+            Assert.AreEqual(Trainee.Default.Name, session.Trainee.Name);
         }
 
-        [TestCase]
+        [Test]
         public void DefaultConstructor_AssignsId()
         {
             Session session = new Session();
             Assert.AreNotEqual(Guid.Empty, session.Id);
         }
 
-        [TestCase]
+        [Test]
         public void OverloadedConstructor_AssignsId()
         {
             Session session = new Session(new Trainee());
             Assert.AreNotEqual(Guid.Empty, session.Id);
         }
 
-        [TestCase]
+        [Test]
         public void Default_Success_Is_Unknown()
         {
             Session session = new Session(new Trainee());
             Assert.AreEqual(Success.Unknown, session.Success);
         }
 
-        [TestCase]
+        [Test]
         public void Default_Completion_Is_Unknown()
         {
             Session session = new Session(new Trainee());
             Assert.AreEqual(Completion.Unknown, session.Completion);
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TraineeConstructor_NullArgument_ThrowsArgumentNullException()
         {
             new Session(null);
         }
 
-        [TestCase]
+        [Test]
         [Category("Long")]
         public void Duration_Is_Correct()
         {

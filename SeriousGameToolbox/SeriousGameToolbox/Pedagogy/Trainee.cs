@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SeriousGameToolbox.Pedagogy
 {
-    public class Trainee
+    public class Trainee : IEquatable<Trainee>
     {
         private Guid id;
         public Guid Id { get { return id; } }
@@ -30,13 +27,32 @@ namespace SeriousGameToolbox.Pedagogy
             this.id = Guid.NewGuid();
         }
 
-        private static readonly Trainee def = new Trainee()
+        private static Trainee defaultTrainee = new Trainee() { name = "Default trainee" };
+        public static Trainee Default { get { return defaultTrainee; } }
+
+        public override bool Equals(object obj)
         {
-            name = "Default trainee"
-        };
-        public static Trainee Default
+            if (!(obj is Trainee))
+            {
+                return false;
+            }
+
+            return Equals(obj as Trainee);
+        }
+
+        public bool Equals(Trainee other)
         {
-            get { return def;}
+            if (other == this)
+            {
+                return true;
+            }
+
+            return (other.id == id && other.name == name);
+        }
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode();
         }
     }
 }

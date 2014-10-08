@@ -25,9 +25,31 @@ namespace SeriousGameToolbox.Data.Parameters
             this.value = value;
         }
 
+        public static implicit operator string(StringParameter p)
+        {
+            return p.value;
+        }
+
         public override Parameter Clone()
         {
             return new StringParameter(this.Id, this.Caption, this.value);
+        }
+
+        public override bool Equals(Parameter other)
+        {
+            if (other == this)
+            {
+                return true;
+            }
+
+            if (!(other is StringParameter))
+            {
+                return false;
+            }
+
+            StringParameter otherAs = other as StringParameter;
+
+            return (other.Id == Id && value == otherAs.value && other.Caption == Caption);
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SeriousGameToolbox.Pedagogy.Sessions
 {
@@ -23,10 +20,6 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
             if (raw < min)
             {
                 throw new ArgumentOutOfRangeException("The raw score cannot be greater than the maximum score.");
-            }
-            if (min >= max)
-            {
-                throw new ArgumentOutOfRangeException("The minimum score cannot be greater or equal than the maximum score.");
             }
 
             this.raw = raw;
@@ -51,6 +44,12 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
                 case ScorePercentageFormatting.Float: return string.Format("{0:F}%", percent);
                 default: return string.Format("{0:F0}%", percent);
             }
+        }
+
+        private readonly static Score defaultScore = new Score(0, 0, 0);
+        public static Score Default
+        {
+            get { return defaultScore; }
         }
     }
 }

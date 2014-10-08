@@ -8,8 +8,25 @@
 
         public Login(string id, string password)
         {
-            this.Id = id;
-            this.Password = password;
+            if (id == null)
+            {
+                throw new System.ArgumentNullException("id");
+            }
+            if (password == null)
+            {
+                throw new System.ArgumentNullException("password");
+            }
+            if (id.Trim() == string.Empty)
+            {
+                throw new System.ArgumentException("id cannot be empty");
+            }
+            if (password.Trim() == string.Empty)
+            {
+                throw new System.ArgumentException("password cannot be empty");
+            }
+
+            this.Id = id.Trim();
+            this.Password = password.Trim();
         }
 
         public override bool Equals(object obj)

@@ -52,7 +52,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Logins\LoginContainer.Tests.cs" />
+    <Compile Include="Data\Logins\Login.Tests.cs" />
     <Compile Include="Data\Parameters\FloatParameter.Tests.cs" />
+    <Compile Include="Data\Parameters\FloatRangeParameter.Tests.cs" />
+    <Compile Include="Data\Parameters\IntRangeParameter.Tests.cs" />
     <Compile Include="Data\Parameters\IntegerParameter.Tests.cs" />
     <Compile Include="Data\Parameters\ParameterCollection.Tests.cs" />
     <Compile Include="Data\Parameters\ParameterLoader.Tests.cs" />
@@ -72,6 +76,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Parameters\TestData\duplicated_ids.xml" />
     <Content Include="Data\Parameters\TestData\default_settings.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +86,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
