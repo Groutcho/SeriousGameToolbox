@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A78B10F-E051-4682-9401-7169C0D75EC5}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeriousGameToolbox</RootNamespace>
-    <AssemblyName>SeriousGameToolbox</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>SeriousGameToolbox.Tests.Console</RootNamespace>
+    <AssemblyName>SeriousGameToolbox.Tests.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,41 +36,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IDrawable.cs" />
-    <Compile Include="Controllers\Game.cs" />
-    <Compile Include="Controllers\Phases\Phase.cs" />
-    <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.cs" />
-    <Compile Include="Data\Logins\Login.cs" />
-    <Compile Include="Data\Logins\LoginContainer.cs" />
-    <Compile Include="Data\Manifest.cs" />
-    <Compile Include="Data\Parameters\BooleanParameter.cs" />
-    <Compile Include="Data\Parameters\ParameterLoader.cs" />
-    <Compile Include="Data\Parameters\StringParameter.cs" />
-    <Compile Include="Data\Parameters\FloatParameter.cs" />
-    <Compile Include="Data\Parameters\FloatRangeParameter.cs" />
-    <Compile Include="Data\Parameters\IntegerParameter.cs" />
-    <Compile Include="Data\Parameters\IntRangeParameter.cs" />
-    <Compile Include="Data\Parameters\Parameter.cs" />
-    <Compile Include="Data\Parameters\ParameterCollection.cs" />
-    <Compile Include="Contracts\IUpdatable.cs" />
-    <Compile Include="Pedagogy\Scenarios\FreeRoamingScenario.cs" />
-    <Compile Include="Pedagogy\Scenarios\IScenario.cs" />
-    <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.cs" />
-    <Compile Include="Pedagogy\Sessions\SessionWithJournal.cs" />
-    <Compile Include="Pedagogy\Sessions\Success.cs" />
-    <Compile Include="Pedagogy\Sessions\Completion.cs" />
-    <Compile Include="Pedagogy\Sessions\Score.cs" />
-    <Compile Include="Pedagogy\Sessions\Journal\JournalEvent.cs" />
-    <Compile Include="Pedagogy\Sessions\Session.cs" />
-    <Compile Include="Pedagogy\Sessions\Journal\SessionJournal.cs" />
-    <Compile Include="Pedagogy\Trainee.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeriousGameToolbox.Tests\SeriousGameToolbox.Tests.csproj">
+      <Project>{4d1a4cda-73be-486d-ad6d-e9ff0478a3a7}</Project>
+      <Name>SeriousGameToolbox.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeriousGameToolbox\SeriousGameToolbox.csproj">
+      <Project>{7a78b10f-e051-4682-9401-7169c0d75ec5}</Project>
+      <Name>SeriousGameToolbox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

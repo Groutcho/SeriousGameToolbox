@@ -52,6 +52,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Game.Tests.cs" />
+    <Compile Include="Controllers\Phases\Phase.Tests.cs" />
+    <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.Tests.cs" />
+    <Compile Include="Controllers\Types\FakeGame.cs" />
+    <Compile Include="Controllers\Types\FakePhase.cs" />
     <Compile Include="Data\Logins\LoginContainer.Tests.cs" />
     <Compile Include="Data\Logins\Login.Tests.cs" />
     <Compile Include="Data\Parameters\FloatParameter.Tests.cs" />
