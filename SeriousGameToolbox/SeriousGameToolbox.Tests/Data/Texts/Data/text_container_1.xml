@@ -1,0 +1,14 @@
+<text_container name="test">
+	<supported_cultures>
+		<culture>en</culture>
+		<culture>fr</culture>
+		<culture>invariant</culture>
+	</supported_cultures>
+	<texts>
+		<text key="text 1">
+			<culture name="invariant" uses="en"/>
+			<culture name="en">This is text 1</culture>
+			<culture name="fr">Ceci est texte 1</culture>
+		</text>
+	</texts>
+</text_container>

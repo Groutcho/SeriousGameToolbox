@@ -62,30 +62,53 @@ namespace SeriousGameToolbox.Tests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;parameters&gt;
-        ///	&lt;parameter type=&quot;range_int&quot; id=&quot;NUMBER_OF_ATTEMPTS&quot; caption=&quot;text_allowed_attempts&quot;&gt;
-        ///		&lt;values&gt;
-        ///			&lt;min&gt;1&lt;/min&gt;
-        ///			&lt;max&gt;60&lt;/max&gt;
-        ///			&lt;current&gt;20&lt;/current&gt;
-        ///		&lt;/values&gt;
-        ///	&lt;/parameter&gt;
+        ///  &lt;parameter type=&quot;integer&quot; id=&quot;TEST_INT&quot; caption=&quot;text_test_int&quot;&gt;
+        ///    &lt;values&gt;
+        ///      &lt;current&gt;3&lt;/current&gt;
+        ///    &lt;/values&gt;
+        ///  &lt;/parameter&gt;
         ///
-        ///	&lt;parameter type=&quot;range_int&quot; id=&quot;NAVIGATION_SPEED&quot; caption=&quot;text_navigation_speed&quot;&gt;
-        ///		&lt;values&gt;
-        ///			&lt;min&gt;1&lt;/min&gt;
-        ///			&lt;max&gt;15&lt;/max&gt;
-        ///			&lt;current&gt;7&lt;/current&gt;
-        ///		&lt;/values&gt;
-        ///	&lt;/parameter&gt;
-        ///
+        ///  &lt;parameter type=&quot;float&quot; id=&quot;float&quot; caption=&quot;text_test_int&quot;&gt;
+        ///    &lt;values&gt;
+        ///      &lt;current&gt;565.584&lt;/current&gt;
+        ///    &lt;/values&gt;
+        ///  &lt;/parameter&gt;
+        ///  
         ///	&lt;parameter type=&quot;range_int&quot; id=&quot;NUMBER_OF_DEFECTS&quot; caption=&quot;text_number_of_situations&quot;&gt;
         ///		&lt;values&gt;
         ///			&lt;min&gt;10&lt;/min&gt;
-        ///	 [rest of string was truncated]&quot;;.
+        ///			&lt;max&gt;40&lt;/max&gt;
+        ///			&lt;current&gt;40&lt;/current&gt;
+        ///		&lt;/values&gt;
+        ///	&lt;/parameter&gt;
+        ///
+        ///  &lt;parameter ty [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string default_settings {
             get {
                 return ResourceManager.GetString("default_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;text_container name=&quot;test&quot;&gt;
+        ///	&lt;supported_cultures&gt;
+        ///		&lt;culture&gt;en&lt;/culture&gt;
+        ///		&lt;culture&gt;fr&lt;/culture&gt;
+        ///		&lt;culture&gt;invariant&lt;/culture&gt;
+        ///	&lt;/supported_cultures&gt;
+        ///	&lt;texts&gt;
+        ///		&lt;text key=&quot;text 1&quot;&gt;
+        ///			&lt;culture name=&quot;invariant&quot; uses=&quot;en&quot;/&gt;
+        ///			&lt;culture name=&quot;en&quot;&gt;This is text 1&lt;/culture&gt;
+        ///			&lt;culture name=&quot;fr&quot;&gt;Ceci est texte 1&lt;/culture&gt;
+        ///		&lt;/text&gt;
+        ///	&lt;/texts&gt;
+        ///&lt;/text_container&gt;.
+        /// </summary>
+        internal static string text_container_1 {
+            get {
+                return ResourceManager.GetString("text_container_1", resourceCulture);
             }
         }
     }

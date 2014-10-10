@@ -63,10 +63,13 @@
     <Compile Include="Data\Parameters\FloatRangeParameter.Tests.cs" />
     <Compile Include="Data\Parameters\IntRangeParameter.Tests.cs" />
     <Compile Include="Data\Parameters\IntegerParameter.Tests.cs" />
-    <Compile Include="Data\Parameters\ParameterCollection.Tests.cs" />
+    <Compile Include="Data\Parameters\ParameterContainer.Tests.cs" />
     <Compile Include="Data\Parameters\ParameterLoader.Tests.cs" />
     <Compile Include="Data\Parameters\StringParameter.Tests.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.Tests.cs" />
+    <Compile Include="Data\Texts\TextContainer.Tests.cs" />
+    <Compile Include="Data\Texts\TextUnit.Tests.cs" />
+    <Compile Include="Data\Texts\XmlTextContainerSerializer.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\Score.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\SessionWithJournal.Tests.cs" />
@@ -83,6 +86,7 @@
   <ItemGroup>
     <Content Include="Data\Parameters\TestData\duplicated_ids.xml" />
     <Content Include="Data\Parameters\TestData\default_settings.xml" />
+    <Content Include="Data\Texts\Data\text_container_1.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -90,6 +94,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
