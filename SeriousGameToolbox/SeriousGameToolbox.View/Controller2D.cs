@@ -1,8 +1,8 @@
 ﻿using SeriousGameToolbox.Contracts;
 
-namespace SeriousGameToolbox.View
+namespace SeriousGameToolbox.I2D
 {
-    public class ViewController : IUpdatable
+    public class Controller2D : IUpdatable
     {
         public void Update(double dt)
         {

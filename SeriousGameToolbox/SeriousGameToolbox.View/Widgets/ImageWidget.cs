@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SeriousGameToolbox.View.Widgets
+namespace SeriousGameToolbox.I2D.Widgets
 {
     public class ImageWidget : Widget
     {

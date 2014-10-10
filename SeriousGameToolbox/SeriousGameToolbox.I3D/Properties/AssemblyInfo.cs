@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SeriousGameToolbox.I2D")]
+[assembly: AssemblyTitle("SeriousGameToolbox.I3D")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SeriousGameToolbox.I2D")]
+[assembly: AssemblyProduct("SeriousGameToolbox.I3D")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8ac1035f-fa3f-4a8f-a153-f454f06824bb")]
+[assembly: Guid("522a9dd7-18fb-40a5-b401-5fccfcd936be")]
 
 // Version information for an assembly consists of the following four values:
 //

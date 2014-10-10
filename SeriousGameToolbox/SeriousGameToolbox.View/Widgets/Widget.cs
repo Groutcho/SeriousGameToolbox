@@ -1,7 +1,7 @@
 ﻿using SeriousGameToolbox.Contracts;
 using UnityEngine;
 
-namespace SeriousGameToolbox.View.Widgets
+namespace SeriousGameToolbox.I2D.Widgets
 {
     public abstract class Widget : IDrawable
     {

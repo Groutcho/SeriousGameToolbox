@@ -1,11 +1,11 @@
-﻿using SeriousGameToolbox.View.Widgets;
+﻿using SeriousGameToolbox.I2D.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace SeriousGameToolbox.View.Decorators
+namespace SeriousGameToolbox.I2D.Decorators
 {
     public class FrameDecorator : Decorator
     {
