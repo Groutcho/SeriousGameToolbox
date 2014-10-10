@@ -56,10 +56,10 @@
     <Compile Include="Data\Parameters\Parameter.cs" />
     <Compile Include="Data\Parameters\ParameterContainer.cs" />
     <Compile Include="Contracts\IUpdatable.cs" />
-    <Compile Include="Data\Texts\ITextContainerLoader.cs" />
+    <Compile Include="Data\Texts\ITextContainerParser.cs" />
     <Compile Include="Data\Texts\TextContainer.cs" />
     <Compile Include="Data\Texts\TextUnit.cs" />
-    <Compile Include="Data\Texts\XmlTextContainerSerializer.cs" />
+    <Compile Include="Data\Texts\XmlTextContainerParser.cs" />
     <Compile Include="Pedagogy\Scenarios\FreeRoamingScenario.cs" />
     <Compile Include="Pedagogy\Scenarios\IScenario.cs" />
     <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.cs" />

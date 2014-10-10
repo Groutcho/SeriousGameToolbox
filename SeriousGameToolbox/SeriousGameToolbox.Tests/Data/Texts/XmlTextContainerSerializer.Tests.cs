@@ -13,7 +13,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
     [Category("TextSerializers")]
     public class XmlTextContainerSerializer_Tests
     {
-        XmlTextContainerSerializer serializer;
+        XmlTextContainerParser serializer;
 
         CultureInfo fr = CultureInfo.GetCultureInfo("fr");
         CultureInfo en = CultureInfo.GetCultureInfo("en");
@@ -22,7 +22,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [SetUp]
         public void SetUp()
         {
-            serializer = new XmlTextContainerSerializer();
+            serializer = new XmlTextContainerParser();
         }
 
         [Test]

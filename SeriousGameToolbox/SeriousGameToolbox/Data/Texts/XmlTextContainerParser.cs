@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SeriousGameToolbox.Data.Texts
 {
-    public class XmlTextContainerSerializer : ITextContainerParser
+    public class XmlTextContainerParser : ITextContainerParser
     {
         XElement root;
         List<CultureInfo> supportedCultures;

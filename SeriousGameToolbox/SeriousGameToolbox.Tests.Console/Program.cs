@@ -12,7 +12,7 @@ namespace SeriousGameToolbox.Tests.Console
     {
         static void Main(string[] args)
         {
-            XmlTextContainerSerializer serializer = new XmlTextContainerSerializer();
+            XmlTextContainerParser serializer = new XmlTextContainerParser();
 
             serializer.Parse(Properties.Resources.text_container_1);
         }

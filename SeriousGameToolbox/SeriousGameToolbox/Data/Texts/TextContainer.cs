@@ -34,7 +34,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         public CultureInfo CurrentCulture { get { return currentCulture; } }
 
-        static ITextContainerParser defaultSerializer = new XmlTextContainerSerializer();
+        static ITextContainerParser defaultSerializer = new XmlTextContainerParser();
         public static ITextContainerParser Serializer { get; set; }
 
         public static TextContainer Load(string filename)
