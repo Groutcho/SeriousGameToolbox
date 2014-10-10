@@ -85,7 +85,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         {
             ParameterLoader loader = new ParameterLoader(filename);
 
-            var invalidCollection = new ParameterCollection(new List<Parameter> { new InvalidParameter() });
+            var invalidCollection = new ParameterContainer(new List<Parameter> { new InvalidParameter() });
 
             loader.Save(invalidCollection);
         }
@@ -145,9 +145,9 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             list2.Add(new FloatParameter("float", "float", expectedFloat));
             list2.Add(new FloatRangeParameter("floatrange", "floatrange", 2.3f, 4.8f, expectedFloatRange));
 
-            ParameterCollection fullCollection1 = new ParameterCollection(list);
+            ParameterContainer fullCollection1 = new ParameterContainer(list);
 
-            ParameterCollection fullCollection2 = new ParameterCollection(list2);
+            ParameterContainer fullCollection2 = new ParameterContainer(list2);
 
             Assert.IsTrue(fullCollection1.Equals(fullCollection2));
         }
@@ -173,7 +173,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             list.Add(new FloatParameter("float", "float", expectedFloat));
             list.Add(new FloatRangeParameter("floatrange", "floatrange", 2.3f, 4.8f, expectedFloatRange));
 
-            ParameterCollection fullCollection = new ParameterCollection(list);
+            ParameterContainer fullCollection = new ParameterContainer(list);
 
             ParameterLoader loader = new ParameterLoader(filename);
             loader.Save(fullCollection);

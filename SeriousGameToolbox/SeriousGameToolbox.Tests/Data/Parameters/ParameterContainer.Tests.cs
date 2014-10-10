@@ -9,7 +9,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
     [Category("Parameters")]
-    public class ParameterCollection_Tests
+    public class ParameterContainer_Tests
     {
         [Test]
         [ExpectedException(typeof(InvalidCastException))]
@@ -17,7 +17,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         {
             BooleanParameter b = new BooleanParameter("id", "caption", true);
 
-            ParameterCollection collection = new ParameterCollection(new[] { b });
+            ParameterContainer collection = new ParameterContainer(new[] { b });
 
             collection.Get<String>("id");
         }
@@ -28,7 +28,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         {
             BooleanParameter b = new BooleanParameter("id", "caption", true);
 
-            ParameterCollection collection = new ParameterCollection(new[] { b });
+            ParameterContainer collection = new ParameterContainer(new[] { b });
 
             collection.Get<bool>("none");
         }
@@ -37,8 +37,8 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void EnumerableConstructor_NullArgument_ThrowsArgumentException()
         {
-            ParameterCollection c = null;
-            ParameterCollection collection = new ParameterCollection(c);
+            ParameterContainer c = null;
+            ParameterContainer collection = new ParameterContainer(c);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
             list.Add(new IntegerParameter("DUPLICATE", "caption 1", 2));
             list.Add(new IntegerParameter("DUPLICATE", "caption 2", 3));
 
-            ParameterCollection c = new ParameterCollection(list);
+            ParameterContainer c = new ParameterContainer(list);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         public void CollectionConstructor_NullArgument_ThrowsArgumentException()
         {
             IEnumerable<Parameter> c = null;
-            ParameterCollection collection = new ParameterCollection(c);
+            ParameterContainer collection = new ParameterContainer(c);
         }
     }
 }
