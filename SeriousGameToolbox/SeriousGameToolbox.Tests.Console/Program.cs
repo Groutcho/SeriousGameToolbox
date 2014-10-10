@@ -1,4 +1,5 @@
-﻿using SeriousGameToolbox.Tests.Controllers;
+﻿using SeriousGameToolbox.Data.Texts;
+using SeriousGameToolbox.Tests.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace SeriousGameToolbox.Tests.Console
     {
         static void Main(string[] args)
         {
-            Game_Tests test = new Game_Tests();
+            XmlTextContainerSerializer serializer = new XmlTextContainerSerializer();
 
-            test.FakeGame_ChainsThreePhasesSuccessfully();
+            serializer.Parse(Properties.Resources.text_container_1);
         }
     }
 }
