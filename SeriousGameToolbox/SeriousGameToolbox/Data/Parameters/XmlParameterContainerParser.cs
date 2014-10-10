@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SeriousGameToolbox.Data.Parameters
 {
-    public class ParameterLoader
+    public class XmlParameterContainerParser : IParameterContainerParser
     {
         public class InvalidParameterTypeException : Exception
         {
@@ -17,7 +17,7 @@ namespace SeriousGameToolbox.Data.Parameters
         private string filename;
         protected IFormatProvider formatProvider = CultureInfo.InvariantCulture;
 
-        public ParameterLoader(string filename)
+        public XmlParameterContainerParser(string filename)
         {
             if (filename == null)
             {
@@ -159,6 +159,11 @@ namespace SeriousGameToolbox.Data.Parameters
         {
             XDocument doc = XDocument.Load(filename);
 
+            return GetParameterContainer(doc);
+        }
+
+        private ParameterContainer GetParameterContainer(XDocument doc)
+        {
             if (doc.Root.HasElements)
             {
                 var elements = doc.Root.Elements("parameter");
@@ -292,5 +297,12 @@ namespace SeriousGameToolbox.Data.Parameters
         }
 
         #endregion
+
+
+        public ParameterContainer Parse(string content)
+        {
+            XDocument doc = XDocument.Parse(content);
+            return GetParameterContainer(doc);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
 {
     [TestFixture]
     [Category("Parameters")]
-    public class ParameterLoader_Tests
+    public class XmlParameterContainerParser_Tests
     {
         private class InvalidParameter : Parameter
         {
@@ -48,14 +48,14 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullUri_ThrowsArgumentNullException()
         {
-            ParameterLoader loader = new ParameterLoader(null);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(null);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Constructor_EmptyUri_ThrowsArgumentException()
         {
-            ParameterLoader loader = new ParameterLoader(string.Empty);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(string.Empty);
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
                 w.Write(content);
             }
 
-            ParameterLoader loader = new ParameterLoader(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
 
             var collection = loader.Load();
 
@@ -80,10 +80,10 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         }
 
         [Test]
-        [ExpectedException(typeof(ParameterLoader.InvalidParameterTypeException))]
+        [ExpectedException(typeof(XmlParameterContainerParser.InvalidParameterTypeException))]
         public void Save_UnknownParameterTypeAsked_ThrowsInvalidParameterTypeException()
         {
-            ParameterLoader loader = new ParameterLoader(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
 
             var invalidCollection = new ParameterContainer(new List<Parameter> { new InvalidParameter() });
 
@@ -100,7 +100,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
                 w.Write(content);
             }
 
-            ParameterLoader loader = new ParameterLoader(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
 
             var collection = loader.Load();
             loader.Save(collection);
@@ -175,7 +175,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
 
             ParameterContainer fullCollection = new ParameterContainer(list);
 
-            ParameterLoader loader = new ParameterLoader(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
             loader.Save(fullCollection);
             var loadedCollection = loader.Load();
 

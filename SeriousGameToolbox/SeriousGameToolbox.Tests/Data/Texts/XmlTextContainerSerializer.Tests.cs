@@ -3,6 +3,7 @@ using SeriousGameToolbox.Data.Texts;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -52,11 +53,16 @@ namespace SeriousGameToolbox.Tests.Data.Texts
 
             var result = serializer.Parse(Properties.Resources.text_container_1);
 
+            CheckAgainstSampleFile(result);
+        }
+
+        private void CheckAgainstSampleFile(TextContainer result)
+        {
             Assert.AreEqual("test", result.Name);
 
             string keyText = "text 1";
 
-            result.SetCulture(inv);            
+            result.SetCulture(inv);
 
             Assert.AreEqual("This is text 1", result.GetText(keyText));
 
@@ -67,6 +73,38 @@ namespace SeriousGameToolbox.Tests.Data.Texts
             result.SetCulture(fr);
 
             Assert.AreEqual("Ceci est texte 1", result.GetText(keyText));
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void LoadFromFilename_NullFilename_ThrowsArgumentNullException()
+        {
+            TextContainer.Load(null);
+        }
+
+        [Test]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void LoadFromFilename_InvalidFilename_ThrowsFileNotFoundException()
+        {
+            TextContainer.Load("invalid filename");
+        }
+
+        [Test]
+        public void LoadFromFilename_SampleContainer_ReturnsCorrectValue()
+        {
+            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SeriousGameToolbox");
+            string filename = Path.Combine(dir, "sample_text_container.xml");
+
+            Directory.CreateDirectory(dir);
+
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                writer.Write(Properties.Resources.text_container_1);
+            }
+
+            var result = TextContainer.Load(filename);
+
+            CheckAgainstSampleFile(result);
         }
     }
 }

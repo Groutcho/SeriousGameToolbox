@@ -55,10 +55,10 @@ namespace SeriousGameToolbox.Data.Texts
                 content = r.ReadToEnd();
             }
 
-            return LoadFromContent(content);
+            return Parse(content);
         }
 
-        public static TextContainer LoadFromContent(string content)
+        public static TextContainer Parse(string content)
         {
             ITextContainerParser serializerToUse = Serializer ?? defaultSerializer;
             return serializerToUse.Parse(content);

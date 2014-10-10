@@ -64,7 +64,7 @@
     <Compile Include="Data\Parameters\IntRangeParameter.Tests.cs" />
     <Compile Include="Data\Parameters\IntegerParameter.Tests.cs" />
     <Compile Include="Data\Parameters\ParameterContainer.Tests.cs" />
-    <Compile Include="Data\Parameters\ParameterLoader.Tests.cs" />
+    <Compile Include="Data\Parameters\XmlParameterContainerParser.Tests.cs" />
     <Compile Include="Data\Parameters\StringParameter.Tests.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.Tests.cs" />
     <Compile Include="Data\Texts\TextContainer.Tests.cs" />

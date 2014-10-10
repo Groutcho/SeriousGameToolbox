@@ -80,7 +80,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [ExpectedException(typeof(KeyNotFoundException))]
         public void GetKey_NotFoundKey_ThrowsKeyNotFoundException()
         {
-            var result = TextContainer.LoadFromContent(Properties.Resources.text_container_1);
+            var result = TextContainer.Parse(Properties.Resources.text_container_1);
 
             result.SetCulture(CultureInfo.InvariantCulture);
 
@@ -90,7 +90,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [Test]
         public void Name_SetNull_ReturnsEmpty()
         {
-            var result = TextContainer.LoadFromContent(Properties.Resources.text_container_1);
+            var result = TextContainer.Parse(Properties.Resources.text_container_1);
 
             result.Name = null;
 

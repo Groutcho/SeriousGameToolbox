@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -8,6 +9,37 @@ namespace SeriousGameToolbox.Data.Parameters
     public class ParameterContainer : IEquatable<ParameterContainer>
     {
         private Dictionary<string, Parameter> dict;
+
+        static IParameterContainerParser currentParser;
+        public static IParameterContainerParser Parser { get; set; }
+
+        public static ParameterContainer Load(string filename)
+        {
+            if (filename == null)
+            {
+                throw new ArgumentNullException("filename");
+            }
+
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException("The text container file could not be found", filename);
+            }
+
+            string content = string.Empty;
+            using (StreamReader r = new StreamReader(filename))
+            {
+                content = r.ReadToEnd();
+            }
+
+            currentParser = Parser ?? new XmlParameterContainerParser(filename);
+
+            return Parse(content);
+        }
+
+        public static ParameterContainer Parse(string content)
+        {
+            return currentParser.Parse(content);
+        }
 
         private List<Parameter> parameters;
         public ICollection<Parameter> Parameters { get { return parameters; } }

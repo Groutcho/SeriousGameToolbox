@@ -47,7 +47,8 @@
     <Compile Include="Data\Logins\LoginContainer.cs" />
     <Compile Include="Data\Manifest.cs" />
     <Compile Include="Data\Parameters\BooleanParameter.cs" />
-    <Compile Include="Data\Parameters\ParameterLoader.cs" />
+    <Compile Include="Data\Parameters\IParameterContainerParser.cs" />
+    <Compile Include="Data\Parameters\XmlParameterContainerParser.cs" />
     <Compile Include="Data\Parameters\StringParameter.cs" />
     <Compile Include="Data\Parameters\FloatParameter.cs" />
     <Compile Include="Data\Parameters\FloatRangeParameter.cs" />
