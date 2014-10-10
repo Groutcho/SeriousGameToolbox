@@ -34,7 +34,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         #region SAVING
 
-        public void Save(ParameterCollection parameters)
+        public void Save(ParameterContainer parameters)
         {
             XDocument doc = new XDocument(
                 new XElement("parameters", from p in parameters.Parameters select GetParameter(p))
@@ -155,7 +155,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         #region LOADING
 
-        public ParameterCollection Load()
+        public ParameterContainer Load()
         {
             XDocument doc = XDocument.Load(filename);
 
@@ -181,7 +181,7 @@ namespace SeriousGameToolbox.Data.Parameters
                     parameters.Add(p);
                 }
 
-                return new ParameterCollection(parameters);
+                return new ParameterContainer(parameters);
             }
             else
             {

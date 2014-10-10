@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.Data.Parameters
 {
-    public class ParameterCollection : IEquatable<ParameterCollection>
+    public class ParameterContainer : IEquatable<ParameterContainer>
     {
         private Dictionary<string, Parameter> dict;
 
@@ -31,7 +31,7 @@ namespace SeriousGameToolbox.Data.Parameters
             return (T)p.GetValue();
         }
 
-        public ParameterCollection(ParameterCollection original)
+        public ParameterContainer(ParameterContainer original)
         {
             if (original == null)
             {
@@ -43,7 +43,7 @@ namespace SeriousGameToolbox.Data.Parameters
             parameters = new List<Parameter>(original.parameters);
         }
 
-        public ParameterCollection(IEnumerable<Parameter> original)
+        public ParameterContainer(IEnumerable<Parameter> original)
         {
             if (original == null)
             {
@@ -83,7 +83,7 @@ namespace SeriousGameToolbox.Data.Parameters
             return false;
         }
 
-        public bool Equals(ParameterCollection other)
+        public bool Equals(ParameterContainer other)
         {
             if (other == this)
             {
