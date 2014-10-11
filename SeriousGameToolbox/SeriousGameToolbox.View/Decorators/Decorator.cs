@@ -11,7 +11,8 @@ namespace SeriousGameToolbox.I2D.Decorators
     {
         Widget widget;
 
-        public Decorator(Widget widget) : base(widget.Area)
+        public Decorator(Widget widget, GUISkin skin)
+            : base(widget.Area, skin)
         {
             if (widget == null)
             {
@@ -26,12 +27,11 @@ namespace SeriousGameToolbox.I2D.Decorators
            
         }
 
-        protected override void PrivateDraw()
+        protected override void PrivateDraw(Rect dimensions)
         {
-            base.PrivateDraw();
+            base.PrivateDraw(dimensions);
 
             widget.Draw();
-
             DrawDecorator();
         } 
     }

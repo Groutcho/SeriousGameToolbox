@@ -14,11 +14,11 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-        protected override void PrivateDraw()
+        protected override void PrivateDraw(Rect dimensions)
         {
-            base.PrivateDraw();
+            base.PrivateDraw(dimensions);
 
-            GUI.DrawTexture(area, image);
+            GUI.DrawTexture(dimensions, image);
         }
     }
 }

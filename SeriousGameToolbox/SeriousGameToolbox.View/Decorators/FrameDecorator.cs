@@ -9,7 +9,8 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public class FrameDecorator : Decorator
     {
-        public FrameDecorator(Widget widget) : base(widget)
+        public FrameDecorator(Widget widget, GUISkin skin)
+            : base(widget, skin)
         {
 
         }

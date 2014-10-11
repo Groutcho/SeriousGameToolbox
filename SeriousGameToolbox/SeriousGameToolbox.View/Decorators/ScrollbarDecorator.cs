@@ -14,8 +14,8 @@ namespace SeriousGameToolbox.I2D.Decorators
         float hValue;
         const float size = 100;
 
-        public ScrollbarDecorator(Widget widget)
-            : base(widget)
+        public ScrollbarDecorator(Widget widget, GUISkin skin)
+            : base(widget, skin)
         {
 
         }

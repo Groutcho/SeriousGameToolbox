@@ -5,7 +5,15 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public abstract class Widget : IDrawable
     {
+        private Resolution currentResolution;
+
+        protected bool areaContainsMouse;
         protected GUISkin skin;
+        public GUISkin Skin
+        {
+            get { return skin; }
+            set { skin = value; }
+        }
         protected Rect area;
         public Rect Area
         {
@@ -13,13 +21,12 @@ namespace SeriousGameToolbox.I2D.Widgets
             set { area = value; }
         }
 
-        protected Rect dimensions;
         public Rect Dimensions
         {
-            get { return dimensions; }
+            get { return new Rect(0, 0, area.width, area.height); }
         }
 
-        protected bool visible;
+        protected bool visible = true;
         public bool Visible
         {
             get
@@ -39,10 +46,39 @@ namespace SeriousGameToolbox.I2D.Widgets
                 return;
             }
 
-            PrivateDraw();
+            CheckIfAreaContainsMouse();
+
+            CheckForDisplayChange();
+
+            GUI.BeginGroup(area);
+
+            PrivateDraw(Dimensions);
+
+            GUI.EndGroup();
         }
 
-        protected virtual void PrivateDraw()
+        private void CheckIfAreaContainsMouse()
+        {
+            Vector2 mouse = Event.current.mousePosition;
+
+            areaContainsMouse = area.Contains(mouse);
+        }
+
+        private void CheckForDisplayChange()
+        {
+            if (Screen.width != currentResolution.height || Screen.height != currentResolution.width)
+            {
+                currentResolution = new Resolution() { width = Screen.width, height=Screen.height};
+
+                OnDisplayChanged(currentResolution);
+            }
+        }
+
+        protected virtual void OnDisplayChanged(Resolution newResolution)
+        {
+        }
+
+        protected virtual void PrivateDraw(Rect dimensions)
         {
         }
 
@@ -59,7 +95,17 @@ namespace SeriousGameToolbox.I2D.Widgets
         public Widget(Rect area)
         {
             this.area = area;
-            this.dimensions = new Rect(0, 0, area.width, area.height);
+        }
+
+        public Widget(Rect area, GUISkin skin)
+        {
+            this.area = area;
+
+            if (skin == null)
+            {
+                throw new System.ArgumentNullException("skin");
+            }
+            this.skin = skin;
         }
     }
 }
