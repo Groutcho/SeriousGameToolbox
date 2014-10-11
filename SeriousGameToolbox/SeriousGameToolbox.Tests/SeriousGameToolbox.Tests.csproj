@@ -70,6 +70,7 @@
     <Compile Include="Data\Texts\TextContainer.Tests.cs" />
     <Compile Include="Data\Texts\TextUnit.Tests.cs" />
     <Compile Include="Data\Texts\XmlTextContainerSerializer.Tests.cs" />
+    <Compile Include="Logging\Logger.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\Score.Tests.cs" />
     <Compile Include="Pedagogy\Sessions\SessionWithJournal.Tests.cs" />
