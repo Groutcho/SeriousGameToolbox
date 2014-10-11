@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.Logging
 {    
-    public interface ILoggerChannel
+    public interface ILoggerChannel : IDisposable
     {
         void Log(object message, EntryGravity gravity);
     }

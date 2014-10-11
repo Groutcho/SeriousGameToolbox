@@ -61,6 +61,9 @@
     <Compile Include="Data\Texts\TextContainer.cs" />
     <Compile Include="Data\Texts\TextUnit.cs" />
     <Compile Include="Data\Texts\XmlTextContainerParser.cs" />
+    <Compile Include="Logging\EntryGravity.cs" />
+    <Compile Include="Logging\ILoggerChannel.cs" />
+    <Compile Include="Logging\Logger.cs" />
     <Compile Include="Pedagogy\Scenarios\FreeRoamingScenario.cs" />
     <Compile Include="Pedagogy\Scenarios\IScenario.cs" />
     <Compile Include="Pedagogy\Sessions\Journal\QuizAnsweredJournalEvent.cs" />
