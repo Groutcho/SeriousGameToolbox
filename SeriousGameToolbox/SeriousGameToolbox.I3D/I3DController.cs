@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.I3D
 {
-    public class Controller3D : IUpdatable
+    public class I3DController : IUpdatable
     {
         public void Update(double dt)
         {

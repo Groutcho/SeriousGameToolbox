@@ -2,7 +2,7 @@
 
 namespace SeriousGameToolbox.I2D
 {
-    public class Controller2D : IUpdatable
+    public class I2DController : IUpdatable
     {
         public void Update(double dt)
         {

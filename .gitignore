@@ -1,3 +1,4 @@
 VisualState.xml
 *.sln.VisualState.xml
 *TestResult.xml
+/SeriousGameToolbox/SeriousGameToolbox.Tests/Tests.VisualState.xml
