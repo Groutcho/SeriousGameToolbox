@@ -8,7 +8,7 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public class WidgetContainer : Widget
     {
-        List<Widget> widgets;
+        protected List<Widget> widgets;
 
         public WidgetContainer(Rect area, GUISkin skin)
             : base(area, skin)
@@ -16,7 +16,7 @@ namespace SeriousGameToolbox.I2D.Widgets
             widgets = new List<Widget>(10);
         }
 
-        public void AddWidget(Widget widget)
+        public virtual void AddWidget(Widget widget)
         {
             if (widget == null)
             {

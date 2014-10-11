@@ -8,7 +8,6 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public class ButtonWidget : Widget, IInteractive
     {
-        GUIStyle style;
         GUIContent content;
 
         public ButtonWidget(Rect area, string text, GUISkin skin)
@@ -30,14 +29,14 @@ namespace SeriousGameToolbox.I2D.Widgets
                 this.content = content;
             }
 
-            this.style = skin.GetStyle("button");
+            this.defaultStyle = skin.GetStyle("button");
         }
 
         protected override void PrivateDraw(UnityEngine.Rect dimensions)
         {
             base.PrivateDraw(dimensions);
 
-            if (GUI.Button(dimensions, content, style))
+            if (GUI.Button(dimensions, content, Style))
             {
                 if (Clicked != null)
                 {

@@ -18,7 +18,7 @@ namespace SeriousGameToolbox.I2D.Widgets
         {
             base.PrivateDraw(dimensions);
 
-            GUI.DrawTexture(dimensions, image);
+            GUI.DrawTexture(dimensions, image, ScaleMode.StretchToFill);
         }
     }
 }

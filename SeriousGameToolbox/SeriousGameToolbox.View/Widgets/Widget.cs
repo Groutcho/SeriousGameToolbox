@@ -21,6 +21,23 @@ namespace SeriousGameToolbox.I2D.Widgets
             set { area = value; }
         }
 
+        protected GUIStyle defaultStyle;
+        protected GUIStyle style;
+        public GUIStyle Style
+        {
+            get
+            {
+                return style ?? defaultStyle;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    style = value;
+                }
+            }
+        }
+
         public Rect Dimensions
         {
             get { return new Rect(0, 0, area.width, area.height); }
@@ -68,7 +85,7 @@ namespace SeriousGameToolbox.I2D.Widgets
         {
             if (Screen.width != currentResolution.height || Screen.height != currentResolution.width)
             {
-                currentResolution = new Resolution() { width = Screen.width, height=Screen.height};
+                currentResolution = new Resolution() { width = Screen.width, height = Screen.height };
 
                 OnDisplayChanged(currentResolution);
             }
@@ -106,6 +123,62 @@ namespace SeriousGameToolbox.I2D.Widgets
                 throw new System.ArgumentNullException("skin");
             }
             this.skin = skin;
+        }
+
+        public enum HorizontalAlignement
+        {
+            Center,
+            Left,
+            Right
+        }
+
+        public enum VerticalAlignment
+        {
+            Center,
+            Top,
+            Bottom
+        }
+
+        public static Rect GetDockedRect(Rect container, Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        {
+            float x = 0;
+            float y = 0;
+
+            float dw2 = dimensions.x / 2;
+            float dh2 = dimensions.y / 2;
+            float sw2 = container.width / 2;
+            float sh2 = container.height / 2;
+
+            float deltaX = container.x;
+            float deltaY = container.y;
+
+            switch (vAlign)
+            {
+                case VerticalAlignment.Center: y = sh2 - dh2;
+                    break;
+                case VerticalAlignment.Top: y = margin;
+                    break;
+                case VerticalAlignment.Bottom: y = Screen.height - margin - dimensions.y;
+                    break;
+            }
+
+            switch (hAlign)
+            {
+                case HorizontalAlignement.Center: x = sw2 - dh2;
+                    break;
+                case HorizontalAlignement.Left: x = margin;
+                    break;
+                case HorizontalAlignement.Right: x = Screen.width - dimensions.x - margin;
+                    break;
+            }
+
+            return new Rect(x + deltaX, y + deltaY, dimensions.x, dimensions.y);
+        }
+
+        public static Rect GetDockedRect(Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        {
+            Rect screen = new Rect(0, 0, Screen.width, Screen.height);
+            return GetDockedRect(screen, dimensions, hAlign, vAlign, margin);
         }
     }
 }
