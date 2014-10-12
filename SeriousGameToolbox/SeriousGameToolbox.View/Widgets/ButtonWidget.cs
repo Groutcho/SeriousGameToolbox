@@ -6,28 +6,20 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Widgets
 {
-    public class ButtonWidget : Widget, IInteractive
+    public class ButtonWidget : UnityWidget, IInteractive
     {
         GUIContent content;
 
-        public ButtonWidget(Area area, string text, GUISkin skin)
-            : this(area, new GUIContent(text), skin) {}
-
-        public ButtonWidget(Area area, GUIContent content, GUISkin skin)
-            : base(area, skin)
+        public ButtonWidget(Area area, GUIContent content, GUIStyle style)
+            : base(area, style)
         {
             if (content != null)
             {
                 this.content = content;
-            }
-
-            if (skin != null)
-            {
-                this.defaultStyle = skin.GetStyle("button");
-            }           
+            }        
         }
 
-        protected override void PrivateDraw(UnityEngine.Rect dimensions)
+        protected override void PrivateDraw(Area dimensions)
         {
             base.PrivateDraw(dimensions);
 

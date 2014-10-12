@@ -8,23 +8,17 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public class ScreenWidget : WidgetContainer
     {
-        public ScreenWidget(GUISkin skin)
-            : base(Area.None, skin)
-        {
-
-        }
-
         public ScreenWidget()
             : base(Area.None)
         {
 
         }
 
-        protected override void OnDisplayChanged(UnityEngine.Resolution r)
+        protected override void OnDisplayChanged(Vector2 r)
         {
             base.OnDisplayChanged(r);
 
-            area = new Area(0, 0, r.width, r.height);
+            area = new Area(0, 0, r.x, r.y);
         }
     }
 }

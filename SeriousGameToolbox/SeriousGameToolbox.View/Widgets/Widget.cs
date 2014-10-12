@@ -8,15 +8,6 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public abstract class Widget : IDrawable
     {
-        private Resolution currentResolution;
-
-        protected bool areaContainsMouse;
-        protected GUISkin skin;
-        public GUISkin Skin
-        {
-            get { return skin; }
-            set { skin = value; }
-        }
         protected Area area;
         public Area Area
         {
@@ -24,26 +15,9 @@ namespace SeriousGameToolbox.I2D.Widgets
             set { area = value; }
         }
 
-        protected GUIStyle defaultStyle;
-        protected GUIStyle style;
-        public GUIStyle Style
+        public Area Dimensions
         {
-            get
-            {
-                return style ?? defaultStyle;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    style = value;
-                }
-            }
-        }
-
-        public Rect Dimensions
-        {
-            get { return new Rect(0, 0, area.Width, area.Height); }
+            get { return new Area(0, 0, area.Width, area.Height); }
         }
 
         protected bool visible = true;
@@ -72,46 +46,6 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-        List<Decorator> rearDecorators = new List<Decorator>(2);
-        public ICollection<Decorator> RearDecorators
-        {
-            get
-            {
-                return rearDecorators;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    rearDecorators = new List<Decorator>(2);
-                }
-                else
-                {
-                    rearDecorators = new List<Decorator>(value);
-                }
-            }
-        }
-
-        List<Decorator> frontDecorators = new List<Decorator>(2);
-        public ICollection<Decorator> FrontDecorators
-        {
-            get
-            {
-                return frontDecorators;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    frontDecorators = new List<Decorator>(2);
-                }
-                else
-                {
-                    frontDecorators = new List<Decorator>(value);
-                }
-            }
-        }
-
         public virtual void Draw()
         {
             if (!visible)
@@ -119,61 +53,9 @@ namespace SeriousGameToolbox.I2D.Widgets
                 return;
             }
 
-            CheckIfAreaContainsMouse();
-
-            CheckForDisplayChange();
-
-            DrawRearDecorators();
-
-            GUI.BeginGroup(area);
-
-            PrivateDraw(Dimensions);
-
-            GUI.EndGroup();
-
-            DrawFrontalDecorators();
         }
 
-        private void DrawFrontalDecorators()
-        {
-            foreach (var item in frontDecorators)
-            {
-                item.area = area;
-                item.Draw();
-            }
-        }
-
-        private void DrawRearDecorators()
-        {
-            foreach (var item in rearDecorators)
-            {
-                item.area = area;
-                item.Draw();
-            }
-        }
-
-        private void CheckIfAreaContainsMouse()
-        {
-            Vector2 mouse = Event.current.mousePosition;
-            Rect r = area;
-            areaContainsMouse = r.Contains(mouse);
-        }
-
-        private void CheckForDisplayChange()
-        {
-            if (Screen.width != currentResolution.height || Screen.height != currentResolution.width)
-            {
-                currentResolution = new Resolution() { width = Screen.width, height = Screen.height };
-
-                OnDisplayChanged(currentResolution);
-            }
-        }
-
-        protected virtual void OnDisplayChanged(Resolution newResolution)
-        {
-        }
-
-        protected virtual void PrivateDraw(Rect dimensions)
+        protected virtual void PrivateDraw(Area dimensions)
         {
         }
 
@@ -192,12 +74,6 @@ namespace SeriousGameToolbox.I2D.Widgets
             this.area = area;
         }
 
-        public Widget(Area area, GUISkin skin)
-        {
-            this.area = area;
-            this.skin = skin;
-        }
-
         public enum HorizontalAlignement
         {
             Center,
@@ -212,18 +88,18 @@ namespace SeriousGameToolbox.I2D.Widgets
             Bottom
         }
 
-        public static Rect GetDockedRect(Rect container, Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        public static Area GetDockedRect(Area container, UnityEngine.Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
         {
             float x = 0;
             float y = 0;
 
             float dw2 = dimensions.x / 2;
             float dh2 = dimensions.y / 2;
-            float sw2 = container.width / 2;
-            float sh2 = container.height / 2;
+            float sw2 = container.Width / 2;
+            float sh2 = container.Height / 2;
 
-            float deltaX = container.x;
-            float deltaY = container.y;
+            float deltaX = container.X;
+            float deltaY = container.X;
 
             switch (vAlign)
             {
@@ -231,7 +107,7 @@ namespace SeriousGameToolbox.I2D.Widgets
                     break;
                 case VerticalAlignment.Top: y = margin;
                     break;
-                case VerticalAlignment.Bottom: y = Screen.height - margin - dimensions.y;
+                case VerticalAlignment.Bottom: y = UnityEngine.Screen.height - margin - dimensions.y;
                     break;
             }
 
@@ -241,22 +117,26 @@ namespace SeriousGameToolbox.I2D.Widgets
                     break;
                 case HorizontalAlignement.Left: x = margin;
                     break;
-                case HorizontalAlignement.Right: x = Screen.width - dimensions.x - margin;
+                case HorizontalAlignement.Right: x = UnityEngine.Screen.width - dimensions.x - margin;
                     break;
             }
 
-            return new Rect(x + deltaX, y + deltaY, dimensions.x, dimensions.y);
+            return new Area(x + deltaX, y + deltaY, dimensions.x, dimensions.y);
         }
 
-        public static Rect GetDockedRect(Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        public static Area GetDockedRect(UnityEngine.Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
         {
-            Rect screen = new Rect(0, 0, Screen.width, Screen.height);
+            Area screen = new Area(0, 0, Screen.width, Screen.height);
             return GetDockedRect(screen, dimensions, hAlign, vAlign, margin);
         }
 
         public override string ToString()
         {
             return string.Format("{0} ({1})", name, GetType());
+        }
+
+        protected virtual void OnDisplayChanged(Vector2 newResolution)
+        {
         }
     }
 }

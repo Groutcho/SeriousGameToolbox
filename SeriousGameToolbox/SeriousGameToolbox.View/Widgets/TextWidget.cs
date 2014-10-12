@@ -6,32 +6,22 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Widgets
 {
-    public class TextWidget : Widget
+    public class TextWidget : UnityWidget
     {
         public string Text { get; set; }
 
-        public TextWidget(Area area, string text)
-            : base(area)
+        public TextWidget(Area area, GUIStyle style, string text)
+            : base(area, style)
         {
             if (text == null)
             {
                 text = string.Empty;
             }
             this.Text = text;
+            this.defaultStyle = style;
         }
 
-        public TextWidget(Area area, GUISkin skin, string text)
-            : base(area, skin)
-        {
-            if (text == null)
-            {
-                text = string.Empty;
-            }
-            this.Text = text;
-            this.defaultStyle = skin.GetStyle("label");
-        }
-
-        protected override void PrivateDraw(Rect dimensions)
+        protected override void PrivateDraw(Area dimensions)
         {
             base.PrivateDraw(dimensions);
 

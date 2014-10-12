@@ -1,16 +1,14 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Widgets
 {
     public class HorizontalStack : WidgetContainer
     {
-        private Rect padding;
-        public Rect Padding
+        private Area padding;
+        public Area Padding
         {
             get { return padding; }
             set
@@ -23,8 +21,8 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-        public HorizontalStack(Area area, GUISkin skin)
-            : base(area, skin)
+        public HorizontalStack(Area area)
+            : base(area)
         {
         }
 
@@ -41,13 +39,13 @@ namespace SeriousGameToolbox.I2D.Widgets
                 return;
             }
 
-            Rect r = widgets[0].Area;
-            widgets[0].Area = new Area(padding.x, padding.y, r.width, r.height);
+            Area r = widgets[0].Area;
+            widgets[0].Area = new Area(padding.X, padding.Y, r.Width, r.Height);
 
             for (int i = 1; i < widgets.Count; i++)
             {
-                r = widgets[i-1].Area;
-                widgets[i].Area = new Area(r.xMax + padding.x, padding.y, r.width, r.height);
+                r = widgets[i - 1].Area;
+                widgets[i].Area = new Area(r.X + r.Width + padding.X, padding.Y, r.Width, r.Height);
             }
         }
     }

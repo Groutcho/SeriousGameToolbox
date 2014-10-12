@@ -14,7 +14,7 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-        protected override void PrivateDraw(Rect dimensions)
+        protected override void PrivateDraw(Area dimensions)
         {
             base.PrivateDraw(dimensions);
 

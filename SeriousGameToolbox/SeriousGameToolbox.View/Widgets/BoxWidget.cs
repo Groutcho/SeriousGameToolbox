@@ -8,19 +8,21 @@ namespace SeriousGameToolbox.I2D.Widgets
 {
     public class BoxWidget : WidgetContainer
     {
+        private GUIStyle style;
+
         public BoxWidget(Area area) : base(area)
         {
 
         }
-        public BoxWidget(Area area, GUISkin skin)
-            : base(area, skin)
+        public BoxWidget(Area area, GUIStyle style)
+            : base(area)
         {
-            this.defaultStyle = skin.GetStyle("box");
+            this.style = style;
         }
 
-        protected override void PrivateDraw(Rect dimensions)
+        protected override void PrivateDraw(Area dimensions)
         {
-            GUI.Box(dimensions, GUIContent.none, Style);
+            GUI.Box(dimensions, GUIContent.none, style);
             base.PrivateDraw(dimensions);            
         }
     }

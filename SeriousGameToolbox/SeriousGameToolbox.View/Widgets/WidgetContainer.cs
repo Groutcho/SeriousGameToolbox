@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Widgets
 {
@@ -59,12 +58,6 @@ namespace SeriousGameToolbox.I2D.Widgets
             widgets = new List<Widget>(10);
         }
 
-        public WidgetContainer(Area area, GUISkin skin)
-            : base(area, skin)
-        {
-            widgets = new List<Widget>(10);
-        }
-
         public virtual void AddWidget(Widget widget)
         {
             if (widget == null)
@@ -75,7 +68,7 @@ namespace SeriousGameToolbox.I2D.Widgets
             widgets.Add(widget);
         }
 
-        protected override void PrivateDraw(Rect dimensions)
+        protected override void PrivateDraw(Area dimensions)
         {
             base.PrivateDraw(dimensions);
 

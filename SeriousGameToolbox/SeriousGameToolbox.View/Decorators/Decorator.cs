@@ -7,16 +7,17 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Decorators
 {
-    public abstract class Decorator : Widget
+    public abstract class Decorator : UnityWidget
     {
-        public Decorator(Area area) : base(area)
+        public Decorator(Area area)
+            : base(area, null)
         {
 
         }
 
-        public Decorator(Area area, GUISkin skin)
-            : base(area, skin)
+        public Decorator(Area area, GUIStyle style) : base(area, style)
         {
+
         }
 
         public override void Draw()
