@@ -28,5 +28,32 @@ namespace SeriousGameToolbox.I2D
         {
             return new Rect(a.X, a.Y, a.Width, a.Height);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == this)
+            {
+                return true;
+            }
+
+            var other = obj as Area;
+
+            if (other != null)
+            {
+                return other.X == X && other.Y == Y && other.Width == Width && other.Height == Height;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() + Y.GetHashCode() + Width.GetHashCode() + Height.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Area : {0}, {1}, {2}, {3}", X, Y, Width, Height);
+        }
     }
 }

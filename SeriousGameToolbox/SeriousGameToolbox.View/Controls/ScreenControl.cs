@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
+    /// <summary>
+    /// A control that resizes itself automatically to fill the entire screen.
+    /// </summary>
     public class ScreenControl : ControlContainer
     {
         public ScreenControl()
@@ -14,11 +17,11 @@ namespace SeriousGameToolbox.I2D.Controls
 
         }
 
-        protected override void OnDisplayChanged(Vector2 r)
+        protected override void OnDisplayChanged(float width, float height)
         {
-            base.OnDisplayChanged(r);
+            base.OnDisplayChanged(width, height);
 
-            area = new Area(0, 0, r.x, r.y);
+            Area = new Area(0, 0, width, height);
         }
     }
 }

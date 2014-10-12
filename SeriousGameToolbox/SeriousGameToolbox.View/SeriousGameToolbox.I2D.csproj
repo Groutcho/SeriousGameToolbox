@@ -58,7 +58,6 @@
     <Compile Include="I2DController.cs" />
     <Compile Include="Controls\ScreenControl.cs" />
     <Compile Include="Controls\TextControl.cs" />
-    <Compile Include="Controls\UnityWidget.cs" />
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\ControlContainer.cs" />
   </ItemGroup>

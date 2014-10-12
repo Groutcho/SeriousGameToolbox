@@ -14,8 +14,8 @@ namespace SeriousGameToolbox.I2D.Decorators
         float hValue;
         const float size = 100;
 
-        public ScrollbarDecorator(Area area, GUIStyle style)
-            : base(area, style)
+        public ScrollbarDecorator(Area area)
+            : base(area)
         {
 
         }
@@ -24,8 +24,8 @@ namespace SeriousGameToolbox.I2D.Decorators
         {
             base.Draw();
 
-            Rect ar = area;
-            hValue = GUI.HorizontalScrollbar(new Rect(ar.x, ar.yMax - Thickness, ar.width, Thickness), hValue, 1f, 0, 10f);
+            Rect ar = Area;
+            hValue = GUI.HorizontalScrollbar(new Rect(ar.x, ar.yMax - Thickness, ar.width, Thickness), hValue, 1f, 0, 10f, Style);
         }
     }
 }

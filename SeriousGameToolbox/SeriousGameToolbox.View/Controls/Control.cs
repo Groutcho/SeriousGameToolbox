@@ -1,14 +1,19 @@
 ﻿using SeriousGameToolbox.Contracts;
 using SeriousGameToolbox.I2D.Decorators;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
+    /// <summary>
+    /// Base class for all controls.
+    /// </summary>
     public abstract class Control : IDrawable
     {
-        protected Area area;
+        private Area area;
         protected bool visible = true;
         private string name = string.Empty;
 
@@ -21,7 +26,11 @@ namespace SeriousGameToolbox.I2D.Controls
         {
             get { return new Area(0, 0, area.Width, area.Height); }
         }
-               
+
+        private static Resolution resolution;
+
+        public GUIStyle Style { get; set; }
+
         public bool Visible
         {
             get
@@ -33,7 +42,7 @@ namespace SeriousGameToolbox.I2D.Controls
                 visible = value;
             }
         }
-               
+
         public string Name
         {
             get { return name; }
@@ -46,41 +55,13 @@ namespace SeriousGameToolbox.I2D.Controls
             }
         }
 
-        public virtual void Draw()
-        {
-            if (!visible)
-            {
-                return;
-            }
-
-        }
-        
-        public void Show()
-        {
-            visible = true;
-        }
-
-        public void Hide()
-        {
-            visible = false;
-        }
-
-        public Control(Area area)
-        {
-            this.area = area;
-        }
-
-
-
-
-
-        public static Area GetDockedRect(Area container, UnityEngine.Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        public static Area GetDockedArea(Area container, Area dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
         {
             float x = 0;
             float y = 0;
 
-            float dw2 = dimensions.x / 2;
-            float dh2 = dimensions.y / 2;
+            float dw2 = dimensions.X / 2;
+            float dh2 = dimensions.Y / 2;
             float sw2 = container.Width / 2;
             float sh2 = container.Height / 2;
 
@@ -93,7 +74,7 @@ namespace SeriousGameToolbox.I2D.Controls
                     break;
                 case VerticalAlignment.Top: y = margin;
                     break;
-                case VerticalAlignment.Bottom: y = UnityEngine.Screen.height - margin - dimensions.y;
+                case VerticalAlignment.Bottom: y = container.Height - margin - dimensions.Y;
                     break;
             }
 
@@ -103,17 +84,138 @@ namespace SeriousGameToolbox.I2D.Controls
                     break;
                 case HorizontalAlignement.Left: x = margin;
                     break;
-                case HorizontalAlignement.Right: x = UnityEngine.Screen.width - dimensions.x - margin;
+                case HorizontalAlignement.Right: x = container.Width - dimensions.X - margin;
                     break;
             }
 
-            return new Area(x + deltaX, y + deltaY, dimensions.x, dimensions.y);
+            return new Area(x + deltaX, y + deltaY, dimensions.X, dimensions.Y);
         }
 
-        public static Area GetDockedRect(UnityEngine.Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
+        public static Area GetDockedArea(Area dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
         {
-            Area screen = new Area(0, 0, Screen.width, Screen.height);
-            return GetDockedRect(screen, dimensions, hAlign, vAlign, margin);
+            Area screen = new Area(0, 0, resolution.width, resolution.height);
+            return GetDockedArea(screen, dimensions, hAlign, vAlign, margin);
+        }
+
+        public Control(Area area)
+        {
+            if (area == null)
+            {
+                throw new ArgumentNullException("area");
+            }
+
+            this.area = area;
+        }
+
+        public virtual void Draw()
+        {
+            if (!visible)
+            {
+                return;
+            }
+
+            CheckForDisplayChange();
+
+            CheckIfAreaContainsMouse();
+
+            DrawRearDecorators();
+
+            // note that BeginGroup will clip the content. That is why we put the decorators outside, since
+            // some decorators need to draw outside the area. For instance, a frame.
+            GUI.BeginGroup(area);
+
+            DrawControl();
+
+            GUI.EndGroup();
+
+            DrawFrontalDecorators();
+        }
+
+        private void CheckForDisplayChange()
+        {
+            var res = Screen.currentResolution;
+
+            if (res.width != resolution.width || res.height != resolution.height)
+            {
+                OnDisplayChanged(res.width, res.height);
+                resolution = res;
+            }
+        }
+
+        protected List<Decorator> rearDecorators = new List<Decorator>(2);
+        public ICollection<Decorator> RearDecorators
+        {
+            get
+            {
+                return rearDecorators;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    rearDecorators = new List<Decorator>(2);
+                }
+                else
+                {
+                    rearDecorators = new List<Decorator>(value);
+                }
+            }
+        }
+
+        protected List<Decorator> frontDecorators = new List<Decorator>(2);
+        private bool areaContainsMouse;
+        public ICollection<Decorator> FrontDecorators
+        {
+            get
+            {
+                return frontDecorators;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    frontDecorators = new List<Decorator>(2);
+                }
+                else
+                {
+                    frontDecorators = new List<Decorator>(value);
+                }
+            }
+        }
+
+        private void CheckIfAreaContainsMouse()
+        {
+            UnityEngine.Vector2 mouse = UnityEngine.Event.current.mousePosition;
+            UnityEngine.Rect r = area;
+            areaContainsMouse = r.Contains(mouse);
+        }
+
+        private void DrawFrontalDecorators()
+        {
+            foreach (var item in frontDecorators)
+            {
+                item.area = area;
+                item.Draw();
+            }
+        }
+
+        private void DrawRearDecorators()
+        {
+            foreach (var item in rearDecorators)
+            {
+                item.area = area;
+                item.Draw();
+            }
+        }
+
+        public void Show()
+        {
+            visible = true;
+        }
+
+        public void Hide()
+        {
+            visible = false;
         }
 
         public override string ToString()
@@ -121,11 +223,11 @@ namespace SeriousGameToolbox.I2D.Controls
             return string.Format("{0} ({1})", name, GetType());
         }
 
-        protected virtual void PrivateDraw(Area dimensions)
+        protected virtual void DrawControl()
         {
         }
-
-        protected virtual void OnDisplayChanged(Vector2 newResolution)
+        
+        protected virtual void OnDisplayChanged(float width, float height)
         {
         }
     }

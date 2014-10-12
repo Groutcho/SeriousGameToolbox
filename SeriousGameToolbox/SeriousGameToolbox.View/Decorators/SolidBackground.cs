@@ -57,7 +57,7 @@ namespace SeriousGameToolbox.I2D.Decorators
         {
             base.Draw();
 
-            GUI.DrawTexture(area, texture);
+            GUI.DrawTexture(Area, texture);
         }
     }
 }

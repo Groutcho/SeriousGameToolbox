@@ -6,26 +6,25 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class TextControl : UnityControl
+    public class TextControl : Control
     {
         public string Text { get; set; }
 
-        public TextControl(Area area, GUIStyle style, string text)
-            : base(area, style)
+        public TextControl(Area area, string text)
+            : base(area)
         {
             if (text == null)
             {
                 text = string.Empty;
             }
             this.Text = text;
-            this.defaultStyle = style;
         }
 
-        protected override void PrivateDraw(Area dimensions)
+        protected override void DrawControl()
         {
-            base.PrivateDraw(dimensions);
+            base.DrawControl();
 
-            GUI.Label(dimensions, Text, Style);
+            GUI.Label(Dimensions, Text, Style);
         }
     }
 }

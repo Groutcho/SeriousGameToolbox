@@ -5,6 +5,9 @@ using System.Text;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
+    /// <summary>
+    /// Base control for control containers.
+    /// </summary>
     public class ControlContainer : Control
     {
         protected List<Control> controls;
@@ -17,13 +20,39 @@ namespace SeriousGameToolbox.I2D.Controls
             get { return controls; }
         }
 
+        public ControlContainer(Area area)
+            : base(area)
+        {
+            controls = new List<Control>(10);
+        }
+
+        public virtual void AddControl(Control control)
+        {
+            if (control == null)
+            {
+                throw new ArgumentNullException("control");
+            }
+
+            controls.Add(control);
+        }
+
+        protected override void DrawControl()
+        {
+            base.DrawControl();
+
+            foreach (var item in controls)
+            {
+                item.Draw();
+            }
+        }
+
         /// <summary>
         /// Returns a child Control with the given path.
         /// </summary>
-        /// <param name="xPath">the xPath to look for. For example, "myContainer/mySubContainer/myControl". If null, will throw a NullArgumentException</param>
-        /// <param name="from">the level to start looking for. For example, if xPath is "myContainer/mySubContainer/myControl", and "from" is 1, the working xPath will be "mySubContainer/myControl". If from is zero, the xPath is not altered.</param>
+        /// <param name="xPath">the xPath to look for. For example, "control1/control2/control3". If null, will throw a NullArgumentException</param>
+        /// <param name="from">The hierarchy to start looking for. For example, if xPath is "control1/control2/control3", and "from" is 1, the working xPath will be "control2/control3". If from is zero, the entire xPath is used.</param>
         /// <returns>Null if the Control has not been found. If the xPath is an empty string, will return the object from which it was called. The child Control in any other case.</returns>
-        public Control Find(string xPath, int from = 0)
+        public virtual Control Find(string xPath, int from = 0)
         {
             if (xPath == null)
             {
@@ -50,32 +79,6 @@ namespace SeriousGameToolbox.I2D.Controls
             }
 
             return null;
-        }
-
-        public ControlContainer(Area area)
-            : base(area)
-        {
-            controls = new List<Control>(10);
-        }
-
-        public virtual void AddControl(Control Control)
-        {
-            if (Control == null)
-            {
-                throw new ArgumentNullException("Control");
-            }
-
-            Controls.Add(Control);
-        }
-
-        protected override void PrivateDraw(Area dimensions)
-        {
-            base.PrivateDraw(dimensions);
-
-            foreach (var item in Controls)
-            {
-                item.Draw();
-            }
         }
     }
 }

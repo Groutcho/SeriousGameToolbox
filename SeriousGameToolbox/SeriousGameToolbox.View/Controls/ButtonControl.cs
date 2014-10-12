@@ -6,24 +6,28 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class ButtonControl : UnityControl, IInteractive
+    public class ButtonControl : Control, IInteractive
     {
-        GUIContent content;
+        public GUIContent GuiContent { get; set; }
 
-        public ButtonControl(Area area, GUIContent content, GUIStyle style)
-            : base(area, style)
+        public ButtonControl(Area area)
+            : base(area) { }
+
+        protected override void DrawControl()
         {
-            if (content != null)
+            base.DrawControl();
+
+            if (Style == null)
             {
-                this.content = content;
-            }        
-        }
+                throw new NullReferenceException("The style for the control " + Name + " is missing.");
+            }
 
-        protected override void PrivateDraw(Area dimensions)
-        {
-            base.PrivateDraw(dimensions);
+            if (GuiContent == null)
+            {
+                throw new NullReferenceException("The GuiContent for the control " + Name + " is missing.");
+            }
 
-            if (GUI.Button(dimensions, content, Style))
+            if (GUI.Button(Dimensions, GuiContent, Style))
             {
                 if (Clicked != null)
                 {

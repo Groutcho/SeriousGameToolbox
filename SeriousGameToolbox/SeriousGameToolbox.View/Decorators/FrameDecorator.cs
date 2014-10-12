@@ -9,15 +9,15 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public class FrameDecorator : Decorator
     {
-        public FrameDecorator(Area area, GUIStyle style)
-            : base(area, style)
+        public FrameDecorator(Area area)
+            : base(area)
         {
         }
 
         public override void Draw()
         {
             base.Draw();
-            GUI.Box(area, GUIContent.none, Style);
+            GUI.Box(Area, GUIContent.none, Style);
         }
     }
 }

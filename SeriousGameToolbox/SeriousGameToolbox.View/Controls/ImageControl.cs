@@ -14,11 +14,11 @@ namespace SeriousGameToolbox.I2D.Controls
             }
         }
 
-        protected override void PrivateDraw(Area dimensions)
+        protected override void DrawControl()
         {
-            base.PrivateDraw(dimensions);
+            base.DrawControl();
 
-            GUI.DrawTexture(dimensions, image, ScaleMode.StretchToFill);
+            GUI.DrawTexture(Dimensions, image, ScaleMode.StretchToFill);
         }
     }
 }
