@@ -12,13 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D43F9
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.Tests.Console", "SeriousGameToolbox.Tests.Console\SeriousGameToolbox.Tests.Console.csproj", "{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "SeriousGameToolbox.Tests.Console\Console.csproj", "{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D", "SeriousGameToolbox.View\SeriousGameToolbox.I2D.csproj", "{9CAF538E-62F4-440C-A10D-9A722B33DF98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I3D", "SeriousGameToolbox.I3D\SeriousGameToolbox.I3D.csproj", "{935EDE6F-2B85-444F-8569-20F3C72321EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D.Tests", "SeriousGameToolbox.I2D.Tests\SeriousGameToolbox.I2D.Tests.csproj", "{47D75688-895E-4A29-A55E-31C417EAF381}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I2D", "I2D", "{42AA569B-385F-42A0-802F-5239CF2EFB4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I3D", "I3D", "{F5B03410-4CAE-471A-A889-CF41A50B99F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FDB9C3C6-E152-4E66-BACB-90BE7CBEC804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,5 +59,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F} = {FDB9C3C6-E152-4E66-BACB-90BE7CBEC804}
+		{9CAF538E-62F4-440C-A10D-9A722B33DF98} = {42AA569B-385F-42A0-802F-5239CF2EFB4D}
+		{935EDE6F-2B85-444F-8569-20F3C72321EB} = {F5B03410-4CAE-471A-A889-CF41A50B99F2}
+		{47D75688-895E-4A29-A55E-31C417EAF381} = {42AA569B-385F-42A0-802F-5239CF2EFB4D}
 	EndGlobalSection
 EndGlobal
