@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class ScreenWidget : WidgetContainer
+    public class ScreenControl : ControlContainer
     {
-        public ScreenWidget()
+        public ScreenControl()
             : base(Area.None)
         {
 

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Decorators
 {
-    public abstract class Decorator : UnityWidget
+    public abstract class Decorator : UnityControl
     {
         public Decorator(Area area)
             : base(area, null)

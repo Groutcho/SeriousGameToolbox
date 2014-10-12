@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class ButtonWidget : UnityWidget, IInteractive
+    public class ButtonControl : UnityControl, IInteractive
     {
         GUIContent content;
 
-        public ButtonWidget(Area area, GUIContent content, GUIStyle style)
+        public ButtonControl(Area area, GUIContent content, GUIStyle style)
             : base(area, style)
         {
             if (content != null)
@@ -32,6 +32,6 @@ namespace SeriousGameToolbox.I2D.Controls
             }
         }
 
-        public event WidgetClickedEvent Clicked;
+        public event ControlClickedEvent Clicked;
     }
 }

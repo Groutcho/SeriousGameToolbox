@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class UnityWidget : Widget
+    public class UnityControl : Control
     {
         private Vector2 currentResolution;
         protected bool areaContainsMouse;
@@ -68,7 +68,7 @@ namespace SeriousGameToolbox.I2D.Controls
             }
         }
 
-        public UnityWidget(Area area, GUIStyle style) : base(area)
+        public UnityControl(Area area, GUIStyle style) : base(area)
         {
             this.defaultStyle = style;
         }

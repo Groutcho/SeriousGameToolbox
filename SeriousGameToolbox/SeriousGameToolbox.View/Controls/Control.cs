@@ -6,21 +6,22 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public abstract class Widget : IDrawable
+    public abstract class Control : IDrawable
     {
         protected Area area;
+        protected bool visible = true;
+        private string name = string.Empty;
+
         public Area Area
         {
             get { return area; }
             set { area = value; }
         }
-
         public Area Dimensions
         {
             get { return new Area(0, 0, area.Width, area.Height); }
         }
-
-        protected bool visible = true;
+               
         public bool Visible
         {
             get
@@ -32,8 +33,7 @@ namespace SeriousGameToolbox.I2D.Controls
                 visible = value;
             }
         }
-
-        private string name = string.Empty;
+               
         public string Name
         {
             get { return name; }
@@ -54,11 +54,7 @@ namespace SeriousGameToolbox.I2D.Controls
             }
 
         }
-
-        protected virtual void PrivateDraw(Area dimensions)
-        {
-        }
-
+        
         public void Show()
         {
             visible = true;
@@ -69,24 +65,14 @@ namespace SeriousGameToolbox.I2D.Controls
             visible = false;
         }
 
-        public Widget(Area area)
+        public Control(Area area)
         {
             this.area = area;
         }
 
-        public enum HorizontalAlignement
-        {
-            Center,
-            Left,
-            Right
-        }
 
-        public enum VerticalAlignment
-        {
-            Center,
-            Top,
-            Bottom
-        }
+
+
 
         public static Area GetDockedRect(Area container, UnityEngine.Vector2 dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
         {
@@ -133,6 +119,10 @@ namespace SeriousGameToolbox.I2D.Controls
         public override string ToString()
         {
             return string.Format("{0} ({1})", name, GetType());
+        }
+
+        protected virtual void PrivateDraw(Area dimensions)
+        {
         }
 
         protected virtual void OnDisplayChanged(Vector2 newResolution)

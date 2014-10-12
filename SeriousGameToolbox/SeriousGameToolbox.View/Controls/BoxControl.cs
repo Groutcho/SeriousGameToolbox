@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class BoxWidget : WidgetContainer
+    public class BoxControl : ControlContainer
     {
         private GUIStyle style;
 
-        public BoxWidget(Area area) : base(area)
+        public BoxControl(Area area) : base(area)
         {
 
         }
-        public BoxWidget(Area area, GUIStyle style)
+        public BoxControl(Area area, GUIStyle style)
             : base(area)
         {
             this.style = style;

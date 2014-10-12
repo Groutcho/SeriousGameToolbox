@@ -2,11 +2,11 @@
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class ImageWidget : Widget
+    public class ImageControl : Control
     {
         private Texture image;
 
-        public ImageWidget(Area area, Texture image) : base(area)
+        public ImageControl(Area area, Texture image) : base(area)
         {
             if (image != null)
             {

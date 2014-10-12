@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class HorizontalStack : WidgetContainer
+    public class HorizontalStack : ControlContainer
     {
         private Area padding;
         public Area Padding
@@ -26,26 +26,26 @@ namespace SeriousGameToolbox.I2D.Controls
         {
         }
 
-        public override void AddWidget(Widget widget)
+        public override void AddControl(Control Control)
         {
-            base.AddWidget(widget);
+            base.AddControl(Control);
             RecomputeAreas();
         }
 
         private void RecomputeAreas()
         {
-            if (widgets.Count == 0)
+            if (Controls.Count == 0)
             {
                 return;
             }
 
-            Area r = widgets[0].Area;
-            widgets[0].Area = new Area(padding.X, padding.Y, r.Width, r.Height);
+            Area r = controls[0].Area;
+            controls[0].Area = new Area(padding.X, padding.Y, r.Width, r.Height);
 
-            for (int i = 1; i < widgets.Count; i++)
+            for (int i = 1; i < Controls.Count; i++)
             {
-                r = widgets[i - 1].Area;
-                widgets[i].Area = new Area(r.X + r.Width + padding.X, padding.Y, r.Width, r.Height);
+                r = controls[i - 1].Area;
+                controls[i].Area = new Area(r.X + r.Width + padding.X, padding.Y, r.Width, r.Height);
             }
         }
     }
