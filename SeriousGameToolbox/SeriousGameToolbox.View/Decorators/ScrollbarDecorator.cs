@@ -14,14 +14,15 @@ namespace SeriousGameToolbox.I2D.Decorators
         float hValue;
         const float size = 100;
 
-        public ScrollbarDecorator(Widget widget, GUISkin skin)
-            : base(widget, skin)
+        public ScrollbarDecorator(Rect area, GUISkin skin)
+            : base(area, skin)
         {
 
         }
 
-        protected override void DrawDecorator()
+        public override void Draw()
         {
+            base.Draw();
             hValue = GUI.HorizontalScrollbar(new Rect(area.x, area.yMax - Thickness, area.width, Thickness), hValue, 1f, 0, 10f);
         }
     }

@@ -9,30 +9,22 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public abstract class Decorator : Widget
     {
-        Widget widget;
-
-        public Decorator(Widget widget, GUISkin skin)
-            : base(widget.Area, skin)
+        public Decorator(Rect area) : base(area)
         {
-            if (widget == null)
+
+        }
+
+        public Decorator(Rect area, GUISkin skin)
+            : base(area, skin)
+        {
+        }
+
+        public override void Draw()
+        {
+            if (!visible)
             {
-                throw new ArgumentNullException("widget");
+                return;
             }
-
-            this.widget = widget;
         }
-
-        protected virtual void DrawDecorator()
-        {
-           
-        }
-
-        protected override void PrivateDraw(Rect dimensions)
-        {
-            base.PrivateDraw(dimensions);
-
-            widget.Draw();
-            DrawDecorator();
-        } 
     }
 }

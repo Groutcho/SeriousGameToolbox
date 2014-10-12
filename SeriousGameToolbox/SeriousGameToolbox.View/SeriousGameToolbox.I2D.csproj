@@ -45,6 +45,7 @@
     <Compile Include="Decorators\Decorator.cs" />
     <Compile Include="Decorators\FrameDecorator.cs" />
     <Compile Include="Decorators\ScrollbarDecorator.cs" />
+    <Compile Include="Decorators\SolidBackground.cs" />
     <Compile Include="Widgets\ButtonWidget.cs" />
     <Compile Include="Widgets\HorizontalStack.cs" />
     <Compile Include="Widgets\IInteractive.cs" />

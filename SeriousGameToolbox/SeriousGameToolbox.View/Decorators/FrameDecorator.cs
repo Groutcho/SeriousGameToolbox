@@ -9,15 +9,16 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public class FrameDecorator : Decorator
     {
-        public FrameDecorator(Widget widget, GUISkin skin)
-            : base(widget, skin)
+        public FrameDecorator(Rect area, GUISkin skin)
+            : base(area, skin)
         {
-
+            this.defaultStyle = skin.GetStyle("frame");
         }
 
-        protected override void DrawDecorator()
+        public override void Draw()
         {
-            GUI.Box(area, GUIContent.none);
+            base.Draw();
+            GUI.Box(area, GUIContent.none, Style);
         }
     }
 }

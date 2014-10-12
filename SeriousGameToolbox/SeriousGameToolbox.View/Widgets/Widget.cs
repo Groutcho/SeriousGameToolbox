@@ -1,4 +1,7 @@
 ﻿using SeriousGameToolbox.Contracts;
+using SeriousGameToolbox.I2D.Decorators;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Widgets
@@ -56,6 +59,47 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
+       
+        List<Decorator> rearDecorators = new List<Decorator>(2);
+        public ICollection<Decorator> RearDecorators
+        {
+            get
+            {
+                return rearDecorators;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    rearDecorators = new List<Decorator>(2);
+                }
+                else
+                {
+                    rearDecorators = new List<Decorator>(value);
+                }
+            }
+        }
+
+        List<Decorator> frontDecorators = new List<Decorator>(2);
+        public ICollection<Decorator> FrontDecorators
+        {
+            get
+            {
+                return frontDecorators;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    frontDecorators = new List<Decorator>(2);
+                }
+                else
+                {
+                    frontDecorators = new List<Decorator>(value);
+                }
+            }
+        }
+
         public virtual void Draw()
         {
             if (!visible)
@@ -67,11 +111,33 @@ namespace SeriousGameToolbox.I2D.Widgets
 
             CheckForDisplayChange();
 
+            DrawRearDecorators();
+
             GUI.BeginGroup(area);
 
             PrivateDraw(Dimensions);
 
             GUI.EndGroup();
+
+            DrawFrontalDecorators();
+        }
+
+        private void DrawFrontalDecorators()
+        {
+            foreach (var item in frontDecorators)
+            {
+                item.area = area;
+                item.Draw();
+            }
+        }
+
+        private void DrawRearDecorators()
+        {
+            foreach (var item in rearDecorators)
+            {
+                item.area = area;
+                item.Draw();
+            }
         }
 
         private void CheckIfAreaContainsMouse()
