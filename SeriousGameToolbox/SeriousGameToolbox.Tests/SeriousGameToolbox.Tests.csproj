@@ -57,6 +57,7 @@
     <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.Tests.cs" />
     <Compile Include="Controllers\Types\FakeGame.cs" />
     <Compile Include="Controllers\Types\FakePhase.cs" />
+    <Compile Include="Data\FileObject.Tests.cs" />
     <Compile Include="Data\Logins\LoginContainer.Tests.cs" />
     <Compile Include="Data\Logins\Login.Tests.cs" />
     <Compile Include="Data\Parameters\FloatParameter.Tests.cs" />
@@ -89,6 +90,7 @@
     <Content Include="Data\Parameters\TestData\duplicated_ids.xml" />
     <Content Include="Data\Parameters\TestData\default_settings.xml" />
     <Content Include="Data\Texts\Data\text_container_1.xml" />
+    <Content Include="TestData\test_file_1.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

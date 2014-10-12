@@ -1,5 +1,6 @@
 ﻿using SeriousGameToolbox.Data.Texts;
 using SeriousGameToolbox.Tests.Controllers;
+using SeriousGameToolbox.Tests.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,8 @@ namespace SeriousGameToolbox.Tests.Console
     {
         static void Main(string[] args)
         {
-            XmlTextContainerParser serializer = new XmlTextContainerParser();
-
-            serializer.Parse(Properties.Resources.text_container_1);
+            FileObject_Tests t = new FileObject_Tests();
+            t.StringOperator_Returns_CorrectValue();
         }
     }
 }

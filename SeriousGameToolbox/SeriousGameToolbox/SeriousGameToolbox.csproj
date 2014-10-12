@@ -43,6 +43,7 @@
     <Compile Include="Controllers\Game.cs" />
     <Compile Include="Controllers\Phases\Phase.cs" />
     <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.cs" />
+    <Compile Include="Data\FileObject.cs" />
     <Compile Include="Data\Logins\Login.cs" />
     <Compile Include="Data\Logins\LoginContainer.cs" />
     <Compile Include="Data\Manifest.cs" />
