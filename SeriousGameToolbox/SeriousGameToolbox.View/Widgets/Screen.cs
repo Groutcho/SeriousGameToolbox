@@ -11,12 +11,12 @@ namespace SeriousGameToolbox.I2D.Widgets
         public ScreenWidget(GUISkin skin)
             : base(new Rect(0, 0, UnityEngine.Screen.width, UnityEngine.Screen.height), skin)
         {
-            
+
         }
 
         protected override void OnDisplayChanged(UnityEngine.Resolution r)
         {
- 	         base.OnDisplayChanged(r);
+            base.OnDisplayChanged(r);
 
             area = new UnityEngine.Rect(0, 0, r.width, r.height);
         }

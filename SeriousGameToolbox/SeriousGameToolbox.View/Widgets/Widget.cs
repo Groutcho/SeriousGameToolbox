@@ -59,7 +59,19 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-       
+        private string name = string.Empty;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value != null)
+                {
+                    name = value;
+                }
+            }
+        }
+
         List<Decorator> rearDecorators = new List<Decorator>(2);
         public ICollection<Decorator> RearDecorators
         {
