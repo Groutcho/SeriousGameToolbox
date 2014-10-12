@@ -9,7 +9,13 @@ namespace SeriousGameToolbox.I2D.Widgets
     public class ScreenWidget : WidgetContainer
     {
         public ScreenWidget(GUISkin skin)
-            : base(new Rect(0, 0, UnityEngine.Screen.width, UnityEngine.Screen.height), skin)
+            : base(Area.None, skin)
+        {
+
+        }
+
+        public ScreenWidget()
+            : base(Area.None)
         {
 
         }
@@ -18,7 +24,7 @@ namespace SeriousGameToolbox.I2D.Widgets
         {
             base.OnDisplayChanged(r);
 
-            area = new UnityEngine.Rect(0, 0, r.width, r.height);
+            area = new Area(0, 0, r.width, r.height);
         }
     }
 }

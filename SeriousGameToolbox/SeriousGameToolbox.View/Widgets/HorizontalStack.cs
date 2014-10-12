@@ -23,7 +23,7 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
         }
 
-        public HorizontalStack(Rect area, GUISkin skin)
+        public HorizontalStack(Area area, GUISkin skin)
             : base(area, skin)
         {
         }
@@ -42,12 +42,12 @@ namespace SeriousGameToolbox.I2D.Widgets
             }
 
             Rect r = widgets[0].Area;
-            widgets[0].Area = new Rect(padding.x, padding.y, r.width, r.height);
+            widgets[0].Area = new Area(padding.x, padding.y, r.width, r.height);
 
             for (int i = 1; i < widgets.Count; i++)
             {
                 r = widgets[i-1].Area;
-                widgets[i].Area = new Rect(r.xMax + padding.x, padding.y, r.width, r.height);
+                widgets[i].Area = new Area(r.xMax + padding.x, padding.y, r.width, r.height);
             }
         }
     }

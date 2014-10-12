@@ -46,7 +46,7 @@ namespace SeriousGameToolbox.I2D.Decorators
             cache = new Dictionary<Color, Texture2D>(10);
         }
 
-        public SolidBackgroundDecorator(Rect area, Color color) : base(area)
+        public SolidBackgroundDecorator(Area area, Color color) : base(area)
         {
             this.color = color;
 

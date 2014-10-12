@@ -9,12 +9,12 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public abstract class Decorator : Widget
     {
-        public Decorator(Rect area) : base(area)
+        public Decorator(Area area) : base(area)
         {
 
         }
 
-        public Decorator(Rect area, GUISkin skin)
+        public Decorator(Area area, GUISkin skin)
             : base(area, skin)
         {
         }

@@ -9,7 +9,7 @@ namespace SeriousGameToolbox.I2D.Decorators
 {
     public class FrameDecorator : Decorator
     {
-        public FrameDecorator(Rect area, GUISkin skin)
+        public FrameDecorator(Area area, GUISkin skin)
             : base(area, skin)
         {
             this.defaultStyle = skin.GetStyle("frame");

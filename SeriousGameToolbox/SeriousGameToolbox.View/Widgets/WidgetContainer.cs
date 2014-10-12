@@ -40,7 +40,7 @@ namespace SeriousGameToolbox.I2D.Widgets
 
             Widget child = (widgets.FirstOrDefault(w => w.Name == levels[from]));
 
-            if (levels.Length == 1)
+            if (levels.Length - from == 1)
             {
                 return child;
             }
@@ -53,7 +53,13 @@ namespace SeriousGameToolbox.I2D.Widgets
             return null;
         }
 
-        public WidgetContainer(Rect area, GUISkin skin)
+        public WidgetContainer(Area area)
+            : base(area)
+        {
+            widgets = new List<Widget>(10);
+        }
+
+        public WidgetContainer(Area area, GUISkin skin)
             : base(area, skin)
         {
             widgets = new List<Widget>(10);

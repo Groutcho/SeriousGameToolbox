@@ -17,8 +17,8 @@ namespace SeriousGameToolbox.I2D.Widgets
             get { return skin; }
             set { skin = value; }
         }
-        protected Rect area;
-        public Rect Area
+        protected Area area;
+        public Area Area
         {
             get { return area; }
             set { area = value; }
@@ -43,7 +43,7 @@ namespace SeriousGameToolbox.I2D.Widgets
 
         public Rect Dimensions
         {
-            get { return new Rect(0, 0, area.width, area.height); }
+            get { return new Rect(0, 0, area.Width, area.Height); }
         }
 
         protected bool visible = true;
@@ -155,8 +155,8 @@ namespace SeriousGameToolbox.I2D.Widgets
         private void CheckIfAreaContainsMouse()
         {
             Vector2 mouse = Event.current.mousePosition;
-
-            areaContainsMouse = area.Contains(mouse);
+            Rect r = area;
+            areaContainsMouse = r.Contains(mouse);
         }
 
         private void CheckForDisplayChange()
@@ -187,19 +187,14 @@ namespace SeriousGameToolbox.I2D.Widgets
             visible = false;
         }
 
-        public Widget(Rect area)
+        public Widget(Area area)
         {
             this.area = area;
         }
 
-        public Widget(Rect area, GUISkin skin)
+        public Widget(Area area, GUISkin skin)
         {
             this.area = area;
-
-            if (skin == null)
-            {
-                throw new System.ArgumentNullException("skin");
-            }
             this.skin = skin;
         }
 
@@ -257,6 +252,11 @@ namespace SeriousGameToolbox.I2D.Widgets
         {
             Rect screen = new Rect(0, 0, Screen.width, Screen.height);
             return GetDockedRect(screen, dimensions, hAlign, vAlign, margin);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} ({1})", name, GetType());
         }
     }
 }

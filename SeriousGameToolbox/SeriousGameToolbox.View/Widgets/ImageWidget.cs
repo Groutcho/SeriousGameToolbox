@@ -6,7 +6,7 @@ namespace SeriousGameToolbox.I2D.Widgets
     {
         private Texture image;
 
-        public ImageWidget(Rect area, Texture image) : base(area)
+        public ImageWidget(Area area, Texture image) : base(area)
         {
             if (image != null)
             {

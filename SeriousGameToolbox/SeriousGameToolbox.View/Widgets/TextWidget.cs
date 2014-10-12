@@ -10,7 +10,17 @@ namespace SeriousGameToolbox.I2D.Widgets
     {
         public string Text { get; set; }
 
-        public TextWidget(Rect area, GUISkin skin, string text)
+        public TextWidget(Area area, string text)
+            : base(area)
+        {
+            if (text == null)
+            {
+                text = string.Empty;
+            }
+            this.Text = text;
+        }
+
+        public TextWidget(Area area, GUISkin skin, string text)
             : base(area, skin)
         {
             if (text == null)
