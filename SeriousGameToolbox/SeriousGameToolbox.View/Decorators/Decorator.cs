@@ -1,4 +1,4 @@
-﻿using SeriousGameToolbox.I2D.Widgets;
+﻿using SeriousGameToolbox.I2D.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

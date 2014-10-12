@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SeriousGameToolbox.I2D.Widgets
+namespace SeriousGameToolbox.I2D.Controls
 {
     public abstract class Widget : IDrawable
     {
