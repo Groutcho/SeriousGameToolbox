@@ -100,7 +100,7 @@ namespace SeriousGameToolbox.Controllers
         /// <summary>
         /// This is where the phase output is processed by the Game.
         /// </summary>
-        protected virtual void OnPhaseCompleted(Phase sender, PhaseCompletedEventArgs args)
+        protected virtual void OnPhaseCompleted(Phase sender, PhaseOutput args)
         {
       
         }

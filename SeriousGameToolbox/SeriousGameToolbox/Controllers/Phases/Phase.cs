@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SeriousGameToolbox.Controllers.Phases
 {
-    public delegate void PhaseCompletedEvent(Phase sender, PhaseCompletedEventArgs args);
+    public delegate void PhaseCompletedEvent(Phase sender, PhaseOutput args);
 
     public class Phase : IUpdatable, IDisposable
     {
@@ -30,7 +30,12 @@ namespace SeriousGameToolbox.Controllers.Phases
 
         }
 
-        protected virtual void RaisePhaseCompletedEvent(Phase sender, PhaseCompletedEventArgs args)
+        public virtual void Input(PhaseInput input)
+        {
+
+        }
+
+        protected virtual void RaisePhaseCompletedEvent(Phase sender, PhaseOutput args)
         {
             if (Completed != null)
             {

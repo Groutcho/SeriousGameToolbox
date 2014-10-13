@@ -5,13 +5,13 @@ using System.Text;
 
 namespace SeriousGameToolbox.Controllers.Phases
 {
-    public class PhaseCompletedEventArgs : EventArgs
+    public class PhaseOutput : EventArgs
     {
         private Phase phase;
 
         public Phase Phase { get { return phase; } }
 
-        public PhaseCompletedEventArgs(Phase phase)
+        public PhaseOutput(Phase phase)
         {
             if (phase == null)
             {

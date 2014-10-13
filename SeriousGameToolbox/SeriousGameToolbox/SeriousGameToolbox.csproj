@@ -45,7 +45,8 @@
     <Compile Include="Contracts\IDrawable.cs" />
     <Compile Include="Controllers\Game.cs" />
     <Compile Include="Controllers\Phases\Phase.cs" />
-    <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.cs" />
+    <Compile Include="Controllers\Phases\PhaseOutput.cs" />
+    <Compile Include="Controllers\Phases\PhaseInput.cs" />
     <Compile Include="Data\FileObject.cs" />
     <Compile Include="Data\Logins\Login.cs" />
     <Compile Include="Data\Logins\LoginContainer.cs" />
