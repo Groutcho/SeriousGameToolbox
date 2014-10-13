@@ -24,6 +24,8 @@ namespace SeriousGameToolbox.I2D
             this.Height = height;
         }
 
+        public Vector2 Center { get { return new Vector2(X + Width / 2, Y + Height / 2); } }
+
         public static implicit operator Rect(Area a)
         {
             return new Rect(a.X, a.Y, a.Width, a.Height);
