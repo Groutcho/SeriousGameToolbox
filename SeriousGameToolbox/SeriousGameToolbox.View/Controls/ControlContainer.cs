@@ -35,6 +35,7 @@ namespace SeriousGameToolbox.I2D.Controls
             }
 
             controls.Add(control);
+            control.AbsoluteArea = new Area(AbsoluteArea.X + control.Area.X, AbsoluteArea.Y + control.Area.Y, control.Area.Width, control.Area.Height);
             control.EventBubbled += OnEventBubbled;
         }
 
