@@ -13,10 +13,10 @@ namespace SeriousGameToolbox.I2D.Controls
             get { return padding; }
             set
             {
-                if (value != null && padding != value)
+                if (!padding.Equals(value))
                 {
                     padding = value;
-                    RecomputeAreas();
+                    RecomputeSpacingBetweenControls();
                 }
             }
         }
@@ -29,15 +29,25 @@ namespace SeriousGameToolbox.I2D.Controls
         public override void AddControl(Control Control)
         {
             base.AddControl(Control);
-            RecomputeAreas();
+            RecomputeSpacingBetweenControls();
         }
 
-        private void RecomputeAreas()
+        private void RecomputeSpacingBetweenControls()
         {
             if (controls.Count == 0)
             {
                 return;
             }
+
+            float cumulatedWidthOfAllControls = 0;
+
+            foreach (var item in controls)
+            {
+                cumulatedWidthOfAllControls += item.Dimensions.Width;
+            }
+
+            float actualWidth = Dimensions.Width - padding.X - padding.Height;
+            float spacing = (actualWidth - cumulatedWidthOfAllControls) / (controls.Count - 1);
 
             Area r = controls[0].Area;
             controls[0].Area = new Area(padding.X, padding.Y, r.Width, r.Height);
@@ -45,7 +55,7 @@ namespace SeriousGameToolbox.I2D.Controls
             for (int i = 1; i < controls.Count; i++)
             {
                 r = controls[i - 1].Area;
-                controls[i].Area = new Area(r.X + r.Width + padding.X, padding.Y, r.Width, r.Height);
+                controls[i].Area = new Area(r.X + r.Width + spacing, padding.Y, r.Width, r.Height);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace SeriousGameToolbox.I2D.Controls
     /// </summary>
     public abstract class Control : IDrawable
     {
-        private Area area = Area.None;
+        protected Area area = Area.None;
         protected bool visible = true;
         private string name = string.Empty;
 
@@ -26,10 +26,7 @@ namespace SeriousGameToolbox.I2D.Controls
             get { return absoluteArea; }
             set
             {
-                if (value != null)
-                {
-                    absoluteArea = value;
-                }
+                absoluteArea = value;
             }
         }
 
@@ -48,7 +45,7 @@ namespace SeriousGameToolbox.I2D.Controls
         public GUIStyle Style { get; set; }
 
         private Color tint = Color.white;
-        public Color Tint { get {return tint;} set { tint = value; } }
+        public Color Tint { get { return tint; } set { tint = value; } }
 
         public bool Visible
         {
@@ -118,11 +115,6 @@ namespace SeriousGameToolbox.I2D.Controls
 
         public Control(Area area)
         {
-            if (area == null)
-            {
-                throw new ArgumentNullException("area");
-            }
-
             this.area = area;
         }
 

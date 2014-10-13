@@ -29,8 +29,8 @@ namespace SeriousGameToolbox.I2D.Controls
                 f += Time.deltaTime * speed;
                 var v = Vector2.Lerp(currentPos, target, f);
 
-                Area.X = v.x;
-                Area.Y = v.y;
+                area.X = v.x;
+                area.Y = v.y;
 
                 if (f >= 1)
                 {

@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D
 {
-    public class Area
+    public struct Area
     {
         private static Area none = new Area(0, 0, 0, 0);
         public static Area None { get { return none; } }
 
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
+        public float X;
+        public float Y;
+        public float Width;
+        public float Height;
 
         public Area(float x, float y, float width, float height)
         {
@@ -33,18 +33,12 @@ namespace SeriousGameToolbox.I2D
 
         public override bool Equals(object obj)
         {
-            if (obj == this)
+            if (obj is Area)
             {
-                return true;
-            }
+                var other =(Area) obj ;
 
-            var other = obj as Area;
-
-            if (other != null)
-            {
                 return other.X == X && other.Y == Y && other.Width == Width && other.Height == Height;
             }
-
             return false;
         }
 

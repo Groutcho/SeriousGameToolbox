@@ -13,13 +13,6 @@ namespace SeriousGameToolbox.I2D.Tests.Controls
     public class Control_Tests
     {
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Contructor_NullArea_ThrowsArgumentNullException()
-        {
-            new FakeControl(null);
-        }
-
-        [Test]
         public void Contructor_ValidArea_SetsAreaProperty()
         {
             var area = new Area(10, 10, 200, 200);
