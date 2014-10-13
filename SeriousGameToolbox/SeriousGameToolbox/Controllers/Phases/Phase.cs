@@ -8,7 +8,7 @@ namespace SeriousGameToolbox.Controllers.Phases
 {
     public delegate void PhaseCompletedEvent(Phase sender, PhaseCompletedEventArgs args);
 
-    public class Phase : IUpdatable
+    public class Phase : IUpdatable, IDisposable
     {
         public string Name { get; set; }
 
@@ -48,6 +48,11 @@ namespace SeriousGameToolbox.Controllers.Phases
         {
             enabled = false;
             timeSinceStartInSeconds = 0;
+        }
+
+        public virtual void Dispose()
+        {
+            Name = null;
         }
     }
 }
