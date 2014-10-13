@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace SeriousGameToolbox.Logging
             string timeStamp = PreciseTimestamp ? (string.Format(":{0}ms", DateTime.Now.Millisecond.ToString())) : string.Empty;
 
             writer.WriteLine(string.Format("{0};{1};{2}{3}", gravity, message, DateTime.Now.ToString(), timeStamp));
-        }
+          }
 
         public void Dispose()
         {
@@ -35,5 +36,13 @@ namespace SeriousGameToolbox.Logging
         /// Will add a millisecond counter to the entry's time stamp.
         /// </summary>
         public bool PreciseTimestamp { get; set; }
+
+        public bool IncludeStackTrace { get; set; }
+
+        public void Log(Exception e)
+        {
+            writer.WriteLine(e.Message);
+            writer.Write(e.StackTrace);
+        }
     }
 }

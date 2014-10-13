@@ -32,5 +32,13 @@ namespace SeriousGameToolbox.Logging
 
 
         public bool PreciseTimestamp { get; set; }
+
+
+        public void Log(Exception e)
+        {
+            Debug.LogException(e);
+        }
+
+        public bool IncludeStackTrace { get; set; }
     }
 }

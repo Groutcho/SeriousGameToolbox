@@ -26,5 +26,23 @@ namespace SeriousGameToolbox.Tests.Logging.Data
 
 
         public bool PreciseTimestamp { get; set; }
+
+
+        public void Log(Exception e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IncludeStackTrace
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
