@@ -23,5 +23,8 @@ namespace SeriousGameToolbox.Tests.Logging.Data
                 Disposed(this, new EventArgs());
             }
         }
+
+
+        public bool PreciseTimestamp { get; set; }
     }
 }

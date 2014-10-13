@@ -11,6 +11,7 @@ namespace SeriousGameToolbox.Logging
     {
         StreamWriter writer;
 
+
         public FileLoggerChannel(string filename)
         {
             writer = new StreamWriter(filename);
@@ -19,7 +20,9 @@ namespace SeriousGameToolbox.Logging
 
         public void Log(object message, EntryGravity gravity)
         {
-            writer.WriteLine(string.Format("{0};{1};{2}", gravity, message, DateTime.Now.ToString()));
+            string timeStamp = PreciseTimestamp ? (string.Format(":{0}ms", DateTime.Now.Millisecond.ToString())) : string.Empty;
+
+            writer.WriteLine(string.Format("{0};{1};{2}{3}", gravity, message, DateTime.Now.ToString(), timeStamp));
         }
 
         public void Dispose()
@@ -27,5 +30,10 @@ namespace SeriousGameToolbox.Logging
             writer.Flush();
             writer.Dispose();
         }
+
+        /// <summary>
+        /// Will add a millisecond counter to the entry's time stamp.
+        /// </summary>
+        public bool PreciseTimestamp { get; set; }
     }
 }

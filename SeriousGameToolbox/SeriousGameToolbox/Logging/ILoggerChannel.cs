@@ -8,5 +8,6 @@ namespace SeriousGameToolbox.Logging
     public interface ILoggerChannel : IDisposable
     {
         void Log(object message, EntryGravity gravity);
+        bool PreciseTimestamp { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SeriousGameToolbox.Data.Texts;
 using SeriousGameToolbox.I2D.Tests.Controls;
+using SeriousGameToolbox.Logging;
 using SeriousGameToolbox.Tests.Controllers;
 using SeriousGameToolbox.Tests.Data;
 using System;
@@ -14,8 +15,11 @@ namespace SeriousGameToolbox.Tests.Console
     {
         static void Main(string[] args)
         {
-            Bubbling_Tests t = new Bubbling_Tests();
-            t.Event_Is_Bubbled_All_The_Way_Up();
+            Logger log = Logger.Instance;
+
+            log.AddChannel(new FileLoggerChannel(@"c:\temp\coco.txt") { PreciseTimestamp = true });
+
+            log.Log("toto");
         }
     }
 }
