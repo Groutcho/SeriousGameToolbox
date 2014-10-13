@@ -5,5 +5,5 @@ using System.Text;
 
 namespace SeriousGameToolbox.Pedagogy.Sessions
 {
-    public enum Success { Passed, Failed, Unknown }
+    public enum Success { Unknown, Failed, Passed }
 }

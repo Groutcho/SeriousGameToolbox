@@ -5,5 +5,5 @@ using System.Text;
 
 namespace SeriousGameToolbox.Pedagogy.Sessions
 {
-    public enum Completion { Completed, Incomplete, Unknown }
+    public enum Completion { Unknown, Incomplete, Completed }
 }
