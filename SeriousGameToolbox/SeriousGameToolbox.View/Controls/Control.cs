@@ -16,11 +16,22 @@ namespace SeriousGameToolbox.I2D.Controls
     /// </summary>
     public abstract class Control : IDrawable
     {
-        private Area area;
+        private Area area = Area.None;
         protected bool visible = true;
         private string name = string.Empty;
 
-        public Area AbsoluteArea { get; set; }
+        private Area absoluteArea = Area.None;
+        public Area AbsoluteArea
+        {
+            get { return absoluteArea; }
+            set
+            {
+                if (value != null)
+                {
+                    absoluteArea = value;
+                }
+            }
+        }
 
         public Area Area
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeriousGameToolbox.I2D.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class ButtonControl : Control, IInteractive
+    public class ButtonControl : Control
     {
         public GUIContent GuiContent { get; set; }
 
@@ -29,13 +30,8 @@ namespace SeriousGameToolbox.I2D.Controls
 
             if (GUI.Button(Dimensions, GuiContent, Style))
             {
-                if (Clicked != null)
-                {
-                    Clicked(Event.current.button);
-                }
+                BubbleEvent(new ControlClickedEvent(this, 0));
             }
         }
-
-        public event ControlClickedEvent Clicked;
     }
 }

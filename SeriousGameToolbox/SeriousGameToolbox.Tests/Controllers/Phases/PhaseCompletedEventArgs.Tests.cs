@@ -15,7 +15,7 @@ namespace SeriousGameToolbox.Tests.Controllers.Phases
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullPhase_ThrowsArgumentNullException()
         {
-            new PhaseCompletedEventArgs(null);
+            new PhaseOutput(null);
         }
     }
 }
