@@ -20,6 +20,8 @@ namespace SeriousGameToolbox.I2D.Controls
         protected bool visible = true;
         private string name = string.Empty;
 
+        public Area AbsoluteArea { get; set; }
+
         public Area Area
         {
             get { return area; }
@@ -33,6 +35,9 @@ namespace SeriousGameToolbox.I2D.Controls
         private static Resolution resolution;
 
         public GUIStyle Style { get; set; }
+
+        private Color tint = Color.white;
+        public Color Tint { get {return tint;} set { tint = value; } }
 
         public bool Visible
         {
@@ -126,6 +131,7 @@ namespace SeriousGameToolbox.I2D.Controls
             // note that BeginGroup will clip the content. That is why we put the decorators outside, since
             // some decorators need to draw outside the area. For instance, a frame.
             GUI.BeginGroup(area);
+            GUI.color = tint;
 
             DrawControl();
 
@@ -229,7 +235,7 @@ namespace SeriousGameToolbox.I2D.Controls
         protected virtual void DrawControl()
         {
         }
-        
+
         protected virtual void OnDisplayChanged(float width, float height)
         {
         }
