@@ -68,6 +68,7 @@
     <Compile Include="Logging\EntryGravity.cs" />
     <Compile Include="Logging\ILoggerChannel.cs" />
     <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\FileLoggerChannel.cs" />
     <Compile Include="Logging\UnityLoggerChannel.cs" />
     <Compile Include="Pedagogy\Scenarios\FreeRoamingScenario.cs" />
     <Compile Include="Pedagogy\Scenarios\IScenario.cs" />
