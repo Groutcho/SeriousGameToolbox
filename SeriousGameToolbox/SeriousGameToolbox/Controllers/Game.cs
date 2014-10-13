@@ -32,24 +32,18 @@ namespace SeriousGameToolbox.Controllers
         public Game()
         {
             phases = new List<Phase>(3);
-
-            Initialize();
-
-            Start();
         }
 
-        public void Update(double dt)
+        public virtual void Update(double dt)
         {
             timeSinceStartInSeconds += dt;
-            phases[currentPhaseIndex].Update(dt);
         }
 
-        protected virtual void Initialize()
+        public virtual void Update2d()
         {
+        }      
 
-        }
-
-        void Start()
+        protected void Start()
         {
             if (phases == null)
             {
@@ -84,7 +78,7 @@ namespace SeriousGameToolbox.Controllers
             
         }
 
-        private void StartPhase(Phase phase)
+        protected void StartPhase(Phase phase)
         {
             OnInitializePhase(phase);
 
@@ -92,17 +86,15 @@ namespace SeriousGameToolbox.Controllers
             phase.Start();
         }
 
-        private void StopPhase(Phase phase)
+        private void OnInitializePhase(Phase phase)
+        {
+           
+        }
+
+        protected void StopPhase(Phase phase)
         {
             phase.Stop();
             phase.Completed -= OnPhaseCompleted;
-        }
-
-        /// <summary>
-        /// This is where derived Game implementations will feed the phase with custom input.
-        /// </summary>
-        protected virtual void OnInitializePhase(Phase phase)
-        {
         }
 
         /// <summary>
@@ -110,13 +102,7 @@ namespace SeriousGameToolbox.Controllers
         /// </summary>
         protected virtual void OnPhaseCompleted(Phase sender, PhaseCompletedEventArgs args)
         {
-            StopPhase(phases[currentPhaseIndex]);
-
-            if (currentPhaseIndex < phases.Count)
-            {
-                currentPhaseIndex++;
-                StartPhase(phases[currentPhaseIndex]);
-            }          
+      
         }
     }
 }

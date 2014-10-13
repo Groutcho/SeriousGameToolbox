@@ -10,8 +10,7 @@ namespace SeriousGameToolbox.Controllers.Phases
 
     public class Phase : IUpdatable
     {
-        protected string name = string.Empty;
-        public string Name { get { return name; } }
+        public string Name { get; set; }
 
         protected double timeSinceStartInSeconds;
         protected bool enabled;
@@ -26,6 +25,11 @@ namespace SeriousGameToolbox.Controllers.Phases
             }
         }
 
+        public virtual void Update2d()
+        {
+
+        }
+
         protected virtual void RaisePhaseCompletedEvent(Phase sender, PhaseCompletedEventArgs args)
         {
             if (Completed != null)
@@ -34,13 +38,13 @@ namespace SeriousGameToolbox.Controllers.Phases
             }
         }
 
-        public void Start()
+        public virtual void Start()
         {
             timeSinceStartInSeconds = 0;
             enabled = true;
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             enabled = false;
             timeSinceStartInSeconds = 0;

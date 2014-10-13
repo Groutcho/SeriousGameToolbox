@@ -53,9 +53,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SeriousGameToolbox.I2D.Tests\SeriousGameToolbox.I2D.Tests.csproj">
+      <Project>{47d75688-895e-4a29-a55e-31c417eaf381}</Project>
+      <Name>SeriousGameToolbox.I2D.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeriousGameToolbox.Tests\SeriousGameToolbox.Tests.csproj">
       <Project>{4d1a4cda-73be-486d-ad6d-e9ff0478a3a7}</Project>
       <Name>SeriousGameToolbox.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeriousGameToolbox.View\SeriousGameToolbox.I2D.csproj">
+      <Project>{9caf538e-62f4-440c-a10d-9a722b33df98}</Project>
+      <Name>SeriousGameToolbox.I2D</Name>
     </ProjectReference>
     <ProjectReference Include="..\SeriousGameToolbox\SeriousGameToolbox.csproj">
       <Project>{7a78b10f-e051-4682-9401-7169c0d75ec5}</Project>

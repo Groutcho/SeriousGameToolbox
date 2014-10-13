@@ -1,4 +1,5 @@
 ﻿using SeriousGameToolbox.Data.Texts;
+using SeriousGameToolbox.I2D.Tests.Controls;
 using SeriousGameToolbox.Tests.Controllers;
 using SeriousGameToolbox.Tests.Data;
 using System;
@@ -13,8 +14,8 @@ namespace SeriousGameToolbox.Tests.Console
     {
         static void Main(string[] args)
         {
-            FileObject_Tests t = new FileObject_Tests();
-            t.StringOperator_Returns_CorrectValue();
+            Bubbling_Tests t = new Bubbling_Tests();
+            t.Event_Is_Bubbled_All_The_Way_Up();
         }
     }
 }

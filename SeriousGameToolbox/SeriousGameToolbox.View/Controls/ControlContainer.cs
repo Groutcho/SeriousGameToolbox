@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeriousGameToolbox.I2D.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,12 @@ namespace SeriousGameToolbox.I2D.Controls
             }
 
             controls.Add(control);
+            control.EventBubbled += OnEventBubbled;
+        }
+
+        protected virtual void OnEventBubbled(ControlEvent e)
+        {
+            BubbleEvent(e);
         }
 
         protected override void DrawControl()

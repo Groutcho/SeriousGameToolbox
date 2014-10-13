@@ -49,6 +49,8 @@
     <Compile Include="Decorators\SolidBackground.cs" />
     <Compile Include="Controls\BoxControl.cs" />
     <Compile Include="Controls\ButtonControl.cs" />
+    <Compile Include="Events\ControlEvent.cs" />
+    <Compile Include="UIFormatter.cs" />
     <Compile Include="VerticalAlignment.cs" />
     <Compile Include="HorizontalAlignment.cs" />
     <Compile Include="Controls\HorizontalStack.cs" />

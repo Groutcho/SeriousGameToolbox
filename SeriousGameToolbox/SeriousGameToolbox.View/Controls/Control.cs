@@ -1,5 +1,6 @@
 ﻿using SeriousGameToolbox.Contracts;
 using SeriousGameToolbox.I2D.Decorators;
+using SeriousGameToolbox.I2D.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
+    public delegate void BubbledEventBubbled(ControlEvent e);
+
     /// <summary>
     /// Base class for all controls.
     /// </summary>
@@ -230,5 +233,20 @@ namespace SeriousGameToolbox.I2D.Controls
         protected virtual void OnDisplayChanged(float width, float height)
         {
         }
+
+        protected void BubbleEvent(ControlEvent bubbledEvent)
+        {
+            if (bubbledEvent == null)
+            {
+                throw new ArgumentNullException("bubbledEvent");
+            }
+
+            if (EventBubbled != null)
+            {
+                EventBubbled(bubbledEvent);
+            }
+        }
+
+        public event BubbledEventBubbled EventBubbled;
     }
 }

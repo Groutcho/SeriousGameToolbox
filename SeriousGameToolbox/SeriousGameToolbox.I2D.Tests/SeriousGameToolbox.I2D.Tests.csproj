@@ -46,9 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Bubbling_Tests.cs" />
     <Compile Include="Controls\Control.Tests.cs" />
     <Compile Include="Controls\ControlContainer.Tests.cs" />
+    <Compile Include="Controls\Fakes\FakeBubbleControl.cs" />
     <Compile Include="Controls\Fakes\FakeControl.cs" />
+    <Compile Include="Controls\Fakes\FakeControlEvent.cs" />
+    <Compile Include="Events\ControlEvent.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
