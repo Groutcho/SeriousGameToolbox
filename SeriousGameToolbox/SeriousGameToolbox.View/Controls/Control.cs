@@ -1,4 +1,5 @@
 ﻿using SeriousGameToolbox.Contracts;
+using SeriousGameToolbox.I2D.Controls.Properties;
 using SeriousGameToolbox.I2D.Decorators;
 using SeriousGameToolbox.I2D.Events;
 using System;
@@ -53,9 +54,6 @@ namespace SeriousGameToolbox.I2D.Controls
 
         public GUIStyle Style { get; set; }
 
-        private Color tint = Color.white;
-        public Color Tint { get { return tint; } set { tint = value; } }
-
         public bool Visible
         {
             get
@@ -78,6 +76,12 @@ namespace SeriousGameToolbox.I2D.Controls
                     name = value;
                 }
             }
+        }
+
+        private List<ControlProperty> properties = new List<ControlProperty>();
+        public ICollection<ControlProperty> Properties
+        {
+            get { return properties; }
         }
 
         public static Area GetDockedArea(Area container, Area dimensions, HorizontalAlignement hAlign, VerticalAlignment vAlign, float margin = 0)
@@ -145,7 +149,12 @@ namespace SeriousGameToolbox.I2D.Controls
             // some decorators need to draw outside the area. For instance, a frame.
             GUI.BeginGroup(area);
 
-            GUI.color = tint;
+            GUI.color = Color.white;
+
+            foreach (ControlProperty property in properties)
+            {
+                property.Update2d();
+            }
 
             GUIUtility.RotateAroundPivot(rotation, Dimensions.Center);
 
