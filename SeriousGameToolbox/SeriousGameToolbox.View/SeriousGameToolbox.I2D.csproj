@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Controls\CursorControl.cs" />
+    <Compile Include="Controls\VerticalStack.cs" />
     <Compile Include="Decorators\Decorator.cs" />
     <Compile Include="Decorators\FrameDecorator.cs" />
     <Compile Include="Decorators\ScrollbarDecorator.cs" />

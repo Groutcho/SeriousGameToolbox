@@ -16,7 +16,7 @@ namespace SeriousGameToolbox.I2D.Controls
         /// <summary>
         /// The Controls contained in this container.
         /// </summary>
-        public ICollection<Control> Controls
+        public ICollection<Control> Children
         {
             get { return controls; }
         }
@@ -74,7 +74,7 @@ namespace SeriousGameToolbox.I2D.Controls
 
             string[] levels = xPath.Split('/');
 
-            Control child = (Controls.FirstOrDefault(w => w.Name == levels[from]));
+            Control child = (Children.FirstOrDefault(w => w.Name == levels[from]));
 
             if (levels.Length - from == 1)
             {

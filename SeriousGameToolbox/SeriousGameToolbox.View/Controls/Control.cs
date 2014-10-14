@@ -40,7 +40,16 @@ namespace SeriousGameToolbox.I2D.Controls
             get { return new Area(0, 0, area.Width, area.Height); }
         }
 
+        private float rotation;
+        public float Rotation
+        {
+            get { return rotation; }
+            set { rotation = value; }
+        }
+
         private static Resolution resolution;
+
+        public static ICollection<Control> Controls = new List<Control>(25);
 
         public GUIStyle Style { get; set; }
 
@@ -116,6 +125,7 @@ namespace SeriousGameToolbox.I2D.Controls
         public Control(Area area)
         {
             this.area = area;
+            Controls.Add(this);
         }
 
         public virtual void Draw()
@@ -134,7 +144,10 @@ namespace SeriousGameToolbox.I2D.Controls
             // note that BeginGroup will clip the content. That is why we put the decorators outside, since
             // some decorators need to draw outside the area. For instance, a frame.
             GUI.BeginGroup(area);
+
             GUI.color = tint;
+
+            GUIUtility.RotateAroundPivot(rotation, Dimensions.Center);
 
             DrawControl();
 
@@ -220,12 +233,12 @@ namespace SeriousGameToolbox.I2D.Controls
             }
         }
 
-        public void Show()
+        public virtual void Show()
         {
             visible = true;
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             visible = false;
         }

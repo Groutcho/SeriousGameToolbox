@@ -42,7 +42,7 @@ namespace SeriousGameToolbox.I2D.Tests.Controls
             var button4 = new FakeControl(new Area(5 + 40, 5, buttonWidth, buttonHeight));
             button4.Name = "button4";
 
-            var container = new BoxControl(new Area(5 + 40, 5, 300, 300));
+            var container = new ControlContainer(new Area(5 + 40, 5, 300, 300));
             container.Name = "container";
 
             var button5 = new FakeControl(new Area(10, 10, buttonWidth, buttonHeight));

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SeriousGameToolbox.I2D.Controls
 {
-    public class BoxControl : ControlContainer
+    public class BoxControl : Control
     {
         public BoxControl(Area area) : base(area)
         {
@@ -15,8 +15,8 @@ namespace SeriousGameToolbox.I2D.Controls
 
         protected override void DrawControl()
         {
-            GUI.Box(Dimensions, GUIContent.none, Style);
-            base.DrawControl();            
+            base.DrawControl();  
+            GUI.Box(Dimensions, GUIContent.none, Style);                      
         }
     }
 }

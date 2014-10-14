@@ -9,7 +9,19 @@ namespace SeriousGameToolbox.I2D.Controls
 {
     public class ButtonControl : Control
     {
-        public GUIContent GuiContent { get; set; }
+        private GUIContent guiContent = GUIContent.none;
+        public GUIContent GuiContent
+        {
+            get { return guiContent; }
+
+            set
+            {
+                if (value != null)
+                {
+                    guiContent = value;
+                }
+            }
+        }
 
         public ButtonControl(Area area)
             : base(area) { }

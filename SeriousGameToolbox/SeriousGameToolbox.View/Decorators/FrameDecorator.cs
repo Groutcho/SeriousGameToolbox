@@ -23,6 +23,11 @@ namespace SeriousGameToolbox.I2D.Decorators
         {
             base.Draw();
 
+            if (!visible)
+            {
+                return;
+            }
+
             if (Blink)
             {
                 f += Time.deltaTime * 4;
