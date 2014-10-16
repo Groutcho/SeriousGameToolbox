@@ -197,7 +197,8 @@ namespace SeriousGameToolbox.I2D.Controls
         }
 
         protected List<Decorator> frontDecorators = new List<Decorator>(2);
-        private bool areaContainsMouse;
+        protected bool areaContainsMouse;
+        public virtual bool ContainsMouse { get { return areaContainsMouse; } }
         public ICollection<Decorator> FrontDecorators
         {
             get
