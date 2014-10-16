@@ -9,11 +9,10 @@ namespace SeriousGameToolbox.I2D
     /// </summary>
     public class I2DController : IUpdatable
     {
-        List<ScreenControl> screens;
+        List<ScreenControl> screens = new List<ScreenControl>(16);
 
         public I2DController()
         {
-            screens = new List<ScreenControl>();
         }
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace SeriousGameToolbox.I2D
 
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             foreach (ScreenControl screen in screens)
             {
