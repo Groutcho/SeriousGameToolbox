@@ -11,6 +11,10 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
         private int min;
         private float scaled;
 
+        public int Raw { get { return raw; } set { raw = value; } }
+        public int Min { get { return min; } set { min = value; } }
+        public int Max { get { return max; } set { max = value; } }
+
         public Score(int raw, int min, int max)
         {
             if (raw > max)

@@ -1,5 +1,7 @@
 ﻿using SeriousGameToolbox.Contracts;
 using SeriousGameToolbox.I2D.Controls;
+using SeriousGameToolbox.I2D.Events;
+using System;
 using System.Collections.Generic;
 
 namespace SeriousGameToolbox.I2D
@@ -40,5 +42,20 @@ namespace SeriousGameToolbox.I2D
                 screen.Draw();
             }
         }
+
+        protected void BubbleEvent(ControlEvent bubbledEvent)
+        {
+            if (bubbledEvent == null)
+            {
+                throw new ArgumentNullException("bubbledEvent");
+            }
+
+            if (EventBubbled != null)
+            {
+                EventBubbled(bubbledEvent);
+            }
+        }
+
+        public event BubbledEventBubbled EventBubbled;
     }
 }

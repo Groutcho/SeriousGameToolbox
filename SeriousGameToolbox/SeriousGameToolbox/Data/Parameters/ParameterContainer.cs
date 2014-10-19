@@ -10,7 +10,7 @@ namespace SeriousGameToolbox.Data.Parameters
     {
         private Dictionary<string, Parameter> dict;
 
-        static IParameterContainerParser currentParser;
+        static IParameterContainerParser currentParser = new XmlParameterContainerParser();
         public static IParameterContainerParser Parser { get; set; }
 
         public static ParameterContainer Load(string filename)
@@ -31,7 +31,7 @@ namespace SeriousGameToolbox.Data.Parameters
                 content = r.ReadToEnd();
             }
 
-            currentParser = Parser ?? new XmlParameterContainerParser(filename);
+            currentParser = Parser ?? new XmlParameterContainerParser();
 
             return Parse(content);
         }
@@ -39,6 +39,12 @@ namespace SeriousGameToolbox.Data.Parameters
         public static ParameterContainer Parse(string content)
         {
             return currentParser.Parse(content);
+        }
+
+        public void Save(string filename)
+        {
+            currentParser = Parser ?? new XmlParameterContainerParser();
+            currentParser.Save(this, filename);
         }
 
         private List<Parameter> parameters;
@@ -61,6 +67,16 @@ namespace SeriousGameToolbox.Data.Parameters
             }
 
             return (T)p.GetValue();
+        }
+
+        public Parameter GetParameter(string name)
+        {
+            if (!dict.ContainsKey(name))
+            {
+                throw new KeyNotFoundException("the parameter " + name + " is not present in the parameter container.");
+            }
+
+            return dict[name];
         }
 
         public ParameterContainer(ParameterContainer original)

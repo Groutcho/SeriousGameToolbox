@@ -36,7 +36,8 @@ namespace SeriousGameToolbox.Logging
 
         public void Log(Exception e)
         {
-            Debug.LogException(e);
+            Debug.LogError(e.Message);
+            Debug.LogError(e.StackTrace);
         }
 
         public bool IncludeStackTrace { get; set; }

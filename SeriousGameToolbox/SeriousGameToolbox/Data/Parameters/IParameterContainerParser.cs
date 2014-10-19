@@ -7,7 +7,7 @@ namespace SeriousGameToolbox.Data.Parameters
 {
     public interface IParameterContainerParser
     {
-        void Save(ParameterContainer container);
+        void Save(ParameterContainer container, string filename);
         ParameterContainer Parse(string content);
     }
 }

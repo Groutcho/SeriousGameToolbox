@@ -14,27 +14,11 @@ namespace SeriousGameToolbox.Data.Parameters
             public InvalidParameterTypeException(string message) : base(message) { }
         }
 
-        private string filename;
         protected IFormatProvider formatProvider = CultureInfo.InvariantCulture;
-
-        public XmlParameterContainerParser(string filename)
-        {
-            if (filename == null)
-            {
-                throw new ArgumentNullException("filename");
-            }
-
-            if (filename == string.Empty)
-            {
-                throw new ArgumentException("filename cannot be empty");
-            }
-
-            this.filename = filename;
-        }
 
         #region SAVING
 
-        public void Save(ParameterContainer parameters)
+        public void Save(ParameterContainer parameters, string filename)
         {
             XDocument doc = new XDocument(
                 new XElement("parameters", from p in parameters.Parameters select GetParameter(p))
@@ -155,7 +139,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         #region LOADING
 
-        public ParameterContainer Load()
+        public ParameterContainer Load(string filename)
         {
             XDocument doc = XDocument.Load(filename);
 

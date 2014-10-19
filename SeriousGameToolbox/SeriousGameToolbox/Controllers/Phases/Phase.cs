@@ -16,6 +16,7 @@ namespace SeriousGameToolbox.Controllers.Phases
         protected bool enabled;
 
         public event PhaseCompletedEvent Completed;
+        public event EventHandler RequestExitApplication;
 
         public virtual void Update(double dt)
         {
@@ -33,6 +34,14 @@ namespace SeriousGameToolbox.Controllers.Phases
         public virtual void Input(PhaseInput input)
         {
 
+        }
+
+        protected virtual void RaiseRequestExitApplication()
+        {
+            if (RequestExitApplication != null)
+            {
+                RequestExitApplication(this, new EventArgs());
+            }
         }
 
         protected virtual void RaisePhaseCompletedEvent(Phase sender, PhaseOutput args)

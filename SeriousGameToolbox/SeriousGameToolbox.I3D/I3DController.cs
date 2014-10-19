@@ -80,6 +80,10 @@ namespace SeriousGameToolbox.I3D
             {
                 currentCamera = Camera.main;
             }
+            if (currentCamera == null)
+            {
+                throw new NullReferenceException("There is no camera to click with.");
+            }
 
             Ray r = currentCamera.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, 10));
 

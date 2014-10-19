@@ -45,20 +45,6 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Constructor_NullUri_ThrowsArgumentNullException()
-        {
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(null);
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentException))]
-        public void Constructor_EmptyUri_ThrowsArgumentException()
-        {
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(string.Empty);
-        }
-
-        [Test]
         public void Load_CreatesValidCollection()
         {
             string content = Properties.Resources.default_settings;
@@ -68,9 +54,9 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
                 w.Write(content);
             }
 
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser();
 
-            var collection = loader.Load();
+            var collection = loader.Load(filename);
 
             bool b = collection.Get<bool>("TEST_BOOL");
             int i = collection.Get<int>("TEST_INT");
@@ -83,11 +69,11 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(XmlParameterContainerParser.InvalidParameterTypeException))]
         public void Save_UnknownParameterTypeAsked_ThrowsInvalidParameterTypeException()
         {
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser();
 
             var invalidCollection = new ParameterContainer(new List<Parameter> { new InvalidParameter() });
 
-            loader.Save(invalidCollection);
+            loader.Save(invalidCollection, filename);
         }
 
         [Test]
@@ -100,11 +86,11 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
                 w.Write(content);
             }
 
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
+            XmlParameterContainerParser loader = new XmlParameterContainerParser();
 
-            var collection = loader.Load();
-            loader.Save(collection);
-            collection = loader.Load();
+            var collection = loader.Load(filename);
+            loader.Save(collection, filename);
+            collection = loader.Load(filename);
 
             bool b = collection.Get<bool>("TEST_BOOL");
             int i = collection.Get<int>("TEST_INT");
@@ -175,9 +161,9 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
 
             ParameterContainer fullCollection = new ParameterContainer(list);
 
-            XmlParameterContainerParser loader = new XmlParameterContainerParser(filename);
-            loader.Save(fullCollection);
-            var loadedCollection = loader.Load();
+            XmlParameterContainerParser loader = new XmlParameterContainerParser();
+            loader.Save(fullCollection, filename);
+            var loadedCollection = loader.Load(filename);
 
             bool actualBool = loadedCollection.Get<bool>("bool");
             string actualString = loadedCollection.Get<string>("string");

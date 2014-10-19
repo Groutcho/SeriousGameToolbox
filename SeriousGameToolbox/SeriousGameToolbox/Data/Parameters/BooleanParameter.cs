@@ -46,5 +46,10 @@ namespace SeriousGameToolbox.Data.Parameters
 
             return (other.Id == Id && value == otherAsBoolean.value && other.Caption == Caption);
         }
+
+        public void SetValue(bool value)
+        {
+            this.value = value;
+        }
     }
 }
