@@ -71,10 +71,10 @@ namespace SeriousGameToolbox.I3D
 
         }
 
-        public GameObject GetClickedObject()
+        public Ray GetMouseRay()
         {
             Vector2 mousePos = Input.mousePosition;
-            RaycastHit hit;
+            
 
             if (currentCamera == null)
             {
@@ -82,13 +82,32 @@ namespace SeriousGameToolbox.I3D
             }
             if (currentCamera == null)
             {
-                throw new NullReferenceException("There is no camera to click with.");
+                throw new NullReferenceException("There is no camera to project a ray from.");
             }
 
-            Ray r = currentCamera.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, 10));
+            return  currentCamera.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, 10));
+        }
 
-            Debug.DrawRay(r.origin, r.direction * 50, Color.red, 2);
+        public GameObject GetClickedObject()
+        {
+            RaycastHit hit;
+            Ray r = GetMouseRay();
+
             if (Physics.Raycast(r, out hit))
+            {
+                return hit.collider.gameObject;
+            }
+
+            return null;
+        }
+
+        public GameObject GetClickedObject(string layer)
+        {
+            LayerMask mask = LayerMask.NameToLayer(layer);
+            RaycastHit hit;
+            Ray r = GetMouseRay();
+
+            if (Physics.Raycast(r, out hit, mask))
             {
                 return hit.collider.gameObject;
             }
