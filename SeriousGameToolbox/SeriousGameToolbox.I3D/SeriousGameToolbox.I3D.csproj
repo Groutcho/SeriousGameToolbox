@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Components\InteractiveComponent.cs" />
     <Compile Include="I3DController.cs" />
+    <Compile Include="Imports\Import.cs" />
     <Compile Include="Injector.cs" />
     <Compile Include="LevelLoadedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
