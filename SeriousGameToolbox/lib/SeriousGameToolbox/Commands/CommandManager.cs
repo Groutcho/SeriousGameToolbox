@@ -8,6 +8,11 @@ namespace SeriousGameToolbox.Commands
 {
     public delegate void BroadcastCommandDelegate(BroadcastCommandDelegateArgs args);
 
+    /// <summary>
+    /// The Command manager will receive key sequences 
+    /// to evaluate from one or more Command listeners, 
+    /// and will translate them to actual commands broadcast to all subscribed objects.
+    /// </summary>
     public static class CommandManager
     {
         static CommandContainer db;

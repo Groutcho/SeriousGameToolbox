@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SeriousGameToolbox.Commands
 {
+    /// <summary>
+    /// A Command that is triggered by a key sequence, useful for handling debugging cases (like restarting a phase)
+    /// </summary>
     public class Command : IEquatable<Command>
     {
         private string effect = CommandEffects.NoEffect;

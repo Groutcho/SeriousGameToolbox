@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SeriousGameToolbox.Commands
 {
+    /// <summary>
+    /// Responsible for the binding between a key sequence captured by a listener and the stored commands.
+    /// </summary>
     public class CommandContainer
     {
         private List<Command> commands;
