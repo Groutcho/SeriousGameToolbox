@@ -42,6 +42,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BroadcastCommandDelegateArgs.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandContainer.cs" />
+    <Compile Include="Commands\CommandEffects.cs" />
+    <Compile Include="Commands\CommandManager.cs" />
+    <Compile Include="Commands\Keys.cs" />
     <Compile Include="Contracts\IDrawable.cs" />
     <Compile Include="Controllers\Game.cs" />
     <Compile Include="Controllers\Phases\Phase.cs" />
@@ -68,6 +74,7 @@
     <Compile Include="Data\Texts\XmlTextContainerParser.cs" />
     <Compile Include="Data\Users\Administrator.cs" />
     <Compile Include="Data\Users\User.cs" />
+    <Compile Include="Guards\Guard.cs" />
     <Compile Include="Logging\EntryGravity.cs" />
     <Compile Include="Logging\ILoggerChannel.cs" />
     <Compile Include="Logging\Logger.cs" />
