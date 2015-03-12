@@ -1,30 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox", "SeriousGameToolbox\SeriousGameToolbox.csproj", "{7A78B10F-E051-4682-9401-7169C0D75EC5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.Tests", "SeriousGameToolbox.Tests\SeriousGameToolbox.Tests.csproj", "{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D43F996-3BC5-4E88-8E27-43CC2ABA0CCA}"
 	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "SeriousGameToolbox.Tests.Console\Console.csproj", "{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox", "lib\SeriousGameToolbox\SeriousGameToolbox.csproj", "{7A78B10F-E051-4682-9401-7169C0D75EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D", "SeriousGameToolbox.View\SeriousGameToolbox.I2D.csproj", "{9CAF538E-62F4-440C-A10D-9A722B33DF98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D", "lib\SeriousGameToolbox.I2D\SeriousGameToolbox.I2D.csproj", "{9CAF538E-62F4-440C-A10D-9A722B33DF98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I3D", "SeriousGameToolbox.I3D\SeriousGameToolbox.I3D.csproj", "{935EDE6F-2B85-444F-8569-20F3C72321EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I3D", "lib\SeriousGameToolbox.I3D\SeriousGameToolbox.I3D.csproj", "{935EDE6F-2B85-444F-8569-20F3C72321EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D.Tests", "SeriousGameToolbox.I2D.Tests\SeriousGameToolbox.I2D.Tests.csproj", "{47D75688-895E-4A29-A55E-31C417EAF381}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{E0F1BFFE-ED4C-44C9-8345-9140DFEE2F3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I2D", "I2D", "{42AA569B-385F-42A0-802F-5239CF2EFB4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.Tests", "tests\SeriousGameToolbox.Tests\SeriousGameToolbox.Tests.csproj", "{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I3D", "I3D", "{F5B03410-4CAE-471A-A889-CF41A50B99F2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{26FB63F5-5559-4FD3-824E-5766F9FFA206}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FDB9C3C6-E152-4E66-BACB-90BE7CBEC804}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriousGameToolbox.I2D.Tests", "tests\SeriousGameToolbox.I2D.Tests\SeriousGameToolbox.I2D.Tests.csproj", "{47D75688-895E-4A29-A55E-31C417EAF381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +35,6 @@ Global
 		{7A78B10F-E051-4682-9401-7169C0D75EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A78B10F-E051-4682-9401-7169C0D75EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A78B10F-E051-4682-9401-7169C0D75EC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CAF538E-62F4-440C-A10D-9A722B33DF98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CAF538E-62F4-440C-A10D-9A722B33DF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CAF538E-62F4-440C-A10D-9A722B33DF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,6 +43,10 @@ Global
 		{935EDE6F-2B85-444F-8569-20F3C72321EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{935EDE6F-2B85-444F-8569-20F3C72321EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{935EDE6F-2B85-444F-8569-20F3C72321EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47D75688-895E-4A29-A55E-31C417EAF381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47D75688-895E-4A29-A55E-31C417EAF381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D75688-895E-4A29-A55E-31C417EAF381}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,9 +56,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EF7B141C-5202-4EB8-91A1-4D3C46F3505F} = {FDB9C3C6-E152-4E66-BACB-90BE7CBEC804}
-		{9CAF538E-62F4-440C-A10D-9A722B33DF98} = {42AA569B-385F-42A0-802F-5239CF2EFB4D}
-		{935EDE6F-2B85-444F-8569-20F3C72321EB} = {F5B03410-4CAE-471A-A889-CF41A50B99F2}
-		{47D75688-895E-4A29-A55E-31C417EAF381} = {42AA569B-385F-42A0-802F-5239CF2EFB4D}
+		{7A78B10F-E051-4682-9401-7169C0D75EC5} = {E0F1BFFE-ED4C-44C9-8345-9140DFEE2F3F}
+		{9CAF538E-62F4-440C-A10D-9A722B33DF98} = {E0F1BFFE-ED4C-44C9-8345-9140DFEE2F3F}
+		{935EDE6F-2B85-444F-8569-20F3C72321EB} = {E0F1BFFE-ED4C-44C9-8345-9140DFEE2F3F}
+		{4D1A4CDA-73BE-486D-AD6D-E9FF0478A3A7} = {26FB63F5-5559-4FD3-824E-5766F9FFA206}
+		{47D75688-895E-4A29-A55E-31C417EAF381} = {26FB63F5-5559-4FD3-824E-5766F9FFA206}
 	EndGlobalSection
 EndGlobal

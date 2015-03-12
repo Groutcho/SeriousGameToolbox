@@ -74,7 +74,6 @@ namespace SeriousGameToolbox.I3D
         public Ray GetMouseRay()
         {
             Vector2 mousePos = Input.mousePosition;
-            
 
             if (currentCamera == null)
             {
