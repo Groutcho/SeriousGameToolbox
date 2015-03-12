@@ -12,7 +12,6 @@ namespace SeriousGameToolbox.Logging
     {
         StreamWriter writer;
 
-
         public FileLoggerChannel(string filename)
         {
             writer = new StreamWriter(filename);
