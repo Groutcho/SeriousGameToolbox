@@ -13,6 +13,7 @@ namespace SeriousGameToolbox.Logging
         private Logger()
         {
             channels = new List<ILoggerChannel>(2);
+            channels.Add(new UnityLoggerChannel());
         }
 
         public void ClearChannels()
