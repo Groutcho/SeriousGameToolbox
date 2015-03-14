@@ -1,6 +1,6 @@
 rem will create a coverity cov-int package ready to send to analysis
-rmdir cov-int /s
-del cov-int.zip
+rmdir cov-int /s /q
+del cov-int.zip /q
 
 set cov_path=%~dp0
 set sln_path=%~dp0..\
