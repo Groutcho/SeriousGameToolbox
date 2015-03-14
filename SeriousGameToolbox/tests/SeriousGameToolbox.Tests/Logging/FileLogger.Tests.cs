@@ -28,7 +28,7 @@ namespace SeriousGameToolbox.Tests.Logging
             string textTolog = "This is line #1";
             FileLoggerChannel logger = new FileLoggerChannel(standardLoggerFilename, append: false);
 
-            logger.Log(textTolog, EntryGravity.Info);
+            logger.Log(textTolog, EntryGravity.info);
             logger.Dispose();
 
             StreamReader file = File.OpenText(standardLoggerFilename);
@@ -37,13 +37,13 @@ namespace SeriousGameToolbox.Tests.Logging
             {
                 string line1 = file.ReadLine();
                 string[] line1_split = line1.Split(';');
-                Assert.AreEqual("DEBUG SESSION", line1_split[0]);
+                Assert.AreEqual("LOG SESSION", line1_split[0].Trim());
                 file.ReadLine();
                 string line3 = file.ReadLine();
                 string[] line3_split = line3.Split(';');
 
-                Assert.AreEqual("Info", line3_split[0]);
-                Assert.AreEqual(textTolog, line3_split[1]);
+                Assert.AreEqual("info", line3_split[2].Trim());
+                Assert.AreEqual(textTolog, line3_split[3].Trim());
             }
             finally
             {

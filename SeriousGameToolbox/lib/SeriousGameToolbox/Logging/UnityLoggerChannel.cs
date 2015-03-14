@@ -10,17 +10,17 @@ namespace SeriousGameToolbox.Logging
     {
         public void Log(object message, EntryGravity gravity)
         {
-            string messageStr = message.ToString() + (PreciseTimestamp ? DateTime.Now.Millisecond.ToString() : string.Empty);
+            string messageStr = message.ToString();
 
             switch (gravity)
             {
-                case EntryGravity.Trace:
-                case EntryGravity.Info: Debug.Log(messageStr);
+                case EntryGravity.trace:
+                case EntryGravity.info: Debug.Log(messageStr);
                     break;
                 case EntryGravity.Warning: Debug.LogWarning(messageStr);
                     break;
-                case EntryGravity.Error:
-                case EntryGravity.Critical: Debug.LogError(messageStr);
+                case EntryGravity.ERROR:
+                case EntryGravity.CRITICAL: Debug.LogError(messageStr);
                     break;
             }
         }

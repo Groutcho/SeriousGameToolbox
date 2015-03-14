@@ -35,11 +35,11 @@ namespace SeriousGameToolbox.Commands
         {
             Command result = db.GetCommand(sequence);
 
-            Logger.Instance.Log("Received command : " + Command.Concatenate(sequence), EntryGravity.Info);
+            Logger.Instance.Log("Received command : " + Command.Concatenate(sequence), EntryGravity.info);
 
             if (result != null)
             {
-                Logger.Instance.Log("Evaluated command : " + result.ToString(), EntryGravity.Info);
+                Logger.Instance.Log("Evaluated command : " + result.ToString(), EntryGravity.info);
 
                 if (CommandBroadcast != null)
                 {

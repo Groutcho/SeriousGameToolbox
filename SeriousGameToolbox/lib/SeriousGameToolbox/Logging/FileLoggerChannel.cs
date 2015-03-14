@@ -11,11 +11,38 @@ namespace SeriousGameToolbox.Logging
     public class FileLoggerChannel : ILoggerChannel
     {
         StreamWriter writer;
+        DateTime startTime;
+
+        private string Today
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
+            }
+        }
+
+        private string Hour
+        {
+            get
+            {
+                return string.Format("{0}:{1}:{2}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            }
+        }
+
+        private string Elapsed
+        {
+            get
+            {
+                TimeSpan ts = DateTime.Now - startTime;
+                return string.Format("Since start : {0}:{1}:{2}", ts.Hours, ts.Minutes, ts.Seconds);
+            }
+        }
 
         public FileLoggerChannel(string filename, bool append = true)
         {
+            startTime = DateTime.Now;
             writer = new StreamWriter(filename, append: append);
-            writer.WriteLine("DEBUG SESSION;" + DateTime.Now.ToString());
+            writer.WriteLine(string.Format("LOG SESSION ; [{0} {1}]",  Today, Hour));
             writer.WriteLine();
             writer.AutoFlush = true;
         }
@@ -24,8 +51,7 @@ namespace SeriousGameToolbox.Logging
         {
             try
             {
-                string timeStamp = PreciseTimestamp ? (string.Format(":{0}ms", DateTime.Now.Millisecond.ToString())) : string.Empty;
-                writer.WriteLine(string.Format("{0};{1};{2}{3}", gravity, message, DateTime.Now.ToString(), timeStamp));
+                writer.WriteLine(string.Format("[{0} {1}] ; {2} ; {3} ; {4}", Today, Hour, Elapsed, gravity.ToString(), message));
             }
             catch
             {
@@ -38,11 +64,6 @@ namespace SeriousGameToolbox.Logging
             writer.Flush();
             writer.Dispose();
         }
-
-        /// <summary>
-        /// Will add a millisecond counter to the entry's time stamp.
-        /// </summary>
-        public bool PreciseTimestamp { get; set; }
 
         public bool IncludeStackTrace { get; set; }
 

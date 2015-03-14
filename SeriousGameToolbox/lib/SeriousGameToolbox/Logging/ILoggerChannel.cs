@@ -9,7 +9,6 @@ namespace SeriousGameToolbox.Logging
     {
         void Log(object message, EntryGravity gravity);
         void Log(Exception e);
-        bool PreciseTimestamp { get; set; }
         bool IncludeStackTrace { get; set; }
     }
 }

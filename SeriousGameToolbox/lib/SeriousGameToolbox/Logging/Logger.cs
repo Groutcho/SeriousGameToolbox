@@ -46,7 +46,7 @@ namespace SeriousGameToolbox.Logging
 
         public void Log(object message)
         {
-            Log(message, EntryGravity.Info);
+            Log(message, EntryGravity.info);
         }
 
         public void Log(object message, EntryGravity gravity)

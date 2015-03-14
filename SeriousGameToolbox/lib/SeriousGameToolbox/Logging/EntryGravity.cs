@@ -7,10 +7,10 @@ namespace SeriousGameToolbox.Logging
 {
     public enum EntryGravity
     {
-        Trace,
-        Info,
+        trace,
+        info,
         Warning,
-        Error,
-        Critical
+        ERROR,
+        CRITICAL
     }
 }
