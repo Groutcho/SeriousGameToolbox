@@ -27,6 +27,7 @@ namespace SeriousGameToolbox.Tests.Logging
         {
             string textTolog = "This is line #1";
             FileLoggerChannel logger = new FileLoggerChannel(standardLoggerFilename, append: false);
+
             logger.Log(textTolog, EntryGravity.Info);
             logger.Dispose();
 

@@ -8,14 +8,9 @@
 
         public Login(string id, string password)
         {
-            if (id == null)
-            {
-                throw new System.ArgumentNullException("id");
-            }
-            if (password == null)
-            {
-                throw new System.ArgumentNullException("password");
-            }
+            Guards.Guard.AgainstNullArgument("id", id);
+            Guards.Guard.AgainstNullArgument("password", password);
+
             if (id.Trim() == string.Empty)
             {
                 throw new System.ArgumentException("id cannot be empty");

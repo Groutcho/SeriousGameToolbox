@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Pedagogy;
 using SeriousGameToolbox.Pedagogy.Sessions;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Threading;
 
@@ -58,7 +59,7 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
         [ExpectedException(typeof(ArgumentNullException))]
         public void TraineeConstructor_NullArgument_ThrowsArgumentNullException()
         {
-            new Session(null);
+            new Session(Deliberate.Null as Trainee);
         }
 
         [Test]

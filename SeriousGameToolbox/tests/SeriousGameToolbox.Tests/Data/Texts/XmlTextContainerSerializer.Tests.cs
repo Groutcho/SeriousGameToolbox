@@ -80,7 +80,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [ExpectedException(typeof(ArgumentNullException))]
         public void LoadFromFilename_NullFilename_ThrowsArgumentNullException()
         {
-            TextContainer.Load(null);
+            TextContainer.Load(Deliberate.Null as string);
         }
 
         [Test]

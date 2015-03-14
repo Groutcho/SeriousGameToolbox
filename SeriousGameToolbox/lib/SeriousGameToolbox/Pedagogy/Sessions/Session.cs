@@ -42,11 +42,7 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
         public Session(Trainee trainee) :
             this()
         {
-            if (trainee == null)
-            {
-                throw new ArgumentNullException("trainee");
-            }
-
+            Guards.Guard.AgainstNullArgument("trainee", trainee);
             this.trainee = trainee;
         }
     }

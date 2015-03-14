@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Logins;
 using SeriousGameToolbox.Pedagogy.Sessions;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace SeriousGameToolbox.Tests.Data.Logins
         [ExpectedException(typeof(ArgumentNullException))]
         public void EnumerableConstructor_NullArgument_ThrowsArgumentNullException()
         {
-            new LoginContainer(null);
+            new LoginContainer(Deliberate.Null as IEnumerable<Login>);
         }
 
         [Test]

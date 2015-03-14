@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.I2D.Controls;
 using SeriousGameToolbox.I2D.Tests.Controls.Fakes;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace SeriousGameToolbox.I2D.Tests.Events
         [ExpectedException(typeof(ArgumentNullException))]
         public void ControlEvent_NullSender_ThrowsArgumentNullException()
         {
-            new FakeControlEvent(null);
+            new FakeControlEvent(Deliberate.Null as Control);
         }
 
         [Test]

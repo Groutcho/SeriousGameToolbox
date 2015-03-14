@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace SeriousGameToolbox.Data.Texts
@@ -18,6 +19,12 @@ namespace SeriousGameToolbox.Data.Texts
             Guards.Guard.AgainstNullOrEmptyString("content", content);
 
             XDocument doc = XDocument.Parse(content);
+
+            if (doc.Root == null)
+            {
+                throw new XmlException("No root in xml content");
+            }
+
             root = doc.Root;
 
             supportedCultures = ParseSupportedCultures(root.Element("supported_cultures"));

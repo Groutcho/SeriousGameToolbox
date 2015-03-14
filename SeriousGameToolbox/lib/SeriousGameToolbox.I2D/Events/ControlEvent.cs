@@ -13,11 +13,7 @@ namespace SeriousGameToolbox.I2D.Events
 
         public ControlEvent(Control sender)
         {
-            if (sender == null)
-            {
-                throw new ArgumentNullException("sender");
-            }
-
+            Guards.Guard.AgainstNullArgument("sender", sender);
             this.sender = sender;
         }
     }

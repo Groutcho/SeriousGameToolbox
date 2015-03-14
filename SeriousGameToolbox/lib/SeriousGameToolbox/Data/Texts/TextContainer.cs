@@ -39,10 +39,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         public static TextContainer Load(string filename)
         {
-            if (filename == null)
-            {
-                throw new ArgumentNullException("filename");
-            }
+            Guards.Guard.AgainstNullArgument("filename", filename);
 
             if (!File.Exists(filename))
             {

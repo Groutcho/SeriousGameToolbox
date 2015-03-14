@@ -17,10 +17,7 @@ namespace SeriousGameToolbox.Data.Logins
 
         public LoginContainer(IEnumerable<Login> logins)
         {
-            if (logins == null)
-            {
-                throw new ArgumentNullException("logins");
-            }
+            Guards.Guard.AgainstNullArgument("logins", logins);
 
             this.logins = logins;
         }

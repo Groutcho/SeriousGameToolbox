@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Logins;
 using SeriousGameToolbox.Pedagogy.Sessions;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace SeriousGameToolbox.Tests.Data.Logins
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullId_ThrowsArgumentNullException()
         {
-            new Login(null, "password");
+            new Login(Deliberate.Null as string, "password");
         }
 
         [Test]
@@ -37,7 +38,7 @@ namespace SeriousGameToolbox.Tests.Data.Logins
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullPassword_ThrowsArgumentNullException()
         {
-            new Login("John Doe", null);
+            new Login("John Doe", Deliberate.Null as string);
         }
 
         [Test]

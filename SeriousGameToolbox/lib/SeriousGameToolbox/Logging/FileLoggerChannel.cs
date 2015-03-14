@@ -22,10 +22,16 @@ namespace SeriousGameToolbox.Logging
 
         public void Log(object message, EntryGravity gravity)
         {
-            string timeStamp = PreciseTimestamp ? (string.Format(":{0}ms", DateTime.Now.Millisecond.ToString())) : string.Empty;
-
-            writer.WriteLine(string.Format("{0};{1};{2}{3}", gravity, message, DateTime.Now.ToString(), timeStamp));
-          }
+            try
+            {
+                string timeStamp = PreciseTimestamp ? (string.Format(":{0}ms", DateTime.Now.Millisecond.ToString())) : string.Empty;
+                writer.WriteLine(string.Format("{0};{1};{2}{3}", gravity, message, DateTime.Now.ToString(), timeStamp));
+            }
+            catch
+            {
+                Dispose();
+            }
+        }
 
         public void Dispose()
         {

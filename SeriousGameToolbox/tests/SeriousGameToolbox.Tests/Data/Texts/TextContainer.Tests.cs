@@ -57,7 +57,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         public void SetCulture_NullArgument_ThrowsArgumentNullException()
         {
             TextContainer container = new TextContainer();
-            container.SetCulture(null);
+            container.SetCulture(Deliberate.Null as CultureInfo);
         }
 
         [Test]
