@@ -13,6 +13,8 @@ namespace SeriousGameToolbox.Commands
     /// </summary>
     public static class CommandManager
     {
+        public delegate void BroadcastCommandDelegate(BroadcastCommandDelegateArgs args);
+
         static CommandContainer db;
 
         public static event BroadcastCommandDelegate CommandBroadcast;

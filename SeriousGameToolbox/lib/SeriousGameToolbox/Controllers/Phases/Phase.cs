@@ -6,10 +6,10 @@ using System.Text;
 
 namespace SeriousGameToolbox.Controllers.Phases
 {
-    public delegate void PhaseCompletedEvent(Phase sender, PhaseOutput args);
-
     public class Phase : IUpdatable, IDisposable
     {
+        public delegate void PhaseCompletedEvent(Phase sender, PhaseOutput args);
+
         public string Name { get; set; }
 
         protected double timeSinceStartInSeconds;
