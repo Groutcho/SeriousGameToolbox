@@ -6,8 +6,6 @@ using System.Text;
 
 namespace SeriousGameToolbox.Commands
 {
-    public delegate void BroadcastCommandDelegate(BroadcastCommandDelegateArgs args);
-
     /// <summary>
     /// The Command manager will receive key sequences 
     /// to evaluate from one or more Command listeners, 

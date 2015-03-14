@@ -6,6 +6,8 @@ using System.Text;
 
 namespace SeriousGameToolbox.Commands
 {
+    public delegate void BroadcastCommandDelegate(BroadcastCommandDelegateArgs args);
+
     public class BroadcastCommandDelegateArgs
     {
         public Command Command { get; private set; }
