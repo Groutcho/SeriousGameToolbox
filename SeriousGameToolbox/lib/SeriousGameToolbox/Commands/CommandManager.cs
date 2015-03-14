@@ -26,6 +26,11 @@ namespace SeriousGameToolbox.Commands
             db.Register(Command.CreateCommand(CommandEffects.RestartCurrentPhase, "CTRL", "R"));
         }
 
+        public static bool RegisterCommand(Command command)
+        {
+            return db.Register(command);
+        }
+
         public static void EvaluateSequence(params string[] sequence)
         {
             Command result = db.GetCommand(sequence);
