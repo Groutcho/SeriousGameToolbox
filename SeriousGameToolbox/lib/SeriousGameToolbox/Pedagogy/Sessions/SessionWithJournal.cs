@@ -9,10 +9,7 @@ namespace SeriousGameToolbox.Pedagogy.Sessions
 
         public SessionWithJournal(SessionJournal journal, Trainee trainee) : base(trainee)
         {
-            if (journal == null)
-            {
-                throw new ArgumentNullException("journal");
-            }
+            Guards.Guard.AgainstNullArgument("journal", journal);
 
             this.Journal = journal;
         }

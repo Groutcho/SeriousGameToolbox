@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Logging;
+using SeriousGameToolbox.Tests._utils;
 using SeriousGameToolbox.Tests.Logging.Data;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace SeriousGameToolbox.Tests.Logging
         [ExpectedException(typeof(ArgumentNullException))]
         public void AddChannel_NullChannel_ThrowsArgumentNullException()
         {
-            Logger.Instance.AddChannel(null);
+            Logger.Instance.AddChannel(Deliberate.Null as ILoggerChannel);
         }
 
         [Test]

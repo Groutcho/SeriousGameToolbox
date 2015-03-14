@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Pedagogy.Sessions;
 using SeriousGameToolbox.Pedagogy.Sessions.Journal;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
         public void AddEntries_NullEntry_ThrowsArgumentNullException()
         {
             SessionJournal journal = new SessionJournal();
-            journal.AddEntry(null);
+            journal.AddEntry(Deliberate.Null as JournalEvent);
         }
 
         [Test]

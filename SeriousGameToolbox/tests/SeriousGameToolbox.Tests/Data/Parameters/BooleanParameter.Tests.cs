@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Parameters;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullId_ThrowsArgumentNullException()
         {
-            new BooleanParameter(null, "caption", false);
+            new BooleanParameter(Deliberate.Null as string, "caption", false);
         }
         [Test]
         public void Clones_Have_Same_Value()

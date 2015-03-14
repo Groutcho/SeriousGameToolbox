@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Parameters;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void EnumerableConstructor_NullArgument_ThrowsArgumentException()
         {
-            ParameterContainer c = null;
-            ParameterContainer collection = new ParameterContainer(c);
+            ParameterContainer collection = new ParameterContainer(Deliberate.Null as ParameterContainer);
         }
 
         [Test]
@@ -57,8 +57,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void CollectionConstructor_NullArgument_ThrowsArgumentException()
         {
-            IEnumerable<Parameter> c = null;
-            ParameterContainer collection = new ParameterContainer(c);
+            ParameterContainer collection = new ParameterContainer(Deliberate.Null as IEnumerable<Parameter>);
         }
     }
 }

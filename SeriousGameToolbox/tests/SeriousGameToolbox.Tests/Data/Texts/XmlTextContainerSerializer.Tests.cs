@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Texts;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,7 +31,7 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [ExpectedException(typeof(ArgumentException))]
         public void Load_NullContent_ThrowsArgumentNullException()
         {
-            serializer.Parse(null);
+            serializer.Parse(Deliberate.Null as string);
         }
 
         [Test]

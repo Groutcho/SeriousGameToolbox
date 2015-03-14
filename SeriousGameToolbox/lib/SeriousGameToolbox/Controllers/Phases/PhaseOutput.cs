@@ -13,10 +13,7 @@ namespace SeriousGameToolbox.Controllers.Phases
 
         public PhaseOutput(Phase phase)
         {
-            if (phase == null)
-            {
-                throw new ArgumentNullException("phase");
-            }
+            Guards.Guard.AgainstNullArgument("phase", phase);
 
             this.phase = phase;
         }

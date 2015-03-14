@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Texts;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -41,14 +42,14 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [ExpectedException(typeof(ArgumentNullException))]
         public void OverloadedConstructor_NullSupportedCultures_ThrowsArgumentNullException()
         {
-            new TextContainer(null, invariantCultureTexts);
+            new TextContainer(Deliberate.Null as IEnumerable<CultureInfo>, invariantCultureTexts);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void OverloadedConstructor_NullTexts_ThrowsArgumentNullException()
         {
-            new TextContainer(supportedCulturesInvariant, null);
+            new TextContainer(supportedCulturesInvariant, Deliberate.Null as Dictionary<string, TextUnit>);
         }
 
         [Test]

@@ -15,10 +15,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         public TextContainer Parse(string content)
         {
-            if (string.IsNullOrEmpty(content))
-            {
-                throw new ArgumentException("The content to deserialize cannot be null nor empty.");
-            }
+            Guards.Guard.AgainstNullOrEmptyString("content", content);
 
             XDocument doc = XDocument.Parse(content);
             root = doc.Root;
@@ -44,10 +41,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         private Dictionary<string, TextUnit> ParseTexts(XElement textNode)
         {
-            if (textNode == null)
-            {
-                throw new ArgumentNullException("textNode");
-            }
+            Guards.Guard.AgainstNullArgument("textNode", textNode);
 
             var textNodes = textNode.Elements("text");
             Dictionary<string, TextUnit> result = new Dictionary<string, TextUnit>(textNodes.Count());
@@ -63,10 +57,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         private TextUnit ParseSingleTextUnit(XElement textNode)
         {
-            if (textNode == null)
-            {
-                throw new ArgumentNullException("textNode");
-            }
+            Guards.Guard.AgainstNullArgument("textNode", textNode);
 
             //<text key="text 1">
             //    <culture name="invariant" uses="en"/>
@@ -114,10 +105,7 @@ namespace SeriousGameToolbox.Data.Texts
 
         private List<CultureInfo> ParseSupportedCultures(XElement cultureNode)
         {
-            if (cultureNode == null)
-            {
-                throw new ArgumentNullException("cultureNode");
-            }
+            Guards.Guard.AgainstNullArgument("cultureNode", cultureNode);
 
             var cultureNodes = cultureNode.Elements("culture");
 

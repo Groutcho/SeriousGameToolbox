@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Texts;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -36,14 +37,14 @@ namespace SeriousGameToolbox.Tests.Data.Texts
         [ExpectedException(typeof(ArgumentException))]
         public void Constructor_NullKey_ThrowsArgumentException()
         {
-            new TextUnit(null, invariantCultureTexts);
+            new TextUnit(Deliberate.Null as string, invariantCultureTexts);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullTexts_ThrowsArgumentNullException()
         {
-            new TextUnit("key", null);
+            new TextUnit("key", Deliberate.Null as IDictionary<CultureInfo, string>);
         }
 
         [Test]

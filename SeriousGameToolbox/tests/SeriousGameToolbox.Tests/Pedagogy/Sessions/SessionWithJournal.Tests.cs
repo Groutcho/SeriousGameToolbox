@@ -2,6 +2,7 @@
 using SeriousGameToolbox.Pedagogy;
 using SeriousGameToolbox.Pedagogy.Sessions;
 using SeriousGameToolbox.Pedagogy.Sessions.Journal;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Threading;
 
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullJournal_ThrowsArgumentNullException()
         {
-            new SessionWithJournal(null, new Trainee());
+            new SessionWithJournal(Deliberate.Null as SessionJournal, new Trainee());
         }
 
         [Test]

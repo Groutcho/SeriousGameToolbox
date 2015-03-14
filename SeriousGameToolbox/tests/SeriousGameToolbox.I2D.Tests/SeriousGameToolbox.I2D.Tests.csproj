@@ -66,6 +66,10 @@
       <Project>{7a78b10f-e051-4682-9401-7169c0d75ec5}</Project>
       <Name>SeriousGameToolbox</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SeriousGameToolbox.Tests\SeriousGameToolbox.Tests.csproj">
+      <Project>{4d1a4cda-73be-486d-ad6d-e9ff0478a3a7}</Project>
+      <Name>SeriousGameToolbox.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

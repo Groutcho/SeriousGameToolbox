@@ -18,18 +18,9 @@ namespace SeriousGameToolbox.Pedagogy.Sessions.Journal
 
         public QuizAnsweredJournalEvent(string quizQuestion, string answer, string expected)
         {
-            if (quizQuestion == null)
-            {
-                throw new ArgumentNullException("quizQuestion");
-            }
-            if (answer == null)
-            {
-                throw new ArgumentNullException("answer");
-            }
-            if (expected == null)
-            {
-                throw new ArgumentNullException("expected");
-            }
+            Guards.Guard.AgainstNullArgument("quizQuestion", quizQuestion);
+            Guards.Guard.AgainstNullArgument("answer", answer);
+            Guards.Guard.AgainstNullArgument("expected", expected);
 
             this.Question = quizQuestion;
             this.Answer = answer;

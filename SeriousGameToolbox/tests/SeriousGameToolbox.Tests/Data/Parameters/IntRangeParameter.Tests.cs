@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Parameters;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullId_ThrowsArgumentNullException()
         {
-            new IntRangeParameter(null, "caption", 1, 200, 22);
+            new IntRangeParameter(Deliberate.Null as string, "caption", 1, 200, 22);
         }
 
         [Test]

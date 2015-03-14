@@ -31,16 +31,23 @@ namespace SeriousGameToolbox.Tests.Logging
             logger.Dispose();
 
             StreamReader file = File.OpenText(standardLoggerFilename);
-            string line1 = file.ReadLine();
-            string[] line1_split = line1.Split(';');
-            Assert.AreEqual("DEBUG SESSION", line1_split[0]);
-            file.ReadLine();
-            string line3 = file.ReadLine();
-            string[] line3_split = line3.Split(';');
 
-            Assert.AreEqual("Info", line3_split[0]);
-            Assert.AreEqual(textTolog, line3_split[1]);
-            file.Close();
+            try
+            {
+                string line1 = file.ReadLine();
+                string[] line1_split = line1.Split(';');
+                Assert.AreEqual("DEBUG SESSION", line1_split[0]);
+                file.ReadLine();
+                string line3 = file.ReadLine();
+                string[] line3_split = line3.Split(';');
+
+                Assert.AreEqual("Info", line3_split[0]);
+                Assert.AreEqual(textTolog, line3_split[1]);
+            }
+            finally
+            {
+                file.Close();
+            }
         }
     }
 }

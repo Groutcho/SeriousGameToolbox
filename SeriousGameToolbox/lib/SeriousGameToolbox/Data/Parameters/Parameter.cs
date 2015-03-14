@@ -10,12 +10,10 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public Parameter(string id, string caption)
         {
-            if (id == null)
-            {
-                throw new System.ArgumentNullException("id");
-            }
+            Guards.Guard.AgainstNullArgument("id", id);
 
             this.Id = id;
+
             this.Caption = caption;
         }
 

@@ -17,20 +17,9 @@ namespace SeriousGameToolbox.Data.Texts
 
         public TextUnit(string key, IDictionary<CultureInfo, string> texts)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentException("Key cannot be null nor empty.");
-            }
-
-            if (texts == null)
-            {
-                throw new ArgumentNullException("texts");
-            }
-
-            if (texts.Count == 0)
-            {
-                throw new ArgumentException("The text dictionary cannot be empty");
-            }
+            Guards.Guard.AgainstNullOrEmptyString("key", key);
+            Guards.Guard.AgainstNullArgument("texts", texts);
+            Guards.Guard.AgainstEmptyCollection("texts", texts);
 
             this.key = key;
             this.texts = texts;

@@ -1,4 +1,6 @@
 ﻿using SeriousGameToolbox.I2D.Controls;
+using SeriousGameToolbox.I2D.Events;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,7 @@ namespace SeriousGameToolbox.I2D.Tests.Controls.Fakes
 
         public void TriggerNullEvent()
         {
-            BubbleEvent(null);
+            BubbleEvent(Deliberate.Null as ControlEvent);
         }
     }
-
-
 }

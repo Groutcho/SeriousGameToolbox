@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Data
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullUri_ThrowsArgumentNullException()
         {
-            FileObject fo = new FileObject(null);
+            FileObject fo = new FileObject(Deliberate.Null as string);
         }
 
         [Test]

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Controllers.Phases;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Controllers.Phases
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullPhase_ThrowsArgumentNullException()
         {
-            new PhaseOutput(null);
+            new PhaseOutput(Deliberate.Null as Phase);
         }
     }
 }

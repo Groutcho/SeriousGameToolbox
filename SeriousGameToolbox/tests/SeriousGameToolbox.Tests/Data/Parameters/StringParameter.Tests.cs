@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Data.Parameters;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,14 @@ namespace SeriousGameToolbox.Tests.Data.Parameters
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullId_ThrowsArgumentNullException()
         {
-            new StringParameter(null, "caption", "this is the value.");
+            new StringParameter(Deliberate.Null as string, "caption", "this is the value.");
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullValue_ThrowsArgumentNullException()
         {
-            new StringParameter("id", "caption", null);
+            new StringParameter("id", "caption", Deliberate.Null as string);
         }
 
         [Test]

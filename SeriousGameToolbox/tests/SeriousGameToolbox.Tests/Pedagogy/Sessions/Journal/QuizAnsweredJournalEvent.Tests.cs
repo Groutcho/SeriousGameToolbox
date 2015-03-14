@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Pedagogy.Sessions.Journal;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +15,19 @@ namespace SeriousGameToolbox.Tests.Pedagogy.Sessions.Journal
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullQuestion_ThrowsArgumentNullException()
         {
-            new QuizAnsweredJournalEvent(null, "test", "test");
+            new QuizAnsweredJournalEvent(Deliberate.Null as string, "test", "test");
         }
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullAnswer_ThrowsArgumentNullException()
         {
-            new QuizAnsweredJournalEvent("test", null, "test");
+            new QuizAnsweredJournalEvent("test", Deliberate.Null as string, "test");
         }
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Constructor_NullExpected_ThrowsArgumentNullException()
         {
-            new QuizAnsweredJournalEvent("test", "test", null);
+            new QuizAnsweredJournalEvent("test", "test", Deliberate.Null as string);
         }
 
         [Test]

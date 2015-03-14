@@ -89,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="_utils\Deliberate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Parameters\TestData\duplicated_ids.xml" />

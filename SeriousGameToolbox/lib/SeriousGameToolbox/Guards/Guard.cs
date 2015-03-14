@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,16 @@ namespace SeriousGameToolbox.Guards
             {
                 throw new ArgumentException("The string " + name + " cannot be " + objectToTest == null ? "null" : "empty");
             }
-        }   
+        }
+
+        internal static void AgainstEmptyCollection(string name, IEnumerable collection)
+        {
+            Guard.AgainstNullArgument("collection", collection);
+
+           if (!collection.GetEnumerator().MoveNext())
+           {
+               throw new ArgumentException("Collection cannot be empty : " + name);
+           }
+        }
     }
 }

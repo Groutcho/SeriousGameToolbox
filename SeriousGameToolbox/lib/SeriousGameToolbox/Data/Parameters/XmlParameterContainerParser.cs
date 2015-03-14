@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace SeriousGameToolbox.Data.Parameters
@@ -148,6 +149,11 @@ namespace SeriousGameToolbox.Data.Parameters
 
         private ParameterContainer GetParameterContainer(XDocument doc)
         {
+            if (doc.Root == null)
+            {
+                throw new XmlException("No root on document");
+            }
+
             if (doc.Root.HasElements)
             {
                 var elements = doc.Root.Elements("parameter");

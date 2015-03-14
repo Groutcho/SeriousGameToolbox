@@ -17,10 +17,7 @@ namespace SeriousGameToolbox.Pedagogy.Sessions.Journal
 
         public virtual void AddEntry(JournalEvent entry)
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException("entry");
-            }
+            Guards.Guard.AgainstNullArgument("entry", entry);
 
             if (entries.Any(e => e.Id == entry.Id))
             {

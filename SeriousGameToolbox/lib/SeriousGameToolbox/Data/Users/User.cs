@@ -33,11 +33,7 @@ namespace SeriousGameToolbox.Data.Users
             get { return name; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("name");
-                }
-
+                Guards.Guard.AgainstNullArgument("name", value);
                 name = value.Trim();
             }
         }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SeriousGameToolbox.Pedagogy;
+using SeriousGameToolbox.Tests._utils;
 using System;
 
 namespace SeriousGameToolbox.Tests.Pedagogy
@@ -19,7 +20,7 @@ namespace SeriousGameToolbox.Tests.Pedagogy
         public void NameSetter_ThrowsArgumentNullException()
         {
             Trainee trainee = new Trainee();
-            trainee.Name = null;
+            trainee.Name = Deliberate.Null as string;
         }
 
         [Test]

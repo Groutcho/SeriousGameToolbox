@@ -194,3 +194,7 @@ ModelManifest.xml
 #OpenCover and ReportGenerator
 results*.xml
 coverage/
+
+#Coverity
+cov-int/
+cov-int.zip

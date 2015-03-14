@@ -17,10 +17,7 @@ namespace SeriousGameToolbox.Data.Parameters
         public StringParameter(string id, string caption, string value)
             : base(id, caption)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
+            Guards.Guard.AgainstNullArgument("value", value);
 
             this.value = value;
         }
