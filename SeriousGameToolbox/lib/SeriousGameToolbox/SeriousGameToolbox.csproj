@@ -99,7 +99,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)dll /s /q /c /e /y</PostBuildEvent>
+    <PostBuildEvent>mkdir $(SolutionDir)dll
+xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)dll /s /q /c /e /y
+del $(SolutionDir)dll\UnityEngine.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
