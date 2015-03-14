@@ -54,7 +54,7 @@ namespace SeriousGameToolbox.Commands
             }
         }
 
-        public static string Concatenate(string[] sequence)
+        public static string Concatenate(params string[] sequence)
         {
             string s = sequence[0].ToUpperInvariant();
 

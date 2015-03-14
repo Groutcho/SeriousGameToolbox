@@ -14,36 +14,37 @@ namespace SeriousGameToolbox.Tests.Commands
         [Category("Commands")]
         public void CommandConstructorRejectsInvalidKeySequences()
         {
-            try
-            {
-                Command.CreateCommand(CommandEffects.NoEffect, "CTRL");
-                Command.CreateCommand(CommandEffects.NoEffect, "SHIFT");
-                Command.CreateCommand(CommandEffects.NoEffect, "ALT");
-                Command.CreateCommand(CommandEffects.NoEffect, ";");
-                Command.CreateCommand(CommandEffects.NoEffect, "$");
-                Command.CreateCommand(CommandEffects.NoEffect, "@");
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "SHIFT"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "ALT"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, ";"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "$"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "@"));
 
-                Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "CTRL");
-                Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "SHIFT");
-                Command.CreateCommand(CommandEffects.NoEffect, "SHIFT", "SHIFT");
-                Command.CreateCommand(CommandEffects.NoEffect, "SHIFT", "ALT");
-                Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H", "B");
-                Command.CreateCommand(CommandEffects.NoEffect, "ALT", "ALT");
-            }
-            catch (ArgumentException)
-            {
-                Assert.Pass();
-            }
-
-            Assert.Fail();
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "CTRL"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "SHIFT"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "SHIFT", "SHIFT"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "SHIFT", "ALT"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H", "B"));
+            Assert.Throws<ArgumentException>(() => Command.CreateCommand(CommandEffects.NoEffect, "ALT", "ALT"));
         }
 
         [Test]
         [Category("Commands")]
         public void CommandConstructorAcceptsValidKeySequences()
         {
-            Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "SHIFT", "K");
-            Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H");
+            Assert.DoesNotThrow(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "SHIFT", "K"));
+            Assert.DoesNotThrow(() => Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H"));
+        }
+
+        [Test]
+        [Category("Commands")]
+        public void ConcatenateReturnsCorrectSequence()
+        {
+            Assert.AreEqual("CTRL+SHIFT+K", Command.Concatenate("CTRL", "SHIFT", "K"));
+            Assert.AreEqual("CTRL+ALT+SHIFT+T", Command.Concatenate("CTRL", "ALT", "SHIFT", "T"));
+            Assert.AreEqual("CTRL+U", Command.Concatenate("CTRL", "U"));
+            Assert.AreEqual("SHIFT+B", Command.Concatenate("SHIFT", "B"));
         }
 
         [Test]
