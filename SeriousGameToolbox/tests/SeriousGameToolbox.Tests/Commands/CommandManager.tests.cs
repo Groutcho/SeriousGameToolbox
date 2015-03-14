@@ -20,5 +20,15 @@ namespace SeriousGameToolbox.Tests.Commands
 
             CommandManager.EvaluateSequence("CTRL", "SHIFT", "R");
         }
+
+        [Test]
+        public void RegisterCommand()
+        {
+            Command effect1 = Command.CreateCommand("Effect 1", "CTRL", "U");
+            Command effect2 = Command.CreateCommand("Effect 2", "CTRL", "U");
+
+            CommandManager.RegisterCommand(effect1);
+            Assert.IsFalse(CommandManager.RegisterCommand(effect2));
+        }
     }
 }

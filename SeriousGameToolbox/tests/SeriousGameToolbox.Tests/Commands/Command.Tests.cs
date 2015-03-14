@@ -55,6 +55,7 @@ namespace SeriousGameToolbox.Tests.Commands
             Command cmd2 = Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H");
 
             Assert.AreEqual(cmd1, cmd2);
+            Assert.AreEqual(cmd1, (object)cmd2);
         }
 
         [Test]
@@ -65,6 +66,7 @@ namespace SeriousGameToolbox.Tests.Commands
             Command cmd2 = Command.CreateCommand(CommandEffects.NoEffect, "CTRL", "H");
 
             Assert.AreNotEqual(cmd1, cmd2);
+            Assert.AreNotEqual(cmd1, new object());
         }
     }
 }

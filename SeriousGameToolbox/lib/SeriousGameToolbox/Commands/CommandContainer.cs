@@ -22,7 +22,7 @@ namespace SeriousGameToolbox.Commands
         {
             Guard.AgainstNullArgument("command", command);
 
-            if (commands.Contains(command))
+            if (commands.Any(c => c.ConcatenatedForm == command.ConcatenatedForm))
             {
                 return false;
             }
