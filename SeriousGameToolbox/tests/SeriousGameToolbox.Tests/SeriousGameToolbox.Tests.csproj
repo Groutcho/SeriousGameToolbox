@@ -57,6 +57,7 @@
     <Compile Include="Commands\Command.Tests.cs" />
     <Compile Include="Commands\CommandContainer.Tests.cs" />
     <Compile Include="Commands\CommandManager.Tests.cs" />
+    <Compile Include="Controllers\Game\Game.Tests.cs" />
     <Compile Include="Controllers\Phases\Phase.Tests.cs" />
     <Compile Include="Controllers\Phases\PhaseCompletedEventArgs.Tests.cs" />
     <Compile Include="Data\FileObject.Tests.cs" />
