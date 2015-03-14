@@ -68,6 +68,11 @@ namespace SeriousGameToolbox.Commands
                 s += "+" + sequence[2].ToUpperInvariant();
             }
 
+            if (sequence.Length > 3)
+            {
+                s += "+" + sequence[3].ToUpperInvariant();
+            }
+
             return s;
         }
 

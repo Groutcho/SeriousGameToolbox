@@ -16,7 +16,6 @@ namespace SeriousGameToolbox.Commands
     public static class CommandManager
     {
         static CommandContainer db;
-        static Logger logger;
 
         public static event BroadcastCommandDelegate CommandBroadcast;
 
@@ -27,23 +26,15 @@ namespace SeriousGameToolbox.Commands
             db.Register(Command.CreateCommand(CommandEffects.RestartCurrentPhase, "CTRL", "R"));
         }
 
-        public static void AttachLogger(Logger log)
-        {
-            Guards.Guard.AgainstNullArgument("logger", log);
-
-            logger = log;
-        }
-
         public static void EvaluateSequence(params string[] sequence)
         {
             Command result = db.GetCommand(sequence);
 
+            Logger.Instance.Log("Received command : " + Command.Concatenate(sequence), EntryGravity.Info);
+
             if (result != null)
             {
-                if (logger != null)
-                {
-                    logger.Log("Received command : " + result.ToString(), EntryGravity.Info);
-                }
+                Logger.Instance.Log("Evaluated command : " + result.ToString(), EntryGravity.Info);
 
                 if (CommandBroadcast != null)
                 {
