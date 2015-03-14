@@ -12,9 +12,11 @@ namespace SeriousGameToolbox.Logging
     {
         StreamWriter writer;
 
-        public FileLoggerChannel(string filename)
+        public FileLoggerChannel(string filename, bool append = true)
         {
-            writer = new StreamWriter(filename);
+            writer = new StreamWriter(filename, append: append);
+            writer.WriteLine("DEBUG SESSION;" + DateTime.Now.ToString());
+            writer.WriteLine();
             writer.AutoFlush = true;
         }
 

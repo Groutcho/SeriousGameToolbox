@@ -13,6 +13,14 @@ namespace SeriousGameToolbox.Guards
             {
                 throw new ArgumentNullException(name);
             }
-        }        
+        }
+
+        public static void AgainstNullOrEmptyString(string name, string objectToTest)
+        {
+            if (string.IsNullOrEmpty(objectToTest))
+            {
+                throw new ArgumentException("The string " + name + " cannot be " + objectToTest == null ? "null" : "empty");
+            }
+        }   
     }
 }
