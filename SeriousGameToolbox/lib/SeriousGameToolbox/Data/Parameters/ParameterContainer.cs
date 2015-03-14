@@ -15,10 +15,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public static ParameterContainer Load(string filename)
         {
-            if (filename == null)
-            {
-                throw new ArgumentNullException("filename");
-            }
+            Guards.Guard.AgainstNullArgument("filename", filename);
 
             if (!File.Exists(filename))
             {
@@ -81,10 +78,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public ParameterContainer(ParameterContainer original)
         {
-            if (original == null)
-            {
-                throw new ArgumentNullException("original");
-            }
+            Guards.Guard.AgainstNullArgument("original", original);
 
             dict = new Dictionary<string, Parameter>(original.dict);
 
@@ -93,10 +87,7 @@ namespace SeriousGameToolbox.Data.Parameters
 
         public ParameterContainer(IEnumerable<Parameter> original)
         {
-            if (original == null)
-            {
-                throw new ArgumentNullException("original");
-            }
+            Guards.Guard.AgainstNullArgument("original", original);
 
             if (DoesListContainsDuplicateValues(original))
             {

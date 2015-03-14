@@ -1,9 +1,11 @@
 ﻿<NUnitProject>
-  <Settings activeconfig="Debug" processModel="Default" domainUsage="Default" />
+  <Settings activeconfig="Debug" />
   <Config name="Debug" binpathtype="Auto">
+    <assembly path="SeriousGameToolbox.Tests\bin\Debug\SeriousGameToolbox.Tests.dll" />
   </Config>
   <Config name="Release" binpathtype="Auto">
     <assembly path="bin\Release\SeriousGameToolbox.Tests.dll" />
     <assembly path="bin\Release\SeriousGameToolbox.Tests.dll" />
+    <assembly path="SeriousGameToolbox.Tests\bin\Release\SeriousGameToolbox.Tests.dll" />
   </Config>
 </NUnitProject>

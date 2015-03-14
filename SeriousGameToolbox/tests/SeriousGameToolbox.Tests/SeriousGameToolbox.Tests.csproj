@@ -92,8 +92,15 @@
     <Compile Include="_utils\Deliberate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Parameters\TestData\duplicated_ids.xml" />
-    <Content Include="Data\Parameters\TestData\default_settings.xml" />
+    <Content Include="Data\Parameters\TestData\test_settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Parameters\TestData\duplicated_ids.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Parameters\TestData\default_settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Texts\Data\text_container_1.xml" />
     <Content Include="TestData\test_file_1.txt" />
   </ItemGroup>
