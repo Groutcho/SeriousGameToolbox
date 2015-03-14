@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SeriousGameToolbox.Tests._utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SeriousGameToolbox.Tests.Guards
         [ExpectedException(typeof(ArgumentNullException))]
         public void GuardAgainstArgumentNull()
         {
-            SGT.Guard.AgainstNullArgument("success", null);
+            SGT.Guard.AgainstNullArgument("success", Deliberate.Null as object);
         }
 
         [Test]
@@ -28,7 +29,7 @@ namespace SeriousGameToolbox.Tests.Guards
         [ExpectedException(typeof(ArgumentException))]
         public void GuardAgainstNullString()
         {
-            SGT.Guard.AgainstNullOrEmptyString("theString", null);
+            SGT.Guard.AgainstNullOrEmptyString("theString", Deliberate.Null as string);
         }
 
         [Test]
