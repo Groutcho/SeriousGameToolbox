@@ -40,6 +40,7 @@ namespace SeriousGameToolbox.Tests.Logging
 
             Assert.AreEqual("Info", line3_split[0]);
             Assert.AreEqual(textTolog, line3_split[1]);
+            file.Close();
         }
     }
 }
