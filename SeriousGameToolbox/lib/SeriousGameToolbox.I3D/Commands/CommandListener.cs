@@ -12,6 +12,10 @@ namespace SeriousGameToolbox.I3D.Commands
     /// <summary>
     /// The command listener will sit in the Unity scene and listen to any input.
     /// When a key sequence is detected, it will send it to the CommandManager for evaluation.
+    /// 
+    /// IMPORTANT note : When using key combinations in Unity Editor (as opposed to Build),
+    /// Take note that the Editor itself will intercept all usual key sequences (e.g CTRL-Z, CTRL-A...), causing the
+    /// CommandListener to miss them.
     /// </summary>
     public class CommandListener : IUpdatable
     {
