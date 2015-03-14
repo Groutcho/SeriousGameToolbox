@@ -14,8 +14,8 @@ namespace SeriousGameToolbox.I3D.Commands
     /// When a key sequence is detected, it will send it to the CommandManager for evaluation.
     /// 
     /// IMPORTANT note : When using key combinations in Unity Editor (as opposed to Build),
-    /// Take note that the Editor itself will intercept all usual key sequences (e.g CTRL-Z, CTRL-A...), causing the
-    /// CommandListener to miss them.
+    /// the Editor itself will intercept all usual key sequences (e.g CTRL-Z, CTRL-A...), causing the
+    /// CommandListener to miss them. To avoid this, use key sequences that are not used by the editor.
     /// </summary>
     public class CommandListener : IUpdatable
     {
@@ -84,23 +84,28 @@ namespace SeriousGameToolbox.I3D.Commands
 
         public void Update(double dt)
         {
-            if (CtrlPressed && AltPressed && ShiftPressed && AnyLetterPressed(out letter))
+            if (CtrlPressed)
             {
-                CommandManager.EvaluateSequence("CTRL", "ALT", "SHIFT", letter.ToString());
+                if (AltPressed)
+                {
+                    if (ShiftPressed && AnyLetterPressed(out letter))
+                    {
+                        CommandManager.EvaluateSequence("CTRL", "ALT", "SHIFT", letter.ToString());
+                    }
+                    else if (AnyLetterPressed(out letter))
+                    {
+                        CommandManager.EvaluateSequence("CTRL", "ALT", letter.ToString());
+                    }
+                }
+                else if (ShiftPressed && AnyLetterPressed(out letter))
+                {
+                    CommandManager.EvaluateSequence("CTRL", "SHIFT", letter.ToString());
+                }
+                else if (AnyLetterPressed(out letter))
+                {
+                    CommandManager.EvaluateSequence("CTRL", letter.ToString());
+                }
             }
-            else if (CtrlPressed && AltPressed && AnyLetterPressed(out letter))
-            {
-                CommandManager.EvaluateSequence("CTRL", "ALT", letter.ToString());
-            }
-            else if (CtrlPressed && ShiftPressed && AnyLetterPressed(out letter))
-            {
-                CommandManager.EvaluateSequence("CTRL", "SHIFT", letter.ToString());
-            }
-            else if (CtrlPressed && AnyLetterPressed(out letter))
-            {
-                CommandManager.EvaluateSequence("CTRL", letter.ToString());
-            }
-
             letter = '\0';
         }
     }
