@@ -190,3 +190,7 @@ _Pvt_Extensions/
 ModelManifest.xml
 /dll
 *.nupkg
+
+#OpenCover and ReportGenerator
+results*.xml
+coverage/
